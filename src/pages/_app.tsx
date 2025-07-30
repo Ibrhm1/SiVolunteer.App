@@ -4,6 +4,7 @@ import { HeroUIProvider } from "@heroui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
+import { ToastContainer } from "react-toastify";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +31,7 @@ export default function App({
       <QueryClientProvider client={queryClient}>
         <HeroUIProvider>
           <Component {...pageProps} />
+          <ToastContainer />
         </HeroUIProvider>
       </QueryClientProvider>
     </SessionProvider>
