@@ -1,4 +1,4 @@
-export default {
+const endpointService = {
   AUTH: "/auth",
   CATEGORY: "/category",
   EVENTS: "/events",
@@ -6,3 +6,5 @@ export default {
   EVENT_VOLUNTEER: "/event-volunteer",
   REGION: "/regions",
 };
+
+export default endpointService;
