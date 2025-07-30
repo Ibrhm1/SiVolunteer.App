@@ -1,9 +1,8 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Failed from "/public/Fail.svg";
-import Success from "/public/Success.svg";
 import { IoHome } from "react-icons/io5";
+import images from "@/components/images/render.image";
 
 interface PropTypes {
   status: "success" | "failed";
@@ -17,7 +16,7 @@ const ViewActivation = (props: PropTypes) => {
     <div className="flex w-screen flex-col items-center justify-center gap-10 p-4">
       <div className="flex flex-col items-center justify-center gap-10">
         <Image
-          src={status === "success" ? Success : Failed}
+          src={status === "success" ? images.Success : images.Fail}
           alt="success illustration"
           width={500}
           height={500}

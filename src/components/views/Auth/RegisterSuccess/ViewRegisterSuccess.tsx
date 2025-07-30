@@ -1,9 +1,9 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
-import complete from "/public/Complete.svg";
 import { useRouter } from "next/router";
 import React from "react";
 import { IoHome } from "react-icons/io5";
+import images from "@/components/images/render.image";
 
 const ViewRegisterSuccess = () => {
   const router = useRouter();
@@ -11,7 +11,7 @@ const ViewRegisterSuccess = () => {
   return (
     <div className="flex w-screen flex-col items-center justify-center gap-10 p-4">
       <div className="flex flex-col items-center justify-center gap-10">
-        <Image src={complete} alt="logo" width={600} height={600} />
+        <Image src={images.Complete} alt="logo" width={600} height={600} />
       </div>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-foreground text-3xl font-bold">

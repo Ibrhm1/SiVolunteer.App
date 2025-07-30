@@ -6,6 +6,7 @@ import { Controller } from "react-hook-form";
 import useViewLogin from "./useViewLogin";
 import { FaEye, FaEyeSlash, FaLock, FaRegUser } from "react-icons/fa";
 import { IoLogInOutline } from "react-icons/io5";
+import images from "@/components/images/render.image";
 
 const ViewLogin = () => {
   const {
@@ -21,7 +22,7 @@ const ViewLogin = () => {
   return (
     <Card className="p-8 lg:w-1/2">
       <div className="flex justify-center">
-        <Image src={"/login.jpg"} alt="logo" width={350} height={350} />
+        <Image src={images.Login} alt="logo" width={350} height={350} />
       </div>
       <CardBody>
         <h2 className="text-2xl font-bold">Login</h2>
