@@ -286,10 +286,16 @@ const ViewRegisterOrganizer = () => {
             variant="ghost"
             className="font-bold"
             isDisabled={isPendingRegister}
-            startContent={<RiUserAddFill className="text-medium" />}
             color={error.some((key) => errors[key]) ? "danger" : "primary"}
           >
-            {isPendingRegister ? <Spinner color="current" /> : "Register"}
+            {isPendingRegister ? (
+              <Spinner color="primary" />
+            ) : (
+              <>
+                <RiUserAddFill className="text-medium" />
+                <span>Register</span>
+              </>
+            )}
           </Button>
         </form>
       </CardBody>

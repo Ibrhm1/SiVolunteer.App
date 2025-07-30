@@ -208,10 +208,16 @@ const ViewRegisterMember = () => {
             variant="ghost"
             className="font-bold"
             isDisabled={isPendingRegister}
-            startContent={<RiUserAddFill />}
             color={error.some((key) => errors[key]) ? "danger" : "primary"}
           >
-            {isPendingRegister ? <Spinner color="white" /> : "Register"}
+            {isPendingRegister ? (
+              <Spinner color="primary" />
+            ) : (
+              <>
+                <RiUserAddFill className="text-xl" />
+                <span>Register</span>
+              </>
+            )}
           </Button>
         </form>
       </CardBody>
