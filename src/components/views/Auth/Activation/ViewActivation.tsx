@@ -1,7 +1,7 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Failed from "/public/fail.svg";
+import Failed from "/public/Fail.svg";
 import Success from "/public/Success.svg";
 import { IoHome } from "react-icons/io5";
 
