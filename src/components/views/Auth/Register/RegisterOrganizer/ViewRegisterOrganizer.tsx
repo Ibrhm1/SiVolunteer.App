@@ -30,13 +30,10 @@ const ViewRegisterOrganizer = () => {
     dataRegion,
     handleSubmit,
     searchRegency,
-    refetchRegion,
     handleRegister,
     visiblePassword,
-    setSearchRegency,
     isPendingRegister,
     handleSearchRegion,
-    isPendingSearchRegion,
     handleVisiblePassword,
   } = useViewRegisterOrganizer();
 
