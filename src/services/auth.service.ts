@@ -6,7 +6,7 @@ const authService = {
   login: (payload: ILogin) =>
     instance.post(`${endpointService.AUTH}/login`, payload),
   activation: (code: IActivation) =>
-    instance.post(`${endpointService.AUTH}/activation,`, code),
+    instance.post(`${endpointService.AUTH}/activation`, code),
   getProfile: (token: string) =>
     instance.get(`${endpointService.AUTH}/get-profile`, {
       headers: {
