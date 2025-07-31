@@ -18,7 +18,7 @@ interface PropTypes {
   isOpen: boolean;
 }
 
-const layoutSidebar = (props: PropTypes) => {
+const LayoutSidebar = (props: PropTypes) => {
   const { sidebarItems, isOpen } = props;
   const router = useRouter();
 
@@ -76,4 +76,4 @@ const layoutSidebar = (props: PropTypes) => {
   );
 };
 
-export default layoutSidebar;
+export default LayoutSidebar;
