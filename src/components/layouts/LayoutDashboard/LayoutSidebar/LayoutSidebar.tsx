@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { JSX } from "react";
 import { BiLogOut } from "react-icons/bi";
-import { CiLogout } from "react-icons/ci";
 
 interface SidebarItem {
   key: string;
@@ -60,7 +59,7 @@ const layoutSidebar = (props: PropTypes) => {
           )}
         </Listbox>
       </div>
-      <div className="flex items-center p-1 mt-10">
+      <div className="mt-10 flex items-center p-1">
         <Button
           size="md"
           fullWidth
