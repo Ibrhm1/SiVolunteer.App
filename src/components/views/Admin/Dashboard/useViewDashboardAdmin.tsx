@@ -46,7 +46,7 @@ const useViewDashboardAdmin = () => {
     },
     {
       title: "Total Organizers",
-      value: dataOrganizer?.data.data.length,
+      value: dataOrganizer?.data?.data.length,
       icon: (
         <>
           <FaUsers className="bg-primary-200 rounded-full p-1 text-4xl" />
