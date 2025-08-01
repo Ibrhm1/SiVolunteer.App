@@ -25,7 +25,9 @@ const ViewDashboardAdmin = () => {
         className="my-4 h-8 rounded-xl lg:w-1/2"
         isLoaded={!isLoadingEvents && !isLoadingMember && !isLoadingOrganizer}
       >
-        <h1 className="text-2xl font-bold">Hai, {session.data?.user?.email}</h1>
+        <h1 className="text-xl font-bold lg:text-2xl">
+          Hai, {session.data?.user?.email}
+        </h1>
       </Skeleton>
       <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-16">
         <div className="flex h-fit flex-wrap justify-center gap-2 md:w-1/2 md:justify-start lg:gap-x-3 lg:gap-y-2">
@@ -45,7 +47,7 @@ const ViewDashboardAdmin = () => {
                   {item.icon}
                 </CardHeader>
                 <CardBody className="py-0 pb-2">
-                  <h3 className="text-foreground-500 mb-3 text-center text-2xl font-bold">
+                  <h3 className="text-foreground-500 my-2 text-center text-2xl font-bold">
                     {item.value}
                     <span className="text-medium ml-1">{item.detail}</span>
                   </h3>

@@ -34,13 +34,15 @@ const LayoutDashboard = (props: PropTypes) => {
             isBlurred={false}
             position="static"
           >
-            <h1 className="text-3xl font-bold">{title}</h1>
-            <ToggleDarkmode />
-            <NavbarMenuToggle
-              aria-label={open ? "Close Menu" : "Open Menu"}
-              onClick={() => setOpen(!open)}
-              className="lg:hidden"
-            />
+            <h1 className="text-xl font-bold lg:text-3xl">{title}</h1>
+            <div className="flex items-center gap-5">
+              <ToggleDarkmode />
+              <NavbarMenuToggle
+                aria-label={open ? "Close Menu" : "Open Menu"}
+                onClick={() => setOpen(!open)}
+                className="lg:hidden"
+              />
+            </div>
           </Navbar>
           <p className="text-small mb-3">{description}</p>
           {children}
