@@ -38,7 +38,7 @@ const ViewRegisterMember = () => {
 
   return (
     <Card className="p-5 md:w-1/2">
-      <CardHeader className="flex-col items-center justify-center rounded-2xl bg-gray-300">
+      <CardHeader className="flex-col items-center justify-center rounded-2xl bg-default">
         <h1 className="w-full text-center text-2xl font-bold">
           Register Member
         </h1>

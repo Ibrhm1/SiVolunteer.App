@@ -1,3 +1,4 @@
+import ToggleDarkmode from "@/components/UI/ToggleDarkmode";
 import { Button } from "@heroui/react";
 import { useRouter } from "next/router";
 
@@ -14,6 +15,7 @@ const HomePage = () => {
       >
         Login
       </Button>
+      <ToggleDarkmode />
     </div>
   );
 };

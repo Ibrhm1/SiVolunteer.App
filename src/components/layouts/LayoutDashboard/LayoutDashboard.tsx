@@ -6,6 +6,7 @@ import {
   SIDEBAR_ADMIN,
   SIDEBAR_MEMBER,
 } from "./LayoutSidebar/LayoutSidebar.constant";
+import ToggleDarkmode from "@/components/UI/ToggleDarkmode";
 
 interface PropTypes {
   children: ReactNode;
@@ -34,13 +35,14 @@ const LayoutDashboard = (props: PropTypes) => {
             position="static"
           >
             <h1 className="text-3xl font-bold">{title}</h1>
+            <ToggleDarkmode />
             <NavbarMenuToggle
               aria-label={open ? "Close Menu" : "Open Menu"}
               onClick={() => setOpen(!open)}
               className="lg:hidden"
             />
           </Navbar>
-          <p className="text-small mb-4">{description}</p>
+          <p className="text-small mb-3">{description}</p>
           {children}
         </div>
       </main>

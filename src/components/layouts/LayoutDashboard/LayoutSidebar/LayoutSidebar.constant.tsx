@@ -12,9 +12,9 @@ const SIDEBAR_MEMBER = [
     icon: <CiGrid41 />,
   },
   {
-    key: "transaction",
-    label: "Transaction",
-    href: "/member/transaction",
+    key: "myProfile",
+    label: "My Profile",
+    href: "/member/profile",
     icon: <CiWallet />,
   },
 ];
@@ -28,7 +28,7 @@ const SIDEBAR_ADMIN = [
   },
   {
     key: "events",
-    label: "Event",
+    label: "Events",
     href: "/admin/events",
     icon: <MdEvent />,
   },
@@ -40,8 +40,8 @@ const SIDEBAR_ADMIN = [
   },
   {
     key: "organizer",
-    label: "Organizer",
-    href: "/admin/organizer",
+    label: "Organizers",
+    href: "/admin/organizers",
     icon: <HiOutlineUserGroup />,
   },
   {

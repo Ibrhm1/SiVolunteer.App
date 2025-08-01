@@ -1,0 +1,65 @@
+import organizerServices from "@/services/authOrganizer.service";
+import categoryService from "@/services/category.service";
+import eventsService from "@/services/events.service";
+import regionService from "@/services/region.service";
+import { IEvent, IEventForm } from "@/types/Event";
+import { toDateStandard } from "@/utils/date";
+import { DateValue } from "@heroui/react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
+import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
+
+const useViewDetailEvent = () => {
+  const { query, isReady } = useRouter();
+  const [organizerId, setOrganizerId] = useState<string>("");
+
+  const getEventById = async () => {
+    const { data } = await eventsService.getEventById(`${query.id}`);
+    return data.data;
+  };
+
+  const { data: dataEvent, isPending: isPendingDataEvent } = useQuery({
+    queryKey: ["Event"],
+    queryFn: getEventById,
+    enabled: isReady && !!query.id,
+  });
+
+  const { data: dataDefaultRegion, isPending: isPendingDefaultRegion } =
+    useQuery({
+      queryKey: ["defaultRegion"],
+      queryFn: () => regionService.getRegencyById(dataEvent?.location?.region),
+      enabled: !!dataEvent?.location?.region,
+    });
+
+  const { data: dataCategory, isPending: isPendingDataCategory } = useQuery({
+    queryKey: ["Category"],
+    queryFn: () => categoryService.getCategoryById(`${dataEvent?.category}`),
+    enabled: !!dataEvent?.category,
+  });
+
+  const getOrganizerById = async () => {
+    const { data } = await organizerServices.getOrganizerById(
+      `${dataEvent?.createdBy}`,
+    );
+    return data.data;
+  };
+
+  const { data: dataOrganizer } = useQuery({
+    queryKey: ["Organizer"],
+    queryFn: getOrganizerById,
+    enabled: !!dataEvent?.createdBy,
+  });
+
+  return {
+    dataEvent,
+    dataCategory,
+    dataOrganizer,
+    dataDefaultRegion,
+    isPendingDataEvent,
+    isPendingDataCategory,
+    isPendingDefaultRegion,
+  };
+};
+
+export default useViewDetailEvent;

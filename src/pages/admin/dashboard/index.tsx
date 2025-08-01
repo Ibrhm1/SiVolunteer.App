@@ -5,9 +5,9 @@ import React from "react";
 const DashboardAdminPage = () => {
   return (
     <LayoutDashboard
-      title="SiVolunteer | Dashboard Admin"
-      description="Dashboard Admin"
       type="admin"
+      title="Dashboard Admin"
+      description="Management Admin"
     >
       <ViewDashboardAdmin />
     </LayoutDashboard>

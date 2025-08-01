@@ -1,0 +1,86 @@
+import { Chip, Code, User } from "@heroui/react";
+import React from "react";
+
+interface PropTypes {
+  description: string;
+  image: string;
+  organizerName: string;
+  startDate: string;
+  endDate: string;
+  isPublish: string;
+  isOnline: string;
+  region: string;
+  address: string;
+}
+
+const ViewOverview = (props: PropTypes) => {
+  const {
+    description,
+    image,
+    organizerName,
+    startDate,
+    endDate,
+    isPublish,
+    isOnline,
+    region,
+    address,
+  } = props;
+
+  return (
+    <div>
+      <div className="bg-default-100 flex items-center rounded-lg p-2">
+        <User
+          avatarProps={{
+            src: image,
+          }}
+          name={<h1 className="text-xl font-bold">{organizerName}</h1>}
+        />
+      </div>
+      <section className="bg-default-100 mt-2 rounded-lg p-2">
+        <div>
+          <h3 className="text-start text-xl font-semibold">Description</h3>
+          <p className="text-foreground-800 text-sm">{description}</p>
+        </div>
+        <div className="mt-2 flex flex-col gap-2">
+          {isPublish ? (
+            <>
+              <Chip color="primary" variant="flat" size="md" radius="sm">
+                Publish
+              </Chip>
+            </>
+          ) : (
+            <>
+              <Chip color="danger" variant="flat" size="md" radius="sm">
+                Private
+              </Chip>
+            </>
+          )}
+          {isOnline ? (
+            <>
+              <Chip color="secondary" variant="flat" size="md" radius="sm">
+                Online
+              </Chip>
+            </>
+          ) : (
+            <>
+              <p className="text-foreground-800 text-sm">
+                {region}, {address}
+              </p>
+            </>
+          )}
+        </div>
+        <div className="mt-2 flex gap-1">
+          <Code color="primary" size="sm">
+            {startDate}
+          </Code>
+          <span className="text-black">to</span>
+          <Code color="warning" size="sm">
+            {endDate}
+          </Code>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default ViewOverview;

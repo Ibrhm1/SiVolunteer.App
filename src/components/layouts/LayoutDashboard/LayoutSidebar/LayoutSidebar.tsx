@@ -25,7 +25,7 @@ const LayoutSidebar = (props: PropTypes) => {
   return (
     <div
       className={cn(
-        "border-default-200 fixed z-50 flex h-screen w-full max-w-[300px] -translate-x-full flex-col border-r-1 bg-white px-4 py-6 transition-all lg:relative lg:translate-x-0",
+        "border-default-200 fixed z-50 flex h-screen w-full max-w-[300px] -translate-x-full flex-col border-r-1 px-4 py-6 transition-all lg:relative lg:translate-x-0 bg-default-50",
         {
           "translate-x-0": isOpen,
         },
