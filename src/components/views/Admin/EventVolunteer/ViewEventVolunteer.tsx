@@ -1,4 +1,3 @@
-import { Image } from "@heroui/react";
 import { useRouter } from "next/router";
 import React, { Key, ReactNode, useCallback, useEffect } from "react";
 import useViewEventVolunteer from "./useViewEventVolunteer";

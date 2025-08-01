@@ -80,7 +80,7 @@ const InputFile = (props: PropTypes) => {
         );
       };
     }
-  }, []);
+  }, [handleDragOver, handleDrop]);
 
   const handleOnUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.currentTarget.files;

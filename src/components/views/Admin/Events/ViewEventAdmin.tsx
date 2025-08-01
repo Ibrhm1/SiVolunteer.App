@@ -1,4 +1,4 @@
-import { Chip, Image, useDisclosure } from "@heroui/react";
+import { Chip, Image } from "@heroui/react";
 import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import useChangeUrl from "@/hooks/useChangeUrl";

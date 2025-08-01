@@ -2,17 +2,11 @@ import organizerServices from "@/services/authOrganizer.service";
 import categoryService from "@/services/category.service";
 import eventsService from "@/services/events.service";
 import regionService from "@/services/region.service";
-import { IEvent, IEventForm } from "@/types/Event";
-import { toDateStandard } from "@/utils/date";
-import { DateValue } from "@heroui/react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
-import { toast } from "react-toastify";
 
 const useViewDetailEvent = () => {
   const { query, isReady } = useRouter();
-  const [organizerId, setOrganizerId] = useState<string>("");
 
   const getEventById = async () => {
     const { data } = await eventsService.getEventById(`${query.id}`);

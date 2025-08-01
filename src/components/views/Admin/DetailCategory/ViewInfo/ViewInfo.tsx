@@ -5,7 +5,6 @@ import {
   Button,
   Card,
   CardBody,
-  CardHeader,
   Input,
   Skeleton,
   Spinner,
@@ -35,6 +34,12 @@ const ViewInfo = (props: PropTypes) => {
     setValueUpdateInfo("name", `${dataCategory?.name}`);
     setValueUpdateInfo("description", `${dataCategory?.description}`);
   }, [dataCategory]);
+
+  useEffect(() => {
+    if (isSuccessUpdate) {
+      resetUpdateInfo();
+    }
+  }, [isSuccessUpdate]);
 
   return (
     <Card className="w-full p-4">

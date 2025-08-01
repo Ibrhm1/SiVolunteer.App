@@ -1,6 +1,5 @@
 import LayoutDashboard from "@/components/layouts/LayoutDashboard";
 import ViewEventVolunteer from "@/components/views/Admin/EventVolunteer";
-import ViewOrganizer from "@/components/views/Admin/Organizers";
 import React from "react";
 
 const EventVolunteerAdminPage = () => {

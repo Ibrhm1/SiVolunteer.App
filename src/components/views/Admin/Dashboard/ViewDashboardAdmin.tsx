@@ -13,9 +13,9 @@ import useViewDashboardAdmin from "./useViewDashboardAdmin";
 
 const ViewDashboardAdmin = () => {
   const session = useSession();
-  let defaultDate = today(getLocalTimeZone());
+  const defaultDate = today(getLocalTimeZone());
   const [value, setValue] = useState(defaultDate);
-  let now = today(getLocalTimeZone());
+  const now = today(getLocalTimeZone());
   const { totalData, isLoadingEvents, isLoadingMember, isLoadingOrganizer } =
     useViewDashboardAdmin();
 
@@ -29,7 +29,7 @@ const ViewDashboardAdmin = () => {
       </Skeleton>
       <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-16">
         <div className="flex h-fit flex-wrap justify-center gap-2 md:w-1/2 md:justify-start lg:gap-x-3 lg:gap-y-2">
-          {totalData.map((item, i) => (
+          {totalData.map((item) => (
             <Skeleton
               className="h-28 rounded-xl"
               isLoaded={

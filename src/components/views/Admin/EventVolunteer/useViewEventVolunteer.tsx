@@ -4,8 +4,6 @@ import userService from "@/services/user.service";
 import eventsService from "@/services/events.service";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { IEventVolunteer } from "@/types/EventVolunteer";
-import { useMemo } from "react";
 
 const useViewEventVolunteer = () => {
   const router = useRouter();

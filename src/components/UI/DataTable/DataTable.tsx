@@ -83,9 +83,11 @@ const DataTable = (props: PropTypes) => {
       </div>
     );
   }, [
-    buttonTopContentLabel,
     handleSearch,
+    showButton,
+    showSearch,
     handleClearSearch,
+    buttonTopContentLabel,
     onClickButtonTopContent,
   ]);
 

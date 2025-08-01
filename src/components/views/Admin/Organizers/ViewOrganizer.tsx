@@ -2,7 +2,6 @@ import DataTable from "@/components/UI/DataTable";
 import React, { Key, ReactNode, useCallback, useEffect } from "react";
 import { COLUMN_LIST_ORGANIZER } from "./ListTableOrganizer";
 import { Chip, Image } from "@heroui/react";
-import DropdownAction from "@/components/common/DropdownAction";
 import { useRouter } from "next/router";
 import useViewOrganizer from "./useViewOrganizer";
 import useChangeUrl from "@/hooks/useChangeUrl";

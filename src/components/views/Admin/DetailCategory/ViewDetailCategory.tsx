@@ -1,4 +1,3 @@
-import { Tab, Tabs } from "@heroui/react";
 import React from "react";
 import useViewDetailCategory from "./useViewDetailCategory";
 import ViewImage from "./ViewImage";

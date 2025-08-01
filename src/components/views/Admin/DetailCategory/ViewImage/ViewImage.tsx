@@ -5,7 +5,6 @@ import {
   Button,
   Card,
   CardBody,
-  CardHeader,
   Image,
   Skeleton,
   Spinner,
@@ -64,7 +63,7 @@ const ViewImage = (props: PropTypes) => {
             <Controller
               name="image"
               control={controlUpdateImage}
-              render={({ field: { onChange, value, ...field } }) => (
+              render={({ field: { onChange, ...field } }) => (
                 <>
                   <InputFile
                     {...field}
