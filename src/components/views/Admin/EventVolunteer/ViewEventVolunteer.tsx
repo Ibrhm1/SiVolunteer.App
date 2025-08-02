@@ -13,7 +13,9 @@ const ViewEventVolunteer = () => {
     useViewEventVolunteer();
 
   useEffect(() => {
-    if (isReady) setUrl();
+    if (isReady) {
+      setUrl();
+    }
   }, [isReady]);
 
   const renderCell = useCallback(

@@ -123,6 +123,7 @@ const DataTable = (props: PropTypes) => {
       </div>
     );
   }, [
+    showLimit,
     currentLimit,
     currentPage,
     totalPage,

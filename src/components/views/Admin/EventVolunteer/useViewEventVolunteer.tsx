@@ -58,11 +58,13 @@ const useViewEventVolunteer = () => {
       ]);
 
       // Gabungkan data
-      const combined = volunteers.map((item: any, index: number) => ({
-        ...item,
-        member: members[index],
-        event: events[index],
-      }));
+      const combined = volunteers.map(
+        (item: IEventVolunteer, index: number) => ({
+          ...item,
+          member: members[index],
+          event: events[index],
+        }),
+      );
 
       return combined;
     },
