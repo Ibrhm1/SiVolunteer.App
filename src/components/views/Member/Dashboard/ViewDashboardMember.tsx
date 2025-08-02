@@ -1,47 +1,23 @@
-import {
-  Button,
-  Calendar,
-  Card,
-  CardBody,
-  CardHeader,
-  Skeleton,
-} from "@heroui/react";
-import { getLocalTimeZone, today } from "@internationalized/date";
-import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import Calender from "@/components/UI/Calender";
+import useViewDashboardMember from "./useViewDashboardAdmin";
+import { Skeleton } from "@heroui/react";
 
 const ViewDashboardMember = () => {
-  const session = useSession();
-  const defaultDate = today(getLocalTimeZone());
-  const [value, setValue] = useState(defaultDate);
-  const now = today(getLocalTimeZone());
+  const { dataProfile, isPendingDataProfile } = useViewDashboardMember();
 
   return (
     <>
-      <h1 className="text-xl font-bold lg:text-2xl">
-        Hai, {session.data?.user?.email}
-      </h1>
+      <Skeleton
+        className="my-4 h-8 rounded-lg lg:w-1/2"
+        isLoaded={!isPendingDataProfile}
+      >
+        <h1 className="mb-4 text-xl font-bold lg:text-2xl">
+          Hai, {dataProfile?.fullName}
+        </h1>
+      </Skeleton>
       <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-16">
         <div>
-          <Calendar
-            value={value}
-            onChange={setValue}
-            focusedValue={value}
-            onFocusChange={setValue}
-            aria-label="Date (Presets)"
-            showMonthAndYearPickers
-            bottomContent={
-              <Button
-                onPress={() => setValue(now)}
-                size="sm"
-                color="default"
-                variant="flat"
-                className="w-full"
-              >
-                Today
-              </Button>
-            }
-          />
+          <Calender />
         </div>
       </main>
     </>

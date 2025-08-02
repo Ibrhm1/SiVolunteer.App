@@ -1,16 +1,16 @@
 import LayoutDashboard from "@/components/layouts/LayoutDashboard";
-import React from "react";
+import ViewDashboardOrganizer from "@/components/views/Organizer/Dashboard/ViewDashboardOrganizer";
 
-const DashboardMemberPage = () => {
+const DashboardOrganizerPage = () => {
   return (
     <LayoutDashboard
-      title="SiVolunteer | Dashboard Member"
-      description="Dashboard Member"
-      type="member"
+      title="Dashboard Organizer"
+      description="Dashboard Organizer"
+      type="organizer"
     >
-      <h1>Dashboard Organizer</h1>
+      <ViewDashboardOrganizer />
     </LayoutDashboard>
   );
 };
 
-export default DashboardMemberPage;
+export default DashboardOrganizerPage;

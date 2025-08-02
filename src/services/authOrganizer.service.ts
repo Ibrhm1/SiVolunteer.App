@@ -6,9 +6,9 @@ const organizerServices = {
   registerOrganizer: (payload: IRegisterOrganizer) =>
     instance.post(`${endpointService.AUTH}/register/organizer`, payload),
   getOrganizerById: (id: string) =>
-    instance.get(`${endpointService.ORGANIZER}/${id}`),
+    instance.get(`${endpointService.ORGANIZERS}/${id}`),
   getAllOrganizer: (params?: string) =>
-    instance.get(`${endpointService.ORGANIZER}?${params}`),
+    instance.get(`${endpointService.ORGANIZERS}?${params}`),
 };
 
 export default organizerServices;

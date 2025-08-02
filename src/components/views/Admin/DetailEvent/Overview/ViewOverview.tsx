@@ -69,12 +69,11 @@ const ViewOverview = (props: PropTypes) => {
             </>
           )}
         </div>
-        <div className="mt-2 flex gap-1">
-          <Code color="primary" size="sm">
+        <div className="mt-1 flex flex-col gap-1 xl:flex-row">
+          <Code color="primary" size="sm" className="w-fit">
             {startDate}
           </Code>
-          <span className="text-black">to</span>
-          <Code color="warning" size="sm">
+          <Code color="warning" size="sm" className="w-fit">
             {endDate}
           </Code>
         </div>

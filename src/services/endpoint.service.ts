@@ -1,13 +1,13 @@
 const endpointService = {
-  AUTH: "/auth",
-  CATEGORY: "/category",
-  EVENTS: "/events",
   FAQ: "/Faq",
-  EVENT_VOLUNTEERS: "/event-volunteers",
-  ORGANIZER: "/organizers",
-  REGION: "/regions",
+  AUTH: "/auth",
   IMAGE: "/image",
+  EVENTS: "/events",
   MEMBER: "/member",
+  REGIONS: "/regions",
+  CATEGORY: "/category",
+  ORGANIZERS: "/organizers",
+  EVENT_VOLUNTEERS: "/event-volunteers",
 };
 
 export default endpointService;

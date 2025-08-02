@@ -10,15 +10,13 @@ import dayjs from "dayjs";
 
 const ViewEventAdmin = () => {
   const { push, isReady, query } = useRouter();
-
+  const { setUrl } = useChangeUrl();
   const {
     dataEvents,
     isLoadingEvents,
     isRefetchingEvents,
     dataEventsWithOrganizer,
   } = useViewEventAdmin();
-
-  const { setUrl } = useChangeUrl();
 
   useEffect(() => {
     if (isReady) {
@@ -37,7 +35,7 @@ const ViewEventAdmin = () => {
               alt="image"
               width={200}
               height={100}
-              className="rounded-lg object-cover w-full"
+              className="w-full rounded-lg object-cover"
             />
           );
         case "isPublish":

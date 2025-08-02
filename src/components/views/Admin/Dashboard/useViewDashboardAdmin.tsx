@@ -1,3 +1,4 @@
+import authService from "@/services/auth.service";
 import organizerServices from "@/services/authOrganizer.service";
 import eventsService from "@/services/events.service";
 import userService from "@/services/user.service";
@@ -6,6 +7,12 @@ import { FaUser, FaUsers } from "react-icons/fa";
 import { MdEvent } from "react-icons/md";
 
 const useViewDashboardAdmin = () => {
+  const { data: dataProfile, isPending: isPendingDataProfile } = useQuery({
+    queryKey: ["Profile"],
+    queryFn: () => authService.getProfile(),
+    enabled: true,
+  });
+
   const { data: dataEvents, isLoading: isLoadingEvents } = useQuery({
     queryKey: ["Events"],
     queryFn: () => eventsService.getEvents(),
@@ -57,6 +64,9 @@ const useViewDashboardAdmin = () => {
   ];
 
   return {
+    dataProfile,
+    isPendingDataProfile,
+
     totalData,
     isLoadingMember,
     isLoadingEvents,

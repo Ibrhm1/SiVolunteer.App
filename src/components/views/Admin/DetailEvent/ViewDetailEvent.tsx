@@ -31,10 +31,10 @@ const ViewDetailEvent = () => {
   return (
     <div className="mt-5 w-full gap-0">
       <Skeleton
-        className="mb-4 h-10 w-fit rounded-lg"
+        className="mb-2 h-10 w-fit rounded-lg"
         isLoaded={!isPendingDataEvent}
       >
-        <h1 className="mb-4 text-3xl font-bold">{dataEvent?.name}</h1>
+        <h1 className="text-xl font-bold md:text-3xl">{dataEvent?.name}</h1>
       </Skeleton>
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex w-full justify-center overflow-hidden rounded-xl lg:w-1/2">
