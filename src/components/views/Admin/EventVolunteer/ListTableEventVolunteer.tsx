@@ -1,11 +1,15 @@
 const COLUMN_LIST_EVENTVOLUNTEER = [
   {
     name: "MEMBER",
-    uid: "userId",
+    uid: "member",
   },
   {
     name: "EVENT",
-    uid: "eventId",
+    uid: "event",
+  },
+  {
+    name: "MOTIVATION",
+    uid: "motivation",
   },
   {
     name: "STATUS",

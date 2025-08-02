@@ -4,12 +4,13 @@ import userService from "@/services/user.service";
 import eventsService from "@/services/events.service";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+import { IEventVolunteer } from "@/types/EventVolunteer";
 
 const useViewEventVolunteer = () => {
   const router = useRouter();
   const { currentLimit, currentPage } = useChangeUrl();
 
-  // 1. Ambil semua data event volunteer
+  // Ambil semua data event volunteer
   const {
     data: dataEventVolunteer,
     isLoading: isLoadingEventVolunteer,
@@ -17,56 +18,62 @@ const useViewEventVolunteer = () => {
   } = useQuery({
     queryKey: ["EventVolunteer", currentPage, currentLimit],
     queryFn: async () => {
-      const res = await eventVolunteerService.getAllEventVolunteer();
-      return res.data;
+      const params = `limit=${currentLimit}&page=${currentPage}`;
+      const res = await eventVolunteerService.getAllEventVolunteer(params);
+      return res;
     },
     enabled: router.isReady,
   });
 
-  // 2. Ambil member berdasarkan userId dari eventVolunteer
+  // Ambil data member dan event untuk semua event volunteer
   const {
-    data: dataMemberEventVolunteer,
-    isLoading: isLoadingEventMember,
-    isRefetching: isRefetchingEventMember,
+    data: combinedData,
+    isLoading: isLoadingCombined,
+    isRefetching: isRefetchingCombined,
   } = useQuery({
-    queryKey: ["Member", dataEventVolunteer?.userId],
+    queryKey: ["CombinedEventVolunteer", dataEventVolunteer],
     queryFn: async () => {
-      const res = await userService.getMemberById(
-        `${dataEventVolunteer?.userId}`,
-      );
-      return res.data.data;
-    },
-    enabled: !!dataEventVolunteer?.userId,
-  });
+      const volunteers = dataEventVolunteer?.data.data || [];
 
-  // 3. Ambil event berdasarkan eventId dari eventVolunteer
-  const {
-    data: dataEventEventById,
-    isLoading: isLoadingEventEventById,
-    isRefetching: isRefetchingEventEventById,
-  } = useQuery({
-    queryKey: ["EventById", dataEventVolunteer?.eventId],
-    queryFn: async () => {
-      const res = await eventsService.getEventById(
-        `${dataEventVolunteer?.eventId}`,
+      // Ambil semua data member dan event secara paralel
+      const membersPromise = Promise.all(
+        volunteers.map((item: IEventVolunteer) =>
+          userService
+            .getMemberById(item.userId)
+            .then((res) => res.data.data.fullName),
+        ),
       );
-      return res.data.data;
+
+      const eventsPromise = Promise.all(
+        volunteers.map((item: IEventVolunteer) =>
+          eventsService
+            .getEventById(item.eventId)
+            .then((res) => res.data.data.name),
+        ),
+      );
+
+      const [members, events] = await Promise.all([
+        membersPromise,
+        eventsPromise,
+      ]);
+
+      // Gabungkan data
+      const combined = volunteers.map((item: any, index: number) => ({
+        ...item,
+        member: members[index],
+        event: events[index],
+      }));
+
+      return combined;
     },
-    enabled: !!dataEventVolunteer?.eventId,
+    enabled: !!dataEventVolunteer?.data?.data.length,
   });
 
   return {
+    dataCombined: combinedData,
     dataEventVolunteer,
-    isLoadingEventVolunteer,
-    isRefetchingEventVolunteer,
-
-    dataMemberEventVolunteer,
-    isLoadingEventMember,
-    isRefetchingEventMember,
-
-    dataEventEventById,
-    isLoadingEventEventById,
-    isRefetchingEventEventById,
+    isLoading: isLoadingEventVolunteer || isLoadingCombined,
+    isRefetching: isRefetchingEventVolunteer || isRefetchingCombined,
   };
 };
 

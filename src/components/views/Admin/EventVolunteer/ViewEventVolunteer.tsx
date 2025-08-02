@@ -4,15 +4,13 @@ import useViewEventVolunteer from "./useViewEventVolunteer";
 import DataTable from "@/components/UI/DataTable";
 import { COLUMN_LIST_EVENTVOLUNTEER } from "./ListTableEventVolunteer";
 import useChangeUrl from "@/hooks/useChangeUrl";
+import { Chip } from "@heroui/react";
 
 const ViewEventVolunteer = () => {
   const { setUrl } = useChangeUrl();
   const { push, query, isReady } = useRouter();
-  const {
-    dataEventVolunteer,
-    isLoadingEventVolunteer,
-    isRefetchingEventVolunteer,
-  } = useViewEventVolunteer();
+  const { dataCombined, dataEventVolunteer, isLoading, isRefetching } =
+    useViewEventVolunteer();
 
   useEffect(() => {
     if (isReady) setUrl();
@@ -22,6 +20,21 @@ const ViewEventVolunteer = () => {
     (event: Record<string, unknown>, columnKey: Key) => {
       const cellValue = event[columnKey as keyof typeof event];
       switch (columnKey) {
+        case "status":
+          return (
+            <Chip
+              color={
+                cellValue === "accepted"
+                  ? "success"
+                  : cellValue === "pending"
+                    ? "warning"
+                    : "danger"
+              }
+              variant="flat"
+              radius="md"
+              className="font-bold"
+            >{`${cellValue}`}</Chip>
+          );
         default:
           return cellValue as ReactNode;
       }
@@ -36,9 +49,9 @@ const ViewEventVolunteer = () => {
           renderCell={renderCell}
           columns={COLUMN_LIST_EVENTVOLUNTEER}
           emptyContent="No Event Volunteer Found"
-          data={dataEventVolunteer?.data || []}
-          totalPage={dataEventVolunteer?.pagination?.totalPages}
-          isLoading={isLoadingEventVolunteer || isRefetchingEventVolunteer}
+          data={dataCombined || []}
+          totalPage={dataEventVolunteer?.data.pagination.totalPages || 0}
+          isLoading={isLoading || isRefetching}
         />
       )}
     </section>
