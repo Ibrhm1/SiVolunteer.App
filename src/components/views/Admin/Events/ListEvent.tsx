@@ -12,12 +12,8 @@ const COLUMN_LIST_EVENTS = [
     uid: "organizerName",
   },
   {
-    name: "START DATE",
-    uid: "startDate",
-  },
-  {
-    name: "END DATE",
-    uid: "endDate",
+    name: "CREATED AT",
+    uid: "createdAt",
   },
   {
     name: "STATUS",

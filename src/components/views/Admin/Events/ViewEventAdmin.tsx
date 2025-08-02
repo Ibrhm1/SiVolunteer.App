@@ -6,6 +6,7 @@ import DataTable from "@/components/UI/DataTable";
 import useViewEventAdmin from "./useViewEventAdmin";
 import { COLUMN_LIST_EVENTS } from "./ListEvent";
 import DropdownAction from "@/components/common/DropdownAction";
+import dayjs from "dayjs";
 
 const ViewEventAdmin = () => {
   const { push, isReady, query } = useRouter();
@@ -36,7 +37,7 @@ const ViewEventAdmin = () => {
               alt="image"
               width={200}
               height={100}
-              className="aspect-video w-40 object-cover"
+              className="rounded-lg object-cover"
             />
           );
         case "isPublish":
@@ -47,6 +48,10 @@ const ViewEventAdmin = () => {
             >
               {cellValue === true ? "Publish" : "Private"}
             </Chip>
+          );
+        case "createdAt":
+          return (
+            <Chip>{dayjs(`${cellValue}`).format("DD-MMM-YYYY HH:mm:ss")}</Chip>
           );
         case "isOnline":
           return (

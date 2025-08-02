@@ -26,9 +26,9 @@ const ViewOrganizer = () => {
             <Image
               src={`${cellValue}`}
               alt="logo"
-              width={200}
-              height={200}
-              className="aspect-video w-40 object-cover"
+              width={100}
+              height={100}
+              className="object-cover"
             />
           );
         case "dateEstablished":
