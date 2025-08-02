@@ -37,7 +37,7 @@ const ViewEventAdmin = () => {
               alt="image"
               width={200}
               height={100}
-              className="rounded-lg object-cover"
+              className="rounded-lg object-cover w-full"
             />
           );
         case "isPublish":
@@ -82,7 +82,7 @@ const ViewEventAdmin = () => {
         <DataTable
           renderCell={renderCell}
           columns={COLUMN_LIST_EVENTS}
-          emptyContent="No event found"
+          emptyContent="Event is empty"
           data={dataEventsWithOrganizer || []}
           totalPage={dataEvents?.pagination.totalPages}
           isLoading={isLoadingEvents || isRefetchingEvents}

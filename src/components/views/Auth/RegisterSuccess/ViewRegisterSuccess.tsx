@@ -11,7 +11,13 @@ const ViewRegisterSuccess = () => {
   return (
     <div className="flex w-screen flex-col items-center justify-center gap-10 p-4">
       <div className="flex flex-col items-center justify-center gap-10">
-        <Image src={publicImage.Complete} alt="logo" width={600} height={600} />
+        <Image
+          src={publicImage.Complete}
+          alt="logo"
+          width={400}
+          height={400}
+          className="rounded-lg"
+        />
       </div>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-foreground text-3xl font-bold">

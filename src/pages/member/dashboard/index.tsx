@@ -1,15 +1,15 @@
 import LayoutDashboard from "@/components/layouts/LayoutDashboard";
-import ViewDashboardAdmin from "@/components/views/Admin/Dashboard/ViewDashboardAdmin";
+import ViewDashboardMember from "@/components/views/Member/Dashboard/ViewDashboardMember";
 import React from "react";
 
 const DashboardMemberPage = () => {
   return (
     <LayoutDashboard
-      title="SiVolunteer | Dashboard Member"
-      description="Dashboard Member"
       type="member"
+      title="Dashboard Member"
+      description="Welcome to SiVolunteer"
     >
-      <ViewDashboardAdmin />
+      <ViewDashboardMember />
     </LayoutDashboard>
   );
 };

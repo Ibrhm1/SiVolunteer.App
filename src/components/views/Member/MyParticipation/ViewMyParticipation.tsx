@@ -1,16 +1,21 @@
-import { useRouter } from "next/router";
-import React, { Key, ReactNode, useCallback, useEffect } from "react";
-import useViewEventVolunteer from "./useViewEventVolunteer";
 import DataTable from "@/components/UI/DataTable";
-import { COLUMN_LIST_EVENTVOLUNTEER } from "./ListTableEventVolunteer";
 import useChangeUrl from "@/hooks/useChangeUrl";
+import { useRouter } from "next/router";
+import { Key, ReactNode, useCallback, useEffect } from "react";
+import { COLUMN_LIST_EVENTVOLUNTEER_MEMBER } from "./ListTableMyParticipation";
+import useViewMyParticipation from "./useViewMyParticipation";
 import { Chip } from "@heroui/react";
 
-const ViewEventVolunteer = () => {
+const ViewMyParticipation = () => {
   const { setUrl } = useChangeUrl();
   const { push, query, isReady } = useRouter();
-  const { dataCombined, dataEventVolunteer, isLoading, isRefetching } =
-    useViewEventVolunteer();
+  const {
+    dataEventVolunteer,
+    isLoadingEventVolunteer,
+
+    dataCombined,
+    isLoadingCombined,
+  } = useViewMyParticipation();
 
   useEffect(() => {
     if (isReady) {
@@ -19,9 +24,9 @@ const ViewEventVolunteer = () => {
   }, [isReady]);
 
   const renderCell = useCallback(
-    (eventVolunteer: Record<string, unknown>, columnKey: Key) => {
+    (eventVolunteerMember: Record<string, unknown>, columnKey: Key) => {
       const cellValue =
-        eventVolunteer[columnKey as keyof typeof eventVolunteer];
+        eventVolunteerMember[columnKey as keyof typeof eventVolunteerMember];
       switch (columnKey) {
         case "status":
           return (
@@ -34,10 +39,9 @@ const ViewEventVolunteer = () => {
                     : "danger"
               }
               variant="flat"
-              radius="md"
-              className="font-bold"
             >{`${cellValue}`}</Chip>
           );
+
         default:
           return cellValue as ReactNode;
       }
@@ -49,16 +53,17 @@ const ViewEventVolunteer = () => {
     <section>
       {Object.keys(query).length > 0 && (
         <DataTable
+          showSearch={false}
           renderCell={renderCell}
-          columns={COLUMN_LIST_EVENTVOLUNTEER}
-          emptyContent="Event Volunteer not found"
           data={dataCombined || []}
-          totalPage={dataEventVolunteer?.data.pagination.totalPages || 0}
-          isLoading={isLoading || isRefetching}
+          emptyContent="You don't have any participation yet"
+          columns={COLUMN_LIST_EVENTVOLUNTEER_MEMBER}
+          totalPage={dataEventVolunteer?.data.totalPage || 0}
+          isLoading={isLoadingEventVolunteer || isLoadingCombined}
         />
       )}
     </section>
   );
 };
 
-export default ViewEventVolunteer;
+export default ViewMyParticipation;

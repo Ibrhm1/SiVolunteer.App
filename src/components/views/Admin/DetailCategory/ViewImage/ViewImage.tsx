@@ -90,12 +90,14 @@ const ViewImage = (props: PropTypes) => {
             color="primary"
             className="disabled:bg-default-500 mt-2"
             disabled={isPendingMuteteUploadFile || isPendingUpdate || !preview}
-            startContent={<FaRegSave />}
           >
             {isPendingUpdate ? (
               <Spinner size="sm" color="white" />
             ) : (
-              "Save Changes"
+              <>
+                <FaRegSave />
+                Save Changes
+              </>
             )}
           </Button>
         </form>

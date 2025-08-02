@@ -6,6 +6,8 @@ const eventVolunteerService = {
     instance.get(`${endpointService.EVENT_VOLUNTEERS}?${params}`),
   getEventVolunteerByEventId: (eventId: string) =>
     instance.get(`${endpointService.EVENT_VOLUNTEERS}/${eventId}`),
+  getEventVolunteerByMember: (params?: string) =>
+    instance.get(`${endpointService.EVENT_VOLUNTEERS}/member?${params}`),
 };
 
 export default eventVolunteerService;

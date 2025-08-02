@@ -1,5 +1,5 @@
 import { CiGrid41, CiWallet } from "react-icons/ci";
-import { FaHashtag } from "react-icons/fa";
+import { FaHandHoldingHeart, FaHashtag } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdEvent, MdOutlineVolunteerActivism } from "react-icons/md";
@@ -12,10 +12,10 @@ const SIDEBAR_MEMBER = [
     icon: <CiGrid41 />,
   },
   {
-    key: "myProfile",
-    label: "My Profile",
-    href: "/member/profile",
-    icon: <CiWallet />,
+    key: "myParticipation",
+    label: "My Participation",
+    href: "/member/my-participation",
+    icon: <FaHandHoldingHeart />,
   },
 ];
 

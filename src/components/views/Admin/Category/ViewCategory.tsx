@@ -70,7 +70,7 @@ const ViewCategory = () => {
           renderCell={renderCell}
           columns={COLUMN_LIST_CATEGORY}
           data={dataCategory?.data || []}
-          emptyContent="Category not found"
+          emptyContent="Category is empty"
           buttonTopContentLabel="Create Category"
           totalPage={dataCategory?.pagination.totalPages}
           onClickButtonTopContent={addCategoryModal.onOpen}

@@ -31,7 +31,7 @@ const ViewDetailEvent = () => {
   return (
     <div className="mt-5 w-full gap-0">
       <Skeleton
-        className="mb-1 h-10 w-fit rounded-lg"
+        className="mb-4 h-10 w-fit rounded-lg"
         isLoaded={!isPendingDataEvent}
       >
         <h1 className="mb-4 text-3xl font-bold">{dataEvent?.name}</h1>
@@ -44,11 +44,11 @@ const ViewDetailEvent = () => {
               src={`${dataEvent?.image}`}
               height={400}
               width={500}
-              className="aspect-video"
+              className="aspect-video object-cover"
             />
           </Skeleton>
         </div>
-        <Card className="w-1/2 px-2 py-2">
+        <Card className="px-2 py-2 lg:w-1/2">
           <CardBody className="flex-col">
             <Tabs aria-label="Dynamic tabs">
               <Tab key={"overview"} title="Overview">

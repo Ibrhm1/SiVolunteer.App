@@ -18,8 +18,8 @@ const ViewOrganizer = () => {
   }, [isReady]);
 
   const renderCell = useCallback(
-    (event: Record<string, unknown>, columnKey: Key) => {
-      const cellValue = event[columnKey as keyof typeof event];
+    (organizer: Record<string, unknown>, columnKey: Key) => {
+      const cellValue = organizer[columnKey as keyof typeof organizer];
       switch (columnKey) {
         case "logo":
           return (
@@ -46,7 +46,7 @@ const ViewOrganizer = () => {
         <DataTable
           renderCell={renderCell}
           columns={COLUMN_LIST_ORGANIZER}
-          emptyContent="No organizer found"
+          emptyContent="Organizer is empty"
           data={dataOrganizer?.data || []}
           totalPage={dataOrganizer?.pagination?.totalPages}
           isLoading={isLoadingOrganizer || isRefetchingOrganizer}

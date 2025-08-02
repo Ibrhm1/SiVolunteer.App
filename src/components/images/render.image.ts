@@ -1,8 +1,8 @@
 const publicImage = {
   Login: "/Login.jpg",
-  Complete: "/Complete.svg",
-  Fail: "/Fail.svg",
-  Success: "/Success.svg",
+  Complete: "/Complete.png",
+  Failed: "/Failed.png",
+  Success: "/Success.png",
 };
 
 export default publicImage;

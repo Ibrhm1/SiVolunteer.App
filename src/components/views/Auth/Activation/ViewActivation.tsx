@@ -16,7 +16,7 @@ const ViewActivation = (props: PropTypes) => {
     <div className="flex w-screen flex-col items-center justify-center gap-10 p-4">
       <div className="flex flex-col items-center justify-center gap-10">
         <Image
-          src={status === "success" ? publicImage.Success : publicImage.Fail}
+          src={status !== "success" ? publicImage.Success : publicImage.Failed}
           alt="success illustration"
           width={500}
           height={500}
