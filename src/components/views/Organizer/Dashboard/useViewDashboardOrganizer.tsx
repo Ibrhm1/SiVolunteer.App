@@ -1,14 +1,9 @@
 import authService from "@/services/auth.service";
 import eventsService from "@/services/events.service";
 import { useQuery } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { MdEvent } from "react-icons/md";
 
 const useViewDashboardOrganizer = () => {
-  const session = useSession();
-  const { isReady } = useRouter();
-
   const getProfile = async () => {
     const { data } = await authService.getProfile();
     return data.data;

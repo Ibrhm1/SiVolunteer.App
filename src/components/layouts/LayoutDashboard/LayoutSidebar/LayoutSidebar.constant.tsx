@@ -1,4 +1,4 @@
-import { CiGrid41, CiWallet } from "react-icons/ci";
+import { CiGrid41 } from "react-icons/ci";
 import { FaHandHoldingHeart, FaHashtag } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { LuLayoutDashboard } from "react-icons/lu";

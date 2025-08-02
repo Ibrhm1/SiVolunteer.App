@@ -1,13 +1,9 @@
 import ToggleDarkmode from "@/components/UI/ToggleDarkmode";
 import { Button } from "@heroui/react";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const HomePage = () => {
   const router = useRouter();
-  const session = useSession();
-
-  const role = session.data?.user?.role;
 
   return (
     <div className="flex h-screen items-center justify-center lg:p-5">
@@ -22,7 +18,9 @@ const HomePage = () => {
         </Button>
       </div>
       <div>
-        <Button onPress={() => router.push(`${role}`)}>Dashboard</Button>
+        <Button onPress={() => router.push("/admin")}>Admin</Button>
+        <Button onPress={() => router.push("/member")}>Member</Button>
+        <Button onPress={() => router.push("/organizer")}>Organizer</Button>
       </div>
       <br />
       <ToggleDarkmode />
