@@ -22,8 +22,8 @@ const ViewDashboardAdmin = () => {
           Hai, {dataProfile?.data?.data.fullName}
         </h1>
       </Skeleton>
-      <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-16">
-        <div className="flex h-fit flex-wrap justify-center gap-2 md:w-1/2 md:justify-start lg:gap-x-3 lg:gap-y-2">
+      <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-3">
+        <div className="flex h-fit w-fit flex-wrap justify-center gap-2 md:w-1/2 md:justify-start lg:gap-x-3 lg:gap-y-3">
           {totalData.map((item) => (
             <Skeleton
               className="h-28 rounded-xl"

@@ -15,7 +15,7 @@ const ViewDashboardMember = () => {
           Hai, {dataProfile?.fullName}
         </h1>
       </Skeleton>
-      <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-16">
+      <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-3">
         <div>
           <Calender />
         </div>

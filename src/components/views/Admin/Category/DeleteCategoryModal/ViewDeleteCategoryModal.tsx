@@ -46,6 +46,8 @@ const ViewDeleteCategoryModal = (props: PropTypes) => {
   return (
     <Modal
       onOpenChange={onOpenChange}
+      backdrop="blur"
+      isDismissable={false}
       isOpen={isOpen}
       placement="center"
       scrollBehavior="inside"

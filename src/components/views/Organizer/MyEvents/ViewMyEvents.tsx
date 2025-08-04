@@ -63,7 +63,7 @@ const ViewMyEvents = () => {
           );
         case "isPublish":
           return (
-            <Chip color={cellValue ? "success" : "danger"} variant="flat">
+            <Chip color={cellValue ? "success" : "warning"} variant="flat">
               {cellValue ? "Publish" : "Private"}
             </Chip>
           );

@@ -5,7 +5,7 @@ import React from "react";
 const EventVolunteerAdminPage = () => {
   return (
     <LayoutDashboard
-      title="Event Volunteer Admin"
+      title="Event Volunteer"
       description="Manage Event Volunteer"
       type="admin"
     >

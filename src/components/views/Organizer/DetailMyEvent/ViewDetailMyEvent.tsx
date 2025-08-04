@@ -2,6 +2,7 @@ import { Tab, Tabs } from "@heroui/react";
 import useViewDetailMyEvent from "./useViewDetailMyEvent";
 import ViewImageTab from "./CurrentVolunteerTab";
 import ViewDetailEventTab from "./DetailEventTab/ViewDetailEventTab";
+import ViewCurrentVolunteerTab from "./CurrentVolunteerTab/ViewCurrentVolunteerTab";
 
 const ViewDetailMyEvent = () => {
   const {
@@ -16,7 +17,7 @@ const ViewDetailMyEvent = () => {
 
   return (
     <div>
-      <Tabs>
+      <Tabs size="sm">
         <Tab key="imageEvent" title="Image Event">
           <ViewImageTab
             currentImage={dataMyEvent?.image}
@@ -36,8 +37,8 @@ const ViewDetailMyEvent = () => {
             refetchMyEvent={refetchMyEvent}
           />
         </Tab>
-        <Tab key={"requirementEvent"} title="Requirement Event">
-          Requirement
+        <Tab key={"requirementEvent"} title="Requirement">
+          <ViewCurrentVolunteerTab />
         </Tab>
       </Tabs>
     </div>

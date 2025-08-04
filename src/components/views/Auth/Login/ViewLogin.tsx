@@ -20,7 +20,7 @@ const ViewLogin = () => {
   } = useViewLogin();
 
   return (
-    <Card className="p-8 lg:w-1/2">
+    <Card className="p-8 lg:w-1/2 m-3">
       <div className="flex justify-center">
         <Image src={publicImage.Login} alt="logo" width={350} height={350} />
       </div>
