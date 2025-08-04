@@ -13,6 +13,8 @@ import useViewAddCategoryModal from "./useViewAddCategoryModal";
 import { Controller } from "react-hook-form";
 import { useEffect } from "react";
 import InputFile from "@/components/UI/InputFile";
+import { MdOutlineCancel } from "react-icons/md";
+import { IoCreate } from "react-icons/io5";
 
 interface PropTypes {
   isOpen: boolean;
@@ -75,10 +77,8 @@ const ViewAddCategoryModal = (props: PropTypes) => {
                       {...field}
                       label="Category Name"
                       variant="bordered"
-                      type="text"
                       isInvalid={!!errors.name}
                       errorMessage={errors.name?.message}
-                      className="mb-2"
                     />
                   )}
                 />
@@ -92,7 +92,6 @@ const ViewAddCategoryModal = (props: PropTypes) => {
                       variant="bordered"
                       isInvalid={!!errors.description}
                       errorMessage={errors.description?.message}
-                      className="mb-2"
                     />
                   )}
                 />
@@ -101,19 +100,17 @@ const ViewAddCategoryModal = (props: PropTypes) => {
                   control={control}
                   name="image"
                   render={({ field: { onChange, ...field } }) => (
-                    <>
-                      <InputFile
-                        {...field}
-                        isDropable
-                        isInvalid={!!errors.image}
-                        errorMessage={errors.image?.message}
-                        isDeleting={isPendingMuteteDeleteFile}
-                        isUploading={isPendingMuteteUploadFile}
-                        onDelete={() => handleDeleteImage(onChange)}
-                        preview={typeof preview === "string" ? preview : ""}
-                        onUpload={(files) => handleUploadImage(files, onChange)}
-                      />
-                    </>
+                    <InputFile
+                      {...field}
+                      isDropable
+                      isInvalid={!!errors.image}
+                      errorMessage={errors.image?.message}
+                      isDeleting={isPendingMuteteDeleteFile}
+                      isUploading={isPendingMuteteUploadFile}
+                      onDelete={() => handleDeleteImage(onChange)}
+                      preview={typeof preview === "string" ? preview : ""}
+                      onUpload={(files) => handleUploadImage(files, onChange)}
+                    />
                   )}
                 />
               </div>
@@ -125,17 +122,22 @@ const ViewAddCategoryModal = (props: PropTypes) => {
                 onPress={onClose}
                 disabled={disabledSubmitBtn}
               >
+                <MdOutlineCancel size={18} />
                 Cancel
               </Button>
               <Button
                 color="primary"
+                variant="ghost"
                 type="submit"
                 disabled={disabledSubmitBtn}
               >
                 {isPendingMuteteAddCategory ? (
                   <Spinner size="sm" color="white" />
                 ) : (
-                  "Create Category"
+                  <>
+                    <IoCreate size={18} />
+                    Create Category
+                  </>
                 )}
               </Button>
             </ModalFooter>

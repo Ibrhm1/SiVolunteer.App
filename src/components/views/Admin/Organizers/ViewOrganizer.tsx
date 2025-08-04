@@ -1,7 +1,7 @@
 import DataTable from "@/components/UI/DataTable";
 import React, { Key, ReactNode, useCallback, useEffect } from "react";
 import { COLUMN_LIST_ORGANIZER } from "./ListTableOrganizer";
-import { Chip, Image } from "@heroui/react";
+import { Avatar, Chip } from "@heroui/react";
 import { useRouter } from "next/router";
 import useViewOrganizer from "./useViewOrganizer";
 import useChangeUrl from "@/hooks/useChangeUrl";
@@ -23,13 +23,7 @@ const ViewOrganizer = () => {
       switch (columnKey) {
         case "logo":
           return (
-            <Image
-              src={`${cellValue}`}
-              alt="logo"
-              width={100}
-              height={100}
-              className="object-cover"
-            />
+            <Avatar isBordered radius="md" size="lg" src={`${cellValue}`} />
           );
         case "dateEstablished":
           return <Chip>{dayjs(`${cellValue}`).format("DD MMMM YYYY")}</Chip>;

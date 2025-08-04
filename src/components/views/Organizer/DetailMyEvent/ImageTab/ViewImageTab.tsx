@@ -1,67 +1,82 @@
-import React, { useEffect } from "react";
-import useViewImage from "./useViewImage";
-import { ICategory } from "@/types/Category";
-import { Button, Card, CardBody, Skeleton, Spinner } from "@heroui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Image,
+  Skeleton,
+  Spinner,
+} from "@heroui/react";
+import useViewImageTab from "./useViewImageTab";
+import { IEvent } from "@/types/Event";
 import { Controller } from "react-hook-form";
 import InputFile from "@/components/UI/InputFile";
+import { useEffect } from "react";
 import { FaRegSave } from "react-icons/fa";
-import Image from "next/image";
 
 interface PropTypes {
   currentImage: string;
-  onUpdate: (data: ICategory) => void;
+  onUpdate: (data: IEvent) => void;
   isPendingUpdate: boolean;
   isSuccessUpdate: boolean;
+  refetchMyEvent: () => void;
 }
 
-const ViewImage = (props: PropTypes) => {
-  const { currentImage, isPendingUpdate, isSuccessUpdate, onUpdate } = props;
+const ViewImageTab = (props: PropTypes) => {
   const {
-    preview,
-    resetUpdateImage,
-    handleDeleteImage,
-    handleUploadImage,
-    errorsUpdateImage,
+    currentImage,
+    isPendingUpdate,
+    isSuccessUpdate,
+    onUpdate,
+    refetchMyEvent,
+  } = props;
+  const {
     controlUpdateImage,
     handleSubmitUpdateImage,
-    isPendingMuteteDeleteFile,
+    errorsUpdateImage,
+    resetUpdateImage,
+    preview,
+    handleUploadImage,
+    handleDeleteImage,
     isPendingMuteteUploadFile,
-  } = useViewImage();
+    isPendingMuteteDeleteFile,
+  } = useViewImageTab();
 
   useEffect(() => {
     if (isSuccessUpdate) {
       resetUpdateImage();
+      refetchMyEvent();
     }
   }, [isSuccessUpdate]);
 
   return (
-    <Card className="w-full p-4">
+    <Card className="w-full p-4 lg:w-2/3">
       <CardBody>
         <form
           className="flex flex-col gap-4"
           onSubmit={handleSubmitUpdateImage(onUpdate)}
         >
           <div className="flex flex-col gap-2">
+            <p className="text-default-700 text-sm font-medium">
+              Current Image
+            </p>
             <Skeleton
               isLoaded={!!currentImage}
-              className="mx-auto aspect-square w-fit rounded-lg"
+              className="aspect-video rounded-lg"
             >
               <Image
                 src={currentImage}
                 alt="Image"
-                className="!relative aspect-square"
-                width={300}
-                height={300}
+                width={400}
+                className="!relative rounded-lg object-cover"
               />
             </Skeleton>
             <Controller
-              name="image"
               control={controlUpdateImage}
-              render={({ field: { onChange, ...field } }) => (
+              name="image"
+              render={({ field: { onChange, value, ...field } }) => (
                 <>
                   <InputFile
                     {...field}
-                    isDropable
                     label={
                       <p className="text-default-700 mb-2 text-sm font-medium">
                         Upload New Image
@@ -73,6 +88,7 @@ const ViewImage = (props: PropTypes) => {
                     isDeleting={isPendingMuteteDeleteFile}
                     isInvalid={!!errorsUpdateImage.image}
                     errorMessage={errorsUpdateImage.image?.message}
+                    isDropable
                     preview={typeof preview === "string" ? preview : ""}
                   />
                 </>
@@ -100,4 +116,4 @@ const ViewImage = (props: PropTypes) => {
   );
 };
 
-export default ViewImage;
+export default ViewImageTab;

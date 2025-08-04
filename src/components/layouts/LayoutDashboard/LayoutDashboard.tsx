@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { Navbar, NavbarMenuToggle } from "@heroui/react";
+import { Divider, Navbar, NavbarMenuToggle } from "@heroui/react";
 import TitlePage from "@/components/common/TitlePage";
 import LayoutSidebar from "./LayoutSidebar";
 import {

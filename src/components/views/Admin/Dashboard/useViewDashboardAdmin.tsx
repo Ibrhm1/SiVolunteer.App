@@ -10,55 +10,45 @@ const useViewDashboardAdmin = () => {
   const { data: dataProfile, isPending: isPendingDataProfile } = useQuery({
     queryKey: ["Profile"],
     queryFn: () => authService.getProfile(),
-    enabled: true,
   });
 
-  const { data: dataEvents, isLoading: isLoadingEvents } = useQuery({
+  const { data: totalEvents = 0, isLoading: isLoadingEvents } = useQuery({
     queryKey: ["Events"],
     queryFn: () => eventsService.getEvents(),
-    enabled: true,
+    select: (res) => res.data.data.length,
   });
 
-  const { data: dataOrganizer, isLoading: isLoadingOrganizer } = useQuery({
-    queryKey: ["Organizer"],
-    queryFn: () => organizerServices.getAllOrganizer(),
-    enabled: true,
-  });
-  const { data: dataMember, isLoading: isLoadingMember } = useQuery({
+  const { data: totalOrganizers = 0, isLoading: isLoadingOrganizer } = useQuery(
+    {
+      queryKey: ["Organizer"],
+      queryFn: () => organizerServices.getAllOrganizer(),
+      select: (res) => res.data.data.length,
+    },
+  );
+
+  const { data: totalMembers = 0, isLoading: isLoadingMember } = useQuery({
     queryKey: ["Member"],
     queryFn: () => userService.getAllMember(),
-    enabled: true,
+    select: (res) => res.data.data.length,
   });
 
   const totalData = [
     {
       title: "Total Events",
-      value: dataEvents?.data.data.length,
-      icon: (
-        <>
-          <MdEvent className="bg-primary-200 rounded-full p-1 text-4xl" />
-        </>
-      ),
+      value: totalEvents,
+      icon: <MdEvent className="bg-primary-200 rounded-full p-1 text-4xl" />,
       detail: "Events",
     },
     {
       title: "Total Members",
-      value: dataMember?.data.data.length,
-      icon: (
-        <>
-          <FaUser className="bg-primary-200 rounded-full p-1 text-4xl" />
-        </>
-      ),
+      value: totalMembers,
+      icon: <FaUser className="bg-primary-200 rounded-full p-1 text-4xl" />,
       detail: "Members",
     },
     {
       title: "Total Organizers",
-      value: dataOrganizer?.data?.data.length,
-      icon: (
-        <>
-          <FaUsers className="bg-primary-200 rounded-full p-1 text-4xl" />
-        </>
-      ),
+      value: totalOrganizers,
+      icon: <FaUsers className="bg-primary-200 rounded-full p-1 text-4xl" />,
       detail: "Organizers",
     },
   ];
@@ -66,7 +56,6 @@ const useViewDashboardAdmin = () => {
   return {
     dataProfile,
     isPendingDataProfile,
-
     totalData,
     isLoadingMember,
     isLoadingEvents,

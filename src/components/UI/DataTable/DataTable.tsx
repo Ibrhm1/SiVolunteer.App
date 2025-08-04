@@ -25,6 +25,7 @@ interface PropTypes {
   data: Record<string, unknown>[];
   emptyContent: string;
   isLoading?: boolean;
+  isIcon?: boolean;
   totalPage: number;
   showLimit?: boolean;
   showSearch?: boolean;
@@ -40,6 +41,7 @@ const DataTable = (props: PropTypes) => {
     data,
     emptyContent,
     isLoading,
+    isIcon,
     onClickButtonTopContent,
     totalPage,
     renderCell,
@@ -75,9 +77,11 @@ const DataTable = (props: PropTypes) => {
             color="primary"
             onPress={onClickButtonTopContent}
             className="font-semibold"
+            isIconOnly={isIcon}
+            variant="flat"
           >
             <RiAddFill className="text-xl font-bold" />
-            {buttonTopContentLabel}
+            {isIcon ? "" : buttonTopContentLabel}
           </Button>
         )}
       </div>

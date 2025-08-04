@@ -30,7 +30,7 @@ const useViewEventAdmin = () => {
   } = useQuery({
     queryKey: ["Events", currentPage, currentLimit, currentSearch],
     queryFn: () => getEvents(),
-    enabled: router.isReady && !!currentPage && !!currentLimit,
+    enabled: true,
   });
 
   useEffect(() => {

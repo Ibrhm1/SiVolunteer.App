@@ -1,8 +1,10 @@
 import useChangeUrl from "@/hooks/useChangeUrl";
 import eventsService from "@/services/events.service";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const useViewMyEvents = () => {
+  const [selectedId, setSelectedId] = useState<string>("");
   const { currentPage, currentLimit, currentSearch } = useChangeUrl();
 
   const getEventByOrganizer = async () => {
@@ -14,13 +16,23 @@ const useViewMyEvents = () => {
     return data.data;
   };
 
-  const { data: dataMyEvents, isPending: isPendingMyEvents } = useQuery({
+  const {
+    data: dataMyEvents,
+    isPending: isPendingMyEvents,
+    refetch: refetchMyEvents,
+  } = useQuery({
     queryKey: ["MyEvents", currentPage, currentLimit, currentSearch],
     queryFn: getEventByOrganizer,
     enabled: !!currentPage && !!currentLimit,
   });
 
-  return { dataMyEvents, isPendingMyEvents };
+  return {
+    selectedId,
+    setSelectedId,
+    dataMyEvents,
+    isPendingMyEvents,
+    refetchMyEvents,
+  };
 };
 
 export default useViewMyEvents;

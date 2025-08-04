@@ -28,7 +28,7 @@ const useViewDashboardOrganizer = () => {
 
   const totalData = [
     {
-      title: "Total My Events",
+      title: "My Events",
       value: dataEvents?.length,
       icon: (
         <>

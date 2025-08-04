@@ -1,3 +1,4 @@
+import TitlePage from "@/components/common/TitlePage";
 import ToggleDarkmode from "@/components/UI/ToggleDarkmode";
 import { Button } from "@heroui/react";
 import { useRouter } from "next/router";
@@ -7,6 +8,7 @@ const HomePage = () => {
 
   return (
     <div className="flex h-screen items-center justify-center lg:p-5">
+      <TitlePage title="SiVolunteer" />
       <h1 className="text-3xl font-bold">Home</h1>
       <div>
         <Button
@@ -16,11 +18,6 @@ const HomePage = () => {
         >
           Login
         </Button>
-      </div>
-      <div>
-        <Button onPress={() => router.push("/admin")}>Admin</Button>
-        <Button onPress={() => router.push("/member")}>Member</Button>
-        <Button onPress={() => router.push("/organizer")}>Organizer</Button>
       </div>
       <br />
       <ToggleDarkmode />

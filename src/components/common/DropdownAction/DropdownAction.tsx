@@ -40,7 +40,7 @@ const DropdownAction = (props: PropTypes) => {
           <DropdownItem
             key={"detail-event"}
             onPress={onPressButtonDetail}
-            startContent={<IoMdInformationCircleOutline />}
+            startContent={<IoMdInformationCircleOutline size={18} />}
           >
             {textButtonDetail}
           </DropdownItem>
@@ -56,7 +56,11 @@ const DropdownAction = (props: PropTypes) => {
         </DropdownMenu>
       ) : (
         <DropdownMenu>
-          <DropdownItem key={"detail-event"} onPress={onPressButtonDetail}>
+          <DropdownItem
+            key={"detail-event"}
+            onPress={onPressButtonDetail}
+            startContent={<IoMdInformationCircleOutline size={18} />}
+          >
             {textButtonDetail}
           </DropdownItem>
         </DropdownMenu>

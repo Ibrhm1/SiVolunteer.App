@@ -1,17 +1,27 @@
 import DataTable from "@/components/UI/DataTable";
 import useViewMyEvents from "./useViewMyEvents";
 import { COLUMN_LIST_MYEVENTS } from "./ListTableMyEvents";
-import { Chip, Image } from "@heroui/react";
+import { Chip, Image, useDisclosure } from "@heroui/react";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import DropdownAction from "@/components/common/DropdownAction";
 import { useRouter } from "next/router";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import dayjs from "dayjs";
+import ViewAddMyEventModal from "./AddMyEventModal";
+import ViewDeleteMyEventModal from "./DeleteMyEventModal";
 
 const ViewMyEvents = () => {
+  const addMyEventModal = useDisclosure();
+  const deleteMyEventModal = useDisclosure();
   const { push, query, isReady } = useRouter();
   const { setUrl } = useChangeUrl();
-  const { dataMyEvents, isPendingMyEvents } = useViewMyEvents();
+  const {
+    selectedId,
+    setSelectedId,
+    dataMyEvents,
+    isPendingMyEvents,
+    refetchMyEvents,
+  } = useViewMyEvents();
 
   useEffect(() => {
     if (isReady) {
@@ -27,7 +37,7 @@ const ViewMyEvents = () => {
           return (
             <Image
               src={`${cellValue}`}
-              alt="image"
+              alt="imageEvent"
               width={200}
               height={100}
               className="w-full rounded-lg object-cover"
@@ -60,7 +70,10 @@ const ViewMyEvents = () => {
         case "actions":
           return (
             <DropdownAction
-              showButtonDelete={false}
+              onPressButtonDelete={() => {
+                setSelectedId(`${event._id}`);
+                deleteMyEventModal.onOpen();
+              }}
               onPressButtonDetail={() =>
                 push(`/organizer/my-events/${event._id}`)
               }
@@ -73,18 +86,32 @@ const ViewMyEvents = () => {
     [push],
   );
 
+  console.log(selectedId);
+
   return (
     <section>
       {Object.keys(query).length > 0 && (
         <DataTable
-          renderCell={renderCell}
+          buttonTopContentLabel="Create My Event"
           columns={COLUMN_LIST_MYEVENTS}
-          emptyContent="Event is empty"
           data={dataMyEvents || []}
-          totalPage={dataMyEvents?.pagination?.totalPage || 0}
+          emptyContent="Event is empty"
           isLoading={isPendingMyEvents}
+          onClickButtonTopContent={addMyEventModal.onOpen}
+          renderCell={renderCell}
+          totalPage={dataMyEvents?.pagination?.totalPage || 0}
         />
       )}
+      <ViewAddMyEventModal
+        {...addMyEventModal}
+        refecthMyEvent={refetchMyEvents}
+      />
+      <ViewDeleteMyEventModal
+        {...deleteMyEventModal}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
+        refecthMyEvent={refetchMyEvents}
+      />
     </section>
   );
 };
