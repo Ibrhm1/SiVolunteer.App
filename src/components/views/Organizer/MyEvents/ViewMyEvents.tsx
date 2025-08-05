@@ -86,8 +86,6 @@ const ViewMyEvents = () => {
     [push],
   );
 
-  console.log(selectedId);
-
   return (
     <section>
       {Object.keys(query).length > 0 && (

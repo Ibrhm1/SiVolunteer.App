@@ -5,7 +5,6 @@ import {
   CardHeader,
   Chip,
   Skeleton,
-  Spinner,
   Tooltip,
   useDisclosure,
 } from "@heroui/react";
@@ -23,6 +22,7 @@ import ViewUpdateStatusModal from "./UpdateStatusModal";
 const ViewCurrentVolunteerTab = () => {
   const viewUpdateStatusModal = useDisclosure();
   const {
+    dataUser,
     refetchEventVolunteer,
     isPendingDataEventVolunteer,
     isPendingDataUser,
@@ -40,11 +40,7 @@ const ViewCurrentVolunteerTab = () => {
         eventVolunteer[columnKey as keyof typeof eventVolunteer];
       switch (columnKey) {
         case "user":
-          return isPendingDataUser ? (
-            <Skeleton className="h-5 w-20 rounded-md" />
-          ) : (
-            <span>{cellValue as string}</span>
-          );
+          return <span className="font-semibold">{cellValue as string}</span>;
         case "portfolioUrl":
           return (
             <Button

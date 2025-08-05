@@ -56,8 +56,6 @@ const ViewAddMyEventModal = (props: PropTypes) => {
     handleAddMyEvent,
   } = useViewAddMyEventModal();
 
-  console.log(errors);
-
   useEffect(() => {
     if (isSuccessMutateAddMyEvent) {
       onClose();

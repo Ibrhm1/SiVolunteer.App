@@ -11,8 +11,6 @@ const ViewDashboardOrganizer = () => {
     dataEvents,
     isLoadingEvents,
   } = useViewDashboardOrganizer();
-  console.log(dataEvents);
-  console.log("Panjangnya ", dataEvents?.length);
 
   return (
     <>

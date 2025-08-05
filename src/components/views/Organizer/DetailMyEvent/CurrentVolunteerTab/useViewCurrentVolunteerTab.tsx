@@ -51,6 +51,7 @@ const useViewCurrentVolunteerTab = () => {
   });
 
   return {
+    dataUser,
     refetchEventVolunteer,
     isPendingDataUser,
     isPendingDataEventVolunteer,
