@@ -14,19 +14,22 @@ const useViewCurrentVolunteerTab = () => {
     return data.data;
   };
 
-  const { data: dataEventVolunteer, isPending: isPendingDataEventVolunteer } =
-    useQuery({
-      queryKey: ["EventVolunteer"],
-      queryFn: getEventVolunteerByEvent,
-      enabled: isReady,
-    });
+  const {
+    data: dataEventVolunteer,
+    isPending: isPendingDataEventVolunteer,
+    refetch: refetchEventVolunteer,
+  } = useQuery({
+    queryKey: ["EventVolunteer"],
+    queryFn: getEventVolunteerByEvent,
+    enabled: isReady,
+  });
 
   const getUserByEventVolunteer = async () => {
     if (!dataEventVolunteer) return [];
 
     const responses = await Promise.all(
       dataEventVolunteer.map((item: IEventVolunteer) =>
-        userService.getMemberById(item.userId),
+        userService.getMemberById(`${item.userId}`),
       ),
     );
 
@@ -48,7 +51,8 @@ const useViewCurrentVolunteerTab = () => {
   });
 
   return {
-    dataEventVolunteer,
+    refetchEventVolunteer,
+    isPendingDataUser,
     isPendingDataEventVolunteer,
     mergedData,
   };

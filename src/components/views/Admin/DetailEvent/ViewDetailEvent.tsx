@@ -3,6 +3,7 @@ import {
   CardBody,
   CardFooter,
   Chip,
+  Image,
   Skeleton,
   Tab,
   Tabs,
@@ -12,7 +13,6 @@ import { HiMiniHashtag } from "react-icons/hi2";
 import dayjs from "dayjs";
 import ViewOverview from "./Overview";
 import ViewRequirement from "./Requirement";
-import Image from "next/image";
 
 const ViewDetailEvent = () => {
   const {

@@ -9,6 +9,7 @@ import {
 } from "@heroui/react";
 import useViewDeleteMyEventModal from "./useViewDeleteMyEventModal";
 import { Dispatch, SetStateAction, useEffect } from "react";
+import { MdOutlineCancel } from "react-icons/md";
 
 interface PropTypes {
   isOpen: boolean;
@@ -66,6 +67,7 @@ const ViewDeleteMyEventModal = (props: PropTypes) => {
             }}
             disabled={isPendingMutateDeleteMyEvent}
           >
+            <MdOutlineCancel size={18} />
             Cancel
           </Button>
           <Button

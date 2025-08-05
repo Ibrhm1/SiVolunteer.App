@@ -29,7 +29,7 @@ const useViewMyParticipation = () => {
       const eventsPromise = Promise.all(
         volunteers.map((item: IEventVolunteer) =>
           eventsService
-            .getEventById(item.eventId)
+            .getEventById(`${item.eventId}`)
             .then((res) => res.data.data.name),
         ),
       );

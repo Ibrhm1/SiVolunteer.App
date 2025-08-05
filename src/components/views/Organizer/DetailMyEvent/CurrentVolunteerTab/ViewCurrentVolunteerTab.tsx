@@ -4,26 +4,47 @@ import {
   CardBody,
   CardHeader,
   Chip,
+  Skeleton,
+  Spinner,
   Tooltip,
+  useDisclosure,
 } from "@heroui/react";
 import useViewCurrentVolunteerTab from "./useViewCurrentVolunteerTab";
 import DataTable from "@/components/UI/DataTable";
 import { COLUMN_LIST_CURRETVOLUNTEER } from "./ListTableCurrentVolunteer";
-import { Key, ReactNode, useCallback } from "react";
+import { Key, ReactNode, useCallback, useState } from "react";
 import Link from "next/link";
-import { IEventVolunteer } from "@/types/EventVolunteer";
+import { IEventVolunteer, IEventVolunteerStatus } from "@/types/EventVolunteer";
 import { IoDocumentText } from "react-icons/io5";
 import { IoMdDoneAll, IoMdTime } from "react-icons/io";
 import { GiCancel } from "react-icons/gi";
+import ViewUpdateStatusModal from "./UpdateStatusModal";
 
 const ViewCurrentVolunteerTab = () => {
-  const { dataEventVolunteer, isPendingDataEventVolunteer, mergedData } =
-    useViewCurrentVolunteerTab();
+  const viewUpdateStatusModal = useDisclosure();
+  const {
+    refetchEventVolunteer,
+    isPendingDataEventVolunteer,
+    isPendingDataUser,
+    mergedData,
+  } = useViewCurrentVolunteerTab();
+  const [selectedDataEventVolunteer, setSelectedDataEventVolunteer] =
+    useState<IEventVolunteer | null>(null);
+  const [btnValueStatus, setBtnValueStatus] = useState<
+    IEventVolunteerStatus | string
+  >();
 
   const renderCell = useCallback(
-    (ticket: Record<string, unknown>, columnKey: Key) => {
-      const cellValue = ticket[columnKey as keyof typeof ticket];
+    (eventVolunteer: Record<string, unknown>, columnKey: Key) => {
+      const cellValue =
+        eventVolunteer[columnKey as keyof typeof eventVolunteer];
       switch (columnKey) {
+        case "user":
+          return isPendingDataUser ? (
+            <Skeleton className="h-5 w-20 rounded-md" />
+          ) : (
+            <span>{cellValue as string}</span>
+          );
         case "portfolioUrl":
           return (
             <Button
@@ -39,7 +60,11 @@ const ViewCurrentVolunteerTab = () => {
             </Button>
           );
         case "skills":
-          return <p className="font-semibold">{`${cellValue}`}</p>;
+          return (
+            <p className="text-foreground-600 font-semibold">
+              {`${cellValue}`.split(",").join(", ")}
+            </p>
+          );
         case "status":
           return (
             <Chip
@@ -51,7 +76,7 @@ const ViewCurrentVolunteerTab = () => {
                     : "danger"
               }
               variant="flat"
-              radius="md"
+              radius="sm"
               className="font-bold"
             >
               {`${cellValue}`}
@@ -61,17 +86,53 @@ const ViewCurrentVolunteerTab = () => {
           return (
             <div className="flex gap-[1px]">
               <Tooltip radius="sm" content="Accept" color="success">
-                <Button isIconOnly size="sm" variant="flat" color="success">
+                <Button
+                  isIconOnly
+                  size="sm"
+                  variant="flat"
+                  color="success"
+                  onPress={() => {
+                    setSelectedDataEventVolunteer(
+                      eventVolunteer as IEventVolunteer,
+                    );
+                    setBtnValueStatus("accepted");
+                    viewUpdateStatusModal.onOpen();
+                  }}
+                >
                   <IoMdDoneAll />
                 </Button>
               </Tooltip>
               <Tooltip radius="sm" content="Pending" color="warning">
-                <Button isIconOnly size="sm" variant="flat" color="warning">
+                <Button
+                  isIconOnly
+                  size="sm"
+                  variant="flat"
+                  color="warning"
+                  onPress={() => {
+                    setSelectedDataEventVolunteer(
+                      eventVolunteer as IEventVolunteer,
+                    );
+                    setBtnValueStatus("pending");
+                    viewUpdateStatusModal.onOpen();
+                  }}
+                >
                   <IoMdTime />
                 </Button>
               </Tooltip>
               <Tooltip radius="sm" content="Reject" color="danger">
-                <Button isIconOnly size="sm" variant="flat" color="danger">
+                <Button
+                  isIconOnly
+                  size="sm"
+                  variant="flat"
+                  color="danger"
+                  onPress={() => {
+                    setSelectedDataEventVolunteer(
+                      eventVolunteer as IEventVolunteer,
+                    );
+                    setBtnValueStatus("rejected");
+                    viewUpdateStatusModal.onOpen();
+                  }}
+                >
                   <GiCancel />
                 </Button>
               </Tooltip>
@@ -98,12 +159,18 @@ const ViewCurrentVolunteerTab = () => {
             data={mergedData || []}
             emptyContent="Volunteer not found"
             isLoading={isPendingDataEventVolunteer}
-            // onClickButtonTopContent={addMyEventModal.onOpen}
             renderCell={renderCell}
             totalPage={1}
           />
         </CardBody>
       </Card>
+      <ViewUpdateStatusModal
+        {...viewUpdateStatusModal}
+        btnValueStatus={btnValueStatus as IEventVolunteerStatus}
+        refetchEventVolunteer={refetchEventVolunteer}
+        selectedDataEventVolunteer={selectedDataEventVolunteer}
+        setSelectedDataEventVolunteer={setSelectedDataEventVolunteer}
+      />
     </>
   );
 };

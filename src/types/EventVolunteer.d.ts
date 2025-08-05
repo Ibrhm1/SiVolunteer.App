@@ -1,10 +1,10 @@
 interface IEventVolunteer {
-  id: string;
-  eventId: string;
-  userId: string;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
+  _id?: string;
+  eventId?: string;
+  userId?: string;
+  status?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
-export type { IEventVolunteer };
+export type { IEventVolunteer, IEventVolunteerStatus };

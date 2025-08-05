@@ -9,6 +9,7 @@ import {
 } from "@heroui/react";
 import useViewDeleteCategoryModal from "./useViewDeleteCategoryModal";
 import { Dispatch, SetStateAction, useEffect } from "react";
+import { MdOutlineCancel } from "react-icons/md";
 
 interface PropTypes {
   isOpen: boolean;
@@ -67,6 +68,7 @@ const ViewDeleteCategoryModal = (props: PropTypes) => {
             }}
             disabled={isPendingMutateDeleteCategory}
           >
+            <MdOutlineCancel size={18} />
             Cancel
           </Button>
           <Button

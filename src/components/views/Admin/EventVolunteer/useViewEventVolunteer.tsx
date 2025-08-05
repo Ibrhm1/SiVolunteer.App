@@ -39,7 +39,7 @@ const useViewEventVolunteer = () => {
       const membersPromise = Promise.all(
         volunteers.map((item: IEventVolunteer) =>
           userService
-            .getMemberById(item.userId)
+            .getMemberById(`${item.userId}`)
             .then((res) => res.data.data.fullName),
         ),
       );
@@ -47,7 +47,7 @@ const useViewEventVolunteer = () => {
       const eventsPromise = Promise.all(
         volunteers.map((item: IEventVolunteer) =>
           eventsService
-            .getEventById(item.eventId)
+            .getEventById(`${item.eventId}`)
             .then((res) => res.data.data.name),
         ),
       );
