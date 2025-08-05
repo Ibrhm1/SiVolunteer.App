@@ -34,6 +34,12 @@ interface ILogin {
   password: string;
 }
 
+interface IUpdatePassword {
+  oldPassword: string;
+  password: string;
+  confirmPassword: string;
+}
+
 interface UserExtended extends User {
   accessToken?: string;
   role?: string;
@@ -52,6 +58,7 @@ export type {
   IRegisterOrganizer,
   IActivation,
   ILogin,
+  IUpdatePassword,
   UserExtended,
   SessionExtended,
   JWTExtended,

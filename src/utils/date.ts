@@ -1,5 +1,12 @@
 import { DateValue } from "@heroui/react";
-import { parseAbsoluteToLocal } from "@internationalized/date";
+import {
+  CalendarDate,
+  getLocalTimeZone,
+  parseAbsoluteToLocal,
+  parseDate,
+  today,
+} from "@internationalized/date";
+import dayjs from "dayjs";
 
 const toDateStandard = (date: DateValue) => {
   const year = date.year;
@@ -28,6 +35,12 @@ const toInputDate = (date: string) => {
   return formatedDate;
 };
 
+const toInputDateWithoutTime = (date: string) => {
+  if (!date) return undefined;
+  const [year, month, day] = date.split("-").map(Number);
+  return new CalendarDate(year, month, day);
+};
+
 const convertTime = (isoDate: string) => {
   const dateObject = new Date(isoDate);
 
@@ -43,4 +56,10 @@ const convertTime = (isoDate: string) => {
   return `${date} WIB`;
 };
 
-export { toDateStandard, toInputDate, convertTime, toDateStandardWithoutTime };
+export {
+  toDateStandard,
+  toInputDate,
+  toInputDateWithoutTime,
+  convertTime,
+  toDateStandardWithoutTime,
+};

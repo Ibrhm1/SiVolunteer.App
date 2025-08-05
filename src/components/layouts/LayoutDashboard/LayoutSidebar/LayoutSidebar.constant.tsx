@@ -1,9 +1,14 @@
 import { CiGrid41 } from "react-icons/ci";
-import { FaHandHoldingHeart, FaHashtag } from "react-icons/fa";
+import {
+  FaHandHoldingHeart,
+  FaHashtag,
+  FaUserCog,
+  FaUsers,
+} from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdEvent, MdOutlineVolunteerActivism } from "react-icons/md";
-import { RiCalendarEventFill } from "react-icons/ri";
+import { RiAdminFill, RiCalendarEventFill } from "react-icons/ri";
 
 const SIDEBAR_ADMIN = [
   {
@@ -36,6 +41,12 @@ const SIDEBAR_ADMIN = [
     href: "/admin/eventVolunteer",
     icon: <MdOutlineVolunteerActivism />,
   },
+  {
+    key: "profile",
+    label: "Admin Profile",
+    href: "/admin/profile",
+    icon: <RiAdminFill />,
+  },
 ];
 
 const SIDEBAR_ORGANIZER = [
@@ -51,6 +62,12 @@ const SIDEBAR_ORGANIZER = [
     href: "/organizer/my-events",
     icon: <RiCalendarEventFill />,
   },
+  {
+    key: "profile",
+    label: "My Profile",
+    href: "/organizer/profile",
+    icon: <FaUsers />,
+  },
 ];
 
 const SIDEBAR_MEMBER = [
@@ -65,6 +82,12 @@ const SIDEBAR_MEMBER = [
     label: "My Participation",
     href: "/member/my-participation",
     icon: <FaHandHoldingHeart />,
+  },
+  {
+    key: "profile",
+    label: "My Profile",
+    href: "/member/profile",
+    icon: <FaUserCog />,
   },
 ];
 

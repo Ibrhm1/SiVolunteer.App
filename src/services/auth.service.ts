@@ -1,5 +1,5 @@
 import instance from "@/libs/axios/instance";
-import { IActivation, ILogin } from "@/types/Auth";
+import { IActivation, ILogin, IUpdatePassword } from "@/types/Auth";
 import endpointService from "./endpoint.service";
 
 const authService = {

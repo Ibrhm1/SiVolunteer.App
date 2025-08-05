@@ -4,13 +4,8 @@ import { Card, CardBody, CardHeader, Skeleton } from "@heroui/react";
 import Calender from "@/components/UI/Calender";
 
 const ViewDashboardOrganizer = () => {
-  const {
-    totalData,
-    dataProfile,
-    isPendingDataProfile,
-    dataEvents,
-    isLoadingEvents,
-  } = useViewDashboardOrganizer();
+  const { totalData, dataProfile, isPendingDataProfile, isLoadingEvents } =
+    useViewDashboardOrganizer();
 
   return (
     <>
