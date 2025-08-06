@@ -60,6 +60,7 @@ const ViewProfilePicture = (props: PropTypes) => {
                 src={currentImage}
                 alt="Image"
                 width={200}
+                height={200}
                 className="rounded-full object-cover"
               />
             </Skeleton>

@@ -31,7 +31,7 @@ const ViewUpdatePassword = () => {
   }, [isSuccessUpdatePassword]);
 
   return (
-    <Card className="w-1/2">
+    <Card className="md:w-1/2">
       <CardHeader>
         <h1 className="text-xl font-semibold">Change Password</h1>
       </CardHeader>

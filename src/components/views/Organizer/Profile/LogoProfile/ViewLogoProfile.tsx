@@ -55,11 +55,12 @@ const ViewLogoProfile = (props: PropTypes) => {
       <form onSubmit={handleSubmitUpdateLogo(onUpdate)}>
         <CardBody className="gap-2">
           <div className="flex flex-col items-center">
-            <Skeleton isLoaded={!!currentImage} className="rounded-full h-48">
+            <Skeleton isLoaded={!!currentImage} className="h-48 rounded-full">
               <Image
                 src={currentImage}
                 alt="Image"
                 width={200}
+                height={200}
                 className="rounded-full object-cover"
               />
             </Skeleton>
