@@ -6,7 +6,7 @@ import { Controller } from "react-hook-form";
 import useViewLogin from "./useViewLogin";
 import { FaEye, FaEyeSlash, FaLock, FaRegUser } from "react-icons/fa";
 import { IoLogInOutline } from "react-icons/io5";
-import publicImage from "@/components/images/render.image";
+import { publicImage } from "@/components/images/render.image";
 
 const ViewLogin = () => {
   const {
@@ -20,7 +20,7 @@ const ViewLogin = () => {
   } = useViewLogin();
 
   return (
-    <Card className="p-8 lg:w-1/2 m-3">
+    <Card className="m-3 p-8 lg:w-1/2">
       <div className="flex justify-center">
         <Image src={publicImage.Login} alt="logo" width={350} height={350} />
       </div>
