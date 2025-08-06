@@ -15,15 +15,14 @@ const useViewHome = () => {
     queryFn: () => getAllEvents(`isPublish=true`),
   });
 
-  const getCategories = async () => {
-    const params = `limit=${LIMIT_CATEGORY}&page=${PAGE_DEFAULT}`;
-    const { data } = await categoryService.getAllCategories(params);
-    return data.data;
-  };
-
   const { data: dataCategory, isLoading: isLoadingCategory } = useQuery({
     queryKey: ["Category"],
-    queryFn: getCategories,
+    queryFn: async () => {
+      const { data } = await categoryService.getAllCategories(
+        `limit=${LIMIT_CATEGORY}&page=${PAGE_DEFAULT}`,
+      );
+      return data.data;
+    },
   });
 
   const getAlOrganizers = async () => {
