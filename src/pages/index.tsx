@@ -73,15 +73,23 @@ const HomePage = () => {
         ) : (
           <NavbarContent justify="end">
             <NavbarItem className="hidden lg:flex">
-              <Link
+              <Button
+                as={Link}
                 href="/auth/login"
-                className="rounded-lg bg-amber-300 px-5 py-2"
+                color="primary"
+                variant="ghost"
               >
                 Login
-              </Link>
+              </Button>
+              
             </NavbarItem>
             <NavbarItem>
-              <Button as={Link} color="primary" href="#" variant="flat">
+              <Button
+                as={Link}
+                color="primary"
+                href="/auth/register"
+                variant="flat"
+              >
                 Sign Up
               </Button>
             </NavbarItem>
