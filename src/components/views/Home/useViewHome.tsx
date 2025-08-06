@@ -9,7 +9,6 @@ import eventsService from "@/services/events.service";
 import { useQuery } from "@tanstack/react-query";
 
 const useViewHome = () => {
-  const currentQuery = `limit=${LIMIT_EVENT}&page=${PAGE_DEFAULT}`;
   const getAllEvents = async (params: string) => {
     const { data } = await eventsService.getEvents(params);
     return data.data;
@@ -21,8 +20,9 @@ const useViewHome = () => {
   });
 
   const getCategories = async () => {
-    let params = `limit=${LIMIT_CATEGORY}&page=${PAGE_DEFAULT}`;
-    const { data } = await categoryService.getAllCategories(params);
+    const { data } = await categoryService.getAllCategories(
+      `limit=${LIMIT_CATEGORY}&page=${PAGE_DEFAULT}`,
+    );
     return data.data;
   };
 
