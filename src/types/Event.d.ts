@@ -1,7 +1,7 @@
 import { DateValue } from "@heroui/react";
 
 interface IEvent {
-  id?: string;
+  _id?: string;
   name?: string;
   description?: string;
   startDate?: string | DateValue;

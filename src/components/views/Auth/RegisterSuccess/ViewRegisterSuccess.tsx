@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { IoHome } from "react-icons/io5";
-import publicImage from "@/components/images/render.image";
+import { publicImage } from "@/components/images/render.image";
 
 const ViewRegisterSuccess = () => {
   const router = useRouter();

@@ -1,8 +1,8 @@
+import { publicImage } from "@/components/images/render.image";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { IoHome } from "react-icons/io5";
-import publicImage from "@/components/images/render.image";
 
 interface PropTypes {
   status: "success" | "failed";

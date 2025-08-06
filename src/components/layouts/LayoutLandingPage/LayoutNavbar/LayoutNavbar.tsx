@@ -60,7 +60,8 @@ const LayoutNavbar = () => {
             className={cn(
               "text-foreground-500 hover:text-foreground font-semibold",
               {
-                "text-primary font-bold": router.pathname === item.href,
+                "text-primary border-primary border-b-2 font-bold":
+                  router.pathname === item.href,
               },
             )}
           >
