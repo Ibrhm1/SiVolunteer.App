@@ -1,8 +1,4 @@
-import {
-  LIMIT_CATEGORY,
-  LIMIT_EVENT,
-  PAGE_DEFAULT,
-} from "@/constants/list.constant";
+import { LIMIT_CATEGORY, PAGE_DEFAULT } from "@/constants/list.constant";
 import organizerServices from "@/services/authOrganizer.service";
 import categoryService from "@/services/category.service";
 import eventsService from "@/services/events.service";
@@ -20,9 +16,8 @@ const useViewHome = () => {
   });
 
   const getCategories = async () => {
-    const { data } = await categoryService.getAllCategories(
-      `limit=${LIMIT_CATEGORY}&page=${PAGE_DEFAULT}`,
-    );
+    const params = `limit=${LIMIT_CATEGORY}&page=${PAGE_DEFAULT}`;
+    const { data } = await categoryService.getAllCategories(params);
     return data.data;
   };
 

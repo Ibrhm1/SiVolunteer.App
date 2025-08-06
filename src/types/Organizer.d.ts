@@ -1,5 +1,3 @@
-import { DateValue } from "@heroui/react";
-
 interface IOrganizerUpdate {
   organizerName?: string;
   contactPerson?: string;
