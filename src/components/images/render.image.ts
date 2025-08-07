@@ -3,6 +3,7 @@ const publicImage = {
   Complete: "/Complete.png",
   Failed: "/Failed.png",
   Success: "/Success.png",
+  Info: "/Info.png",
 };
 
 const ListBanners = [

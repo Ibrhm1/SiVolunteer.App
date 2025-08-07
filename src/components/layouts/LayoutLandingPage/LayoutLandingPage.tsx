@@ -1,6 +1,7 @@
 import TitlePage from "@/components/common/TitlePage";
 import LayoutNavbar from "./LayoutNavbar";
 import { ReactNode } from "react";
+import LayoutFooter from "./LayoutFooter";
 
 interface PropTypes {
   children: ReactNode;
@@ -14,6 +15,7 @@ const LayoutLandingPage = (props: PropTypes) => {
       <TitlePage title={title} />
       <LayoutNavbar />
       <main>{children}</main>
+      <LayoutFooter />
     </>
   );
 };

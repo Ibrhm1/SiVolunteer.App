@@ -1,3 +1,5 @@
+import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+
 const NAV_LINKS = [
   {
     label: "Home",
@@ -32,4 +34,22 @@ const BUTTON_ITEMS = [
   },
 ];
 
-export { NAV_LINKS, BUTTON_ITEMS };
+const SOCIAL_ITEMS = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/",
+    icon: <FaFacebook />,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/iibibrhm/",
+    icon: <FaInstagram />,
+  },
+  {
+    label: "Github",
+    href: "https://github.com/Ibrhm1",
+    icon: <FaGithub />,
+  },
+];
+
+export { NAV_LINKS, BUTTON_ITEMS, SOCIAL_ITEMS };
