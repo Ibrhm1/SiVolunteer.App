@@ -398,7 +398,7 @@ const ViewDetailEventTab = (props: PropTypes) => {
             color="primary"
             variant="ghost"
             className="disabled:bg-default-500 mt-2"
-            disabled={isPendingUpdate || !!dataMyEvent?.id}
+            disabled={isPendingUpdate || !!dataMyEvent?._id}
           >
             {isPendingUpdate ? (
               <Spinner size="sm" color="white" />
