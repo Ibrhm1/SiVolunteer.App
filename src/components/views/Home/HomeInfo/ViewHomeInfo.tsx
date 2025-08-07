@@ -4,7 +4,7 @@ import { MdOutlineMenuBook } from "react-icons/md";
 
 const ViewHomeInfo = () => {
   return (
-    <section className="relative flex h-[30dvh] flex-col items-center justify-center px-10 py-6">
+    <section className="shadow-default-400 relative flex h-[30dvh] flex-col items-center justify-center px-10 py-6 shadow-[0_0_10px]">
       {/* <MdOutlineMenuBook
         className="absolute end-10 top-10 -z-1 opacity-20"
         size={200}

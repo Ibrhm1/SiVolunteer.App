@@ -9,7 +9,10 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownTrigger,
+  Image,
   Input,
+  Listbox,
+  ListboxItem,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -18,6 +21,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Skeleton,
+  Spinner,
 } from "@heroui/react";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -27,6 +31,7 @@ import { BUTTON_ITEMS, NAV_LINKS } from "../LayoutLandingPage.constant";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { IEvent } from "@/types/Event";
 
 const LayoutNavbar = () => {
   const session = useSession();
@@ -34,8 +39,15 @@ const LayoutNavbar = () => {
   const {
     dataProfile,
     isPendingDataProfile,
-    isSuccessDataProfile,
     refetchProfile,
+
+    search,
+    setSearch,
+    dataEventsSearch,
+    isLoadingEventsSearch,
+    isRefetchingEventsSearch,
+
+    handleSearch,
   } = useLayoutNavbar();
 
   useEffect(() => {
@@ -70,14 +82,52 @@ const LayoutNavbar = () => {
         ))}
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden items-center gap-4 lg:flex">
+        <NavbarItem className="hidden items-center gap-4 lg:relative lg:flex">
           {session.status === "authenticated" && (
             <>
               <Input
-                className="w-1/2"
+                className="mr-3 w-[300px]"
+                isClearable
+                onChange={handleSearch}
+                onClear={() => setSearch("")}
                 placeholder="Search events"
                 startContent={<IoMdSearch size={20} />}
               />
+              {search !== "" && (
+                <Listbox
+                  items={dataEventsSearch?.data || []}
+                  className="bg-default-100 absolute top-12 right-0 rounded-xl"
+                >
+                  {!isRefetchingEventsSearch && !isLoadingEventsSearch ? (
+                    (item: IEvent) => (
+                      <ListboxItem
+                        key={`list-${item._id}`}
+                        href={`/events/${item.slug}`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <Image
+                            loading="lazy"
+                            src={`${item?.image}`}
+                            alt={`${item.name}`}
+                            width={200}
+                            height={100}
+                            className="cursor-pointer rounded-md"
+                          />
+                          <p className="line-clamp-2 text-wrap">{item.name}</p>
+                        </div>
+                      </ListboxItem>
+                    )
+                  ) : (
+                    <ListboxItem key="loading" className="bg-default-100">
+                      <Spinner
+                        color="primary"
+                        size="sm"
+                        className="w-full text-center"
+                      />
+                    </ListboxItem>
+                  )}
+                </Listbox>
+              )}
               <Dropdown>
                 <DropdownTrigger>
                   <Skeleton
