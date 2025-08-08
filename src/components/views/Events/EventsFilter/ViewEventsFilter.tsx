@@ -33,65 +33,135 @@ const ViewEventsFilter = () => {
   }, [isSuccessCategory]);
 
   return (
-    <Accordion className="lg:sticky lg:top-20" variant="splitted">
-      <AccordionItem
-        title={<p className="font-semibold">Filter</p>}
-        startContent={<IoFilterSharp size={20} />}
-      >
-        {isSuccessCategory ? (
-          <div className="space-y-2">
-            <Controller
-              name="category"
-              control={control}
-              render={({ field: { onChange, ...field } }) => (
-                <Autocomplete
-                  {...field}
-                  label="Category"
-                  variant="bordered"
-                  placeholder="Category"
-                  labelPlacement="outside"
-                  defaultSelectedKey={`${currentCategory}`}
-                  defaultItems={dataCategory?.data.data || []}
-                  onSelectionChange={(value) => {
-                    onChange(value);
-                    handleChangeCategory(value !== null ? `${value}` : "");
-                  }}
-                >
-                  {(category: ICategory) => (
-                    <AutocompleteItem key={category._id}>
-                      {category.name}
-                    </AutocompleteItem>
+    <>
+      <div className="hidden lg:block">
+        <Accordion
+          className="lg:sticky lg:top-20"
+          variant="splitted"
+          defaultSelectedKeys={["Filter"]}
+        >
+          <AccordionItem
+            key="Filter"
+            title={<p className="font-semibold">Filter</p>}
+            startContent={<IoFilterSharp size={20} />}
+          >
+            {isSuccessCategory ? (
+              <div className="space-y-2">
+                <Controller
+                  name="category"
+                  control={control}
+                  render={({ field: { onChange, ...field } }) => (
+                    <Autocomplete
+                      {...field}
+                      label="Category"
+                      variant="bordered"
+                      placeholder="Category"
+                      labelPlacement="outside"
+                      defaultSelectedKey={`${currentCategory}`}
+                      defaultItems={dataCategory?.data.data || []}
+                      onSelectionChange={(value) => {
+                        onChange(value);
+                        handleChangeCategory(value !== null ? `${value}` : "");
+                      }}
+                    >
+                      {(category: ICategory) => (
+                        <AutocompleteItem key={category._id}>
+                          {category.name}
+                        </AutocompleteItem>
+                      )}
+                    </Autocomplete>
                   )}
-                </Autocomplete>
-              )}
-            />
-            <Controller
-              name="isOnline"
-              control={control}
-              render={({ field: { onChange, ...field } }) => (
-                <Select
-                  {...field}
-                  variant="bordered"
-                  labelPlacement="outside"
-                  label="Online or Offline"
-                  placeholder="Online or Offline"
-                  defaultSelectedKeys={[`${currentIsOnline}`]}
-                  onChange={(e) => handleChangeIsOnline(e.target.value)}
-                >
-                  <SelectItem key="true">Online</SelectItem>
-                  <SelectItem key="false">Offline</SelectItem>
-                </Select>
-              )}
-            />
-          </div>
-        ) : (
-          <div className="mt-4 space-y-2">
-            <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
-            <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
-          </div>
-        )}
-      </AccordionItem>
-    </Accordion>
+                />
+                <Controller
+                  name="isOnline"
+                  control={control}
+                  render={({ field: { onChange, ...field } }) => (
+                    <Select
+                      {...field}
+                      variant="bordered"
+                      labelPlacement="outside"
+                      label="Online or Offline"
+                      placeholder="Online or Offline"
+                      defaultSelectedKeys={[`${currentIsOnline}`]}
+                      onChange={(e) => handleChangeIsOnline(e.target.value)}
+                    >
+                      <SelectItem key="true">Online</SelectItem>
+                      <SelectItem key="false">Offline</SelectItem>
+                    </Select>
+                  )}
+                />
+              </div>
+            ) : (
+              <div className="mt-4 space-y-2">
+                <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
+                <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
+              </div>
+            )}
+          </AccordionItem>
+        </Accordion>
+      </div>
+      <div className="lg:hidden block">
+        <Accordion className="lg:sticky lg:top-20" variant="splitted">
+          <AccordionItem
+            title={<p className="font-semibold">Filter</p>}
+            startContent={<IoFilterSharp size={20} />}
+          >
+            {isSuccessCategory ? (
+              <div className="space-y-2">
+                <Controller
+                  name="category"
+                  control={control}
+                  render={({ field: { onChange, ...field } }) => (
+                    <Autocomplete
+                      {...field}
+                      label="Category"
+                      variant="bordered"
+                      placeholder="Category"
+                      labelPlacement="outside"
+                      defaultSelectedKey={`${currentCategory}`}
+                      defaultItems={dataCategory?.data.data || []}
+                      onSelectionChange={(value) => {
+                        onChange(value);
+                        handleChangeCategory(value !== null ? `${value}` : "");
+                      }}
+                    >
+                      {(category: ICategory) => (
+                        <AutocompleteItem key={category._id}>
+                          {category.name}
+                        </AutocompleteItem>
+                      )}
+                    </Autocomplete>
+                  )}
+                />
+                <Controller
+                  name="isOnline"
+                  control={control}
+                  render={({ field: { onChange, ...field } }) => (
+                    <Select
+                      {...field}
+                      variant="bordered"
+                      labelPlacement="outside"
+                      label="Online or Offline"
+                      placeholder="Online or Offline"
+                      defaultSelectedKeys={[`${currentIsOnline}`]}
+                      onChange={(e) => handleChangeIsOnline(e.target.value)}
+                    >
+                      <SelectItem key="true">Online</SelectItem>
+                      <SelectItem key="false">Offline</SelectItem>
+                    </Select>
+                  )}
+                />
+              </div>
+            ) : (
+              <div className="mt-4 space-y-2">
+                <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
+                <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
+              </div>
+            )}
+          </AccordionItem>
+        </Accordion>
+      </div>
+    </>
   );
 };
 

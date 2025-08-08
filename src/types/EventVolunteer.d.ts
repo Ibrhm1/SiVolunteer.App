@@ -7,4 +7,11 @@ interface IEventVolunteer {
   updatedAt?: string;
 }
 
-export type { IEventVolunteer, IEventVolunteerStatus };
+interface IEventVolunteerRegister {
+  eventId?: string;
+  motivation?: string;
+  phone?: string;
+  email?: string;
+}
+
+export type { IEventVolunteer, IEventVolunteerRegister };

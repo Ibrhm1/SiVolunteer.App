@@ -1,3 +1,13 @@
+interface IUser {
+  _id?: string;
+  fullName?: string;
+  username?: string;
+  email?: string;
+  address?: string;
+  phone?: string;
+  profilePicture?: string;
+}
+
 interface IUserUpdate {
   fullName?: string;
   phone?: string;
@@ -5,4 +15,4 @@ interface IUserUpdate {
   profilePicture?: string | FileList;
 }
 
-export type { IUserUpdate };
+export type { IUserUpdate, IUser };

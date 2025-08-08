@@ -10,6 +10,8 @@ const eventsService = {
   getEventByOrganizer: (params?: string) =>
     instance.get(`${endpointService.EVENTS}/organizers?${params}`),
   getEventById: (id: string) => instance.get(`${endpointService.EVENTS}/${id}`),
+  getEventBySlug: (slug: string) =>
+    instance.get(`${endpointService.EVENTS}/${slug}/slug`),
   updateEvent: (id: string, payload: IEvent) =>
     instance.put(`${endpointService.EVENTS}/${id}`, payload),
   deleteEvent: (id: string) =>

@@ -35,9 +35,10 @@ const EventCard = (props: PropTypes) => {
       as={Link}
       className={cn(className, "cursor-pointer")}
       href={`/events/${event?.slug}`}
-      isPressable
+      isPressable={isLoading ? false : true}
       key={key}
       shadow="sm"
+      isDisabled={isLoading}
     >
       {!isLoading ? (
         <>

@@ -20,7 +20,7 @@ const ViewEvents = () => {
 
   return (
     <div className="flex w-full flex-col justify-center gap-1 px-4 md:items-center lg:flex-row lg:items-start lg:px-0">
-      <div className="mt-2 w-full lg:sticky lg:top-20 lg:m-4 lg:w-1/4">
+      <div className="mt-2 w-full lg:sticky lg:top-20 lg:mx-2 lg:w-1/4">
         <ViewEventsFilter />
       </div>
       <div className="min-h-[70vh] w-full py-4 lg:mx-0">

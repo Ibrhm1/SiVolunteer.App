@@ -1,4 +1,4 @@
-import { IEventVolunteer, IEventVolunteerStatus } from "@/types/EventVolunteer";
+import { IEventVolunteer } from "@/types/EventVolunteer";
 import {
   Button,
   Chip,
@@ -23,7 +23,7 @@ interface PropTypes {
   setSelectedDataEventVolunteer: Dispatch<
     SetStateAction<IEventVolunteer | null>
   >;
-  btnValueStatus: IEventVolunteerStatus;
+  btnValueStatus: string;
 }
 
 const ViewUpdateStatusModal = (props: PropTypes) => {

@@ -8,7 +8,7 @@ const userService = {
     instance.post(`${endpointService.AUTH}/register`, payload),
   getAllMember: () => instance.get(`${endpointService.MEMBER}`),
   getMemberById: (id: string) =>
-    instance.get(`${endpointService.AUTH}/member/${id}`),
+    instance.get(`${endpointService.MEMBER}/${id}`),
   updateProfile: (payload: IUserUpdate) =>
     instance.put(`${endpointService.AUTH}/update-profile`, payload),
   updatePassword: (payload: IUpdatePassword) =>

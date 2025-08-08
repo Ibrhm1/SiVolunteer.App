@@ -51,10 +51,10 @@ const ViewProfilePicture = (props: PropTypes) => {
   }, [isSuccessUpdate]);
 
   return (
-    <Card className="mx-auto h-fit w-1/2 lg:w-1/4">
+    <Card className="mx-auto w-full xl:w-1/4">
       <form onSubmit={handleSubmitUpdateProfilePicture(onUpdate)}>
         <CardBody className="gap-2">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center gap-2">
             <Skeleton isLoaded={!!currentImage} className="h-48 rounded-full">
               <Image
                 src={currentImage}

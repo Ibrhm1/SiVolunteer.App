@@ -1,5 +1,4 @@
 import eventVolunteerService from "@/services/eventVolunteer.service";
-import { IEventVolunteer, IEventVolunteerStatus } from "@/types/EventVolunteer";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -18,11 +17,7 @@ const useViewUpdateStatusModal = (id: string) => {
     resolver: yupResolver(schameUpdate),
   });
 
-  const updateStatusEventVolunteer = async ({
-    status,
-  }: {
-    status: IEventVolunteer;
-  }) => {
+  const updateStatusEventVolunteer = async ({ status }: { status: string }) => {
     const { data } = await eventVolunteerService.updateStatusEventVolunter(
       id,
       `${status}`,
@@ -52,7 +47,7 @@ const useViewUpdateStatusModal = (id: string) => {
     },
   });
 
-  const handleUpdateStatus = (data: { status: IEventVolunteerStatus }) => {
+  const handleUpdateStatus = (data: { status: string }) => {
     mutateUpdateStatusEventVolunteer(data);
   };
 

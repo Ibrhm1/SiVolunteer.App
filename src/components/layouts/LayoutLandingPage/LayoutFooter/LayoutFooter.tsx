@@ -30,9 +30,7 @@ const LayoutFooter = () => {
                 123 Main Street, Bekasi, Jawa Barat, Indonesia
               </p>
               <p className="text-foreground-700">+62 812-3456-7890</p>
-              <span>
-
-              </span>
+              <span></span>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">

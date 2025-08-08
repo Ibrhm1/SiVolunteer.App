@@ -60,10 +60,10 @@ const LayoutNavbar = () => {
     <Navbar maxWidth="full" isBordered isBlurred={false} shouldHideOnScroll>
       <NavbarContent justify="start">
         <NavbarBrand>
-          <h1 className="text-3xl font-bold">SiVolunteer</h1>
+          <h1 className="text-lg font-bold lg:text-3xl">SiVolunteer</h1>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent justify="center" className="hidden lg:flex">
+      <NavbarContent justify="center" className="hidden xl:flex">
         {NAV_LINKS.map((item, i) => (
           <NavbarItem
             key={`nav-${item.label}-${i}`}
@@ -84,7 +84,7 @@ const LayoutNavbar = () => {
       <NavbarContent justify="end">
         <NavbarItem className="hidden items-center gap-4 lg:relative lg:flex">
           <Input
-            className="mr-2 w-[240px]"
+            className="w-[220px]"
             isClearable
             onChange={handleSearch}
             onClear={() => setSearch("")}
@@ -183,7 +183,9 @@ const LayoutNavbar = () => {
               </Dropdown>
             </>
           )}
-          <ToggleDarkmode />
+          <div className="hidden xl:block">
+            <ToggleDarkmode />
+          </div>
           {session.status === "unauthenticated" &&
             BUTTON_ITEMS.map((item) => (
               <Button
@@ -197,11 +199,11 @@ const LayoutNavbar = () => {
               </Button>
             ))}
         </NavbarItem>
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <ToggleDarkmode />
         </div>
         <Divider orientation="vertical" className="h-10 lg:hidden" />
-        <NavbarMenuToggle className="lg:hidden" />
+        <NavbarMenuToggle className="xl:hidden" />
         <NavbarMenu className="gap-4">
           {NAV_LINKS.map((item, i) => (
             <NavbarMenuItem

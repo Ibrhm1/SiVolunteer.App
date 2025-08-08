@@ -13,7 +13,7 @@ import DataTable from "@/components/UI/DataTable";
 import { COLUMN_LIST_CURRETVOLUNTEER } from "./ListTableCurrentVolunteer";
 import { Key, ReactNode, useCallback, useState } from "react";
 import Link from "next/link";
-import { IEventVolunteer, IEventVolunteerStatus } from "@/types/EventVolunteer";
+import { IEventVolunteer } from "@/types/EventVolunteer";
 import { IoDocumentText } from "react-icons/io5";
 import { IoMdDoneAll, IoMdTime } from "react-icons/io";
 import { GiCancel } from "react-icons/gi";
@@ -30,9 +30,7 @@ const ViewCurrentVolunteerTab = () => {
   } = useViewCurrentVolunteerTab();
   const [selectedDataEventVolunteer, setSelectedDataEventVolunteer] =
     useState<IEventVolunteer | null>(null);
-  const [btnValueStatus, setBtnValueStatus] = useState<
-    IEventVolunteerStatus | string
-  >();
+  const [btnValueStatus, setBtnValueStatus] = useState<string>();
 
   const renderCell = useCallback(
     (eventVolunteer: Record<string, unknown>, columnKey: Key) => {
@@ -41,26 +39,6 @@ const ViewCurrentVolunteerTab = () => {
       switch (columnKey) {
         case "user":
           return <span className="font-semibold">{cellValue as string}</span>;
-        case "portfolioUrl":
-          return (
-            <Button
-              as={Link}
-              href={cellValue as string}
-              size="sm"
-              isIconOnly
-              variant="flat"
-              color="primary"
-              target="_blank"
-            >
-              <IoDocumentText />
-            </Button>
-          );
-        case "skills":
-          return (
-            <p className="text-foreground-600 font-semibold">
-              {`${cellValue}`.split(",").join(", ")}
-            </p>
-          );
         case "status":
           return (
             <Chip
@@ -162,7 +140,7 @@ const ViewCurrentVolunteerTab = () => {
       </Card>
       <ViewUpdateStatusModal
         {...viewUpdateStatusModal}
-        btnValueStatus={btnValueStatus as IEventVolunteerStatus}
+        btnValueStatus={btnValueStatus as string}
         refetchEventVolunteer={refetchEventVolunteer}
         selectedDataEventVolunteer={selectedDataEventVolunteer}
         setSelectedDataEventVolunteer={setSelectedDataEventVolunteer}

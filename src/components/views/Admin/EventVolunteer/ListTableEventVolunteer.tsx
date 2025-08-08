@@ -8,6 +8,14 @@ const COLUMN_LIST_EVENTVOLUNTEER = [
     uid: "event",
   },
   {
+    name: "EMAIL",
+    uid: "email",
+  },
+  {
+    name: "PHONE",
+    uid: "phone",
+  },
+  {
     name: "MOTIVATION",
     uid: "motivation",
   },

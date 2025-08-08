@@ -365,7 +365,7 @@ const ViewAddMyEventModal = (props: PropTypes) => {
             <Button
               color="danger"
               variant="flat"
-              onPress={onClose}
+              onPress={() => handleOnClose(onClose)}
               disabled={isPendingMutateAddMyEvent}
             >
               <MdOutlineCancel size={18} />
@@ -378,7 +378,7 @@ const ViewAddMyEventModal = (props: PropTypes) => {
               disabled={isPendingMutateAddMyEvent}
             >
               {isPendingMutateAddMyEvent ? (
-                <Spinner size="sm" color="white" />
+                <Spinner size="sm" color="primary" />
               ) : (
                 <>
                   <IoCreate size={18} />

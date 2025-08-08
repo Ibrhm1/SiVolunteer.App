@@ -4,24 +4,20 @@ const COLUMN_LIST_CURRETVOLUNTEER = [
     uid: "user",
   },
   {
+    name: "EMAIL",
+    uid: "email",
+  },
+  {
+    name: "PHONE",
+    uid: "phone",
+  },
+  {
     name: "MOTIVATION",
     uid: "motivation",
   },
   {
-    name: "EXPERIENCE",
-    uid: "experience",
-  },
-  {
     name: "STATUS",
     uid: "status",
-  },
-  {
-    name: "PORTOFOLIO",
-    uid: "portfolioUrl",
-  },
-  {
-    name: "SKILLS",
-    uid: "skills",
   },
   {
     name: "ACTIONS",

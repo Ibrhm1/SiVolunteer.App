@@ -22,25 +22,27 @@ const ViewHomeListEvents = (props: PropTypes) => {
           color="primary"
           href={"/events"}
           underline="hover"
-          className="text-sm md:text-base"
+          className="w-full justify-end px-8 text-sm md:text-base"
         >
           Lihat Semua
         </Link>
       </div>
-      <div className="scroll-x-custom grid auto-cols-[20rem] grid-flow-col gap-4 overflow-x-auto py-3">
+      <div className="scroll-x-custom grid grid-flow-col gap-2 overflow-x-auto py-3 lg:gap-4 xl:mx-auto">
         {!isLoading
-          ? dataEvents?.map((event) => (
-              <EventCard
-                key={`${event._id}`}
-                event={event}
-                className="my-1 first:ml-4 last:mr-4"
-              />
-            ))
-          : Array.from({ length: 5 }).map((_, index) => (
+          ? dataEvents
+              ?.slice(0, 4)
+              .map((event) => (
+                <EventCard
+                  key={`${event._id}`}
+                  event={event}
+                  className="my-1 w-[14rem] md:w-[16rem] lg:w-[19rem]"
+                />
+              ))
+          : Array.from({ length: 4 }).map((_, index) => (
               <EventCard
                 key={`card-skeleton-${index}`}
                 isLoading={isLoading}
-                className="first:ml-4 last:mr-4"
+                className="my-1 w-[14rem] md:w-[16rem] lg:w-[19rem]"
               />
             ))}
       </div>
