@@ -4,6 +4,7 @@ import eventVolunteerService from "@/services/eventVolunteer.service";
 import { IEventVolunteerRegister } from "@/types/EventVolunteer";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import { ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
@@ -55,7 +56,9 @@ const useRegistrationVolunteerModal = () => {
     isSuccess: isSuccessRegistrationEventVolunteer,
   } = useMutation({
     mutationFn: registrationEventVolunteer,
-    onError: (error: any) => {
+    onError: (
+      error: AxiosError<{ meta?: { status?: number; message?: string } }>,
+    ) => {
       const status =
         error.response?.data?.meta?.status || error.response?.status;
       const message =

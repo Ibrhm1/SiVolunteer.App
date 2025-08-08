@@ -4,14 +4,7 @@ import ViewHomeListEvents from "./HomeListEvents";
 import useViewHome from "./useViewHome";
 
 const ViewHome = () => {
-  const {
-    dataEvents,
-    isLoadingEvents,
-    dataCategory,
-    isLoadingCategory,
-    dataOrganizer,
-    isLoadingOrganizer,
-  } = useViewHome();
+  const { dataEvents, isLoadingEvents } = useViewHome();
 
   return (
     <main className="w-full">

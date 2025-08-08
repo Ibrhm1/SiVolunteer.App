@@ -1,5 +1,4 @@
 import EventCard from "@/components/UI/EventCard";
-import { Image } from "@heroui/react";
 import useViewEvents from "./useViewEvents";
 import { IEvent } from "@/types/Event";
 import { useEffect } from "react";
@@ -11,8 +10,7 @@ import ViewEventsFilter from "./EventsFilter";
 const ViewEvents = () => {
   const router = useRouter();
   const { setUrlExplore } = useChangeUrl();
-  const { dataEvents, isLoadingEvents, isRefetchingEvents, refetchEvents } =
-    useViewEvents();
+  const { dataEvents, isLoadingEvents, isRefetchingEvents } = useViewEvents();
 
   useEffect(() => {
     if (router.isReady) setUrlExplore();

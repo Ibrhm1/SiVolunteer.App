@@ -1,4 +1,4 @@
-import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 
 const NAV_LINKS = [
   {

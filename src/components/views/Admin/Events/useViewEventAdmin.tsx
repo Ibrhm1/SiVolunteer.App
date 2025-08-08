@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 
 const useViewEventAdmin = () => {
-  const router = useRouter();
   const [selectedId, setSelectedId] = useState<string>("");
   const [organizerId, setOrganizerId] = useState<string>("");
   const { currentLimit, currentPage, currentSearch } = useChangeUrl();

@@ -77,7 +77,7 @@ const ViewLogoProfile = (props: PropTypes) => {
               <Controller
                 control={controlUpdateLogo}
                 name="logo"
-                render={({ field: { onChange, value, ...field } }) => (
+                render={({ field: { onChange, ...field } }) => (
                   <>
                     <InputFile
                       {...field}

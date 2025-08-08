@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, SOCIAL_ITEMS } from "../LayoutLandingPage.constant";
 import { Divider } from "@heroui/react";

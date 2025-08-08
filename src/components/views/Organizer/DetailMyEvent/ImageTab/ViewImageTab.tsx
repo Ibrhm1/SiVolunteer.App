@@ -73,7 +73,7 @@ const ViewImageTab = (props: PropTypes) => {
             <Controller
               control={controlUpdateImage}
               name="image"
-              render={({ field: { onChange, value, ...field } }) => (
+              render={({ field: { onChange, ...field } }) => (
                 <>
                   <InputFile
                     {...field}

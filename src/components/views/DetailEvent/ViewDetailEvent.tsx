@@ -28,8 +28,6 @@ const ViewDetailEvent = () => {
     dataRegion,
     dataOrganizerName,
     isLoadingOrganizerName,
-    dataEventVolunteer,
-    dataUser,
   } = useDetailEvent();
 
   useEffect(() => {

@@ -4,7 +4,6 @@ import {
   CardBody,
   CardHeader,
   Chip,
-  Skeleton,
   Tooltip,
   useDisclosure,
 } from "@heroui/react";
@@ -12,22 +11,15 @@ import useViewCurrentVolunteerTab from "./useViewCurrentVolunteerTab";
 import DataTable from "@/components/UI/DataTable";
 import { COLUMN_LIST_CURRETVOLUNTEER } from "./ListTableCurrentVolunteer";
 import { Key, ReactNode, useCallback, useState } from "react";
-import Link from "next/link";
 import { IEventVolunteer } from "@/types/EventVolunteer";
-import { IoDocumentText } from "react-icons/io5";
 import { IoMdDoneAll, IoMdTime } from "react-icons/io";
 import { GiCancel } from "react-icons/gi";
 import ViewUpdateStatusModal from "./UpdateStatusModal";
 
 const ViewCurrentVolunteerTab = () => {
   const viewUpdateStatusModal = useDisclosure();
-  const {
-    dataUser,
-    refetchEventVolunteer,
-    isPendingDataEventVolunteer,
-    isPendingDataUser,
-    mergedData,
-  } = useViewCurrentVolunteerTab();
+  const { refetchEventVolunteer, isPendingDataEventVolunteer, mergedData } =
+    useViewCurrentVolunteerTab();
   const [selectedDataEventVolunteer, setSelectedDataEventVolunteer] =
     useState<IEventVolunteer | null>(null);
   const [btnValueStatus, setBtnValueStatus] = useState<string>();

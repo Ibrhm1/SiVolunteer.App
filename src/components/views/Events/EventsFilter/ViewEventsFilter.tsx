@@ -12,7 +12,6 @@ import {
 import useChangeUrl from "@/hooks/useChangeUrl";
 import { useEffect } from "react";
 import { ICategory } from "@/types/Category";
-import { cn } from "@/utils/cn";
 import { IoFilterSharp } from "react-icons/io5";
 
 const ViewEventsFilter = () => {
@@ -75,7 +74,7 @@ const ViewEventsFilter = () => {
                 <Controller
                   name="isOnline"
                   control={control}
-                  render={({ field: { onChange, ...field } }) => (
+                  render={({ field: { ...field } }) => (
                     <Select
                       {...field}
                       variant="bordered"
@@ -100,7 +99,7 @@ const ViewEventsFilter = () => {
           </AccordionItem>
         </Accordion>
       </div>
-      <div className="lg:hidden block">
+      <div className="block lg:hidden">
         <Accordion className="lg:sticky lg:top-20" variant="splitted">
           <AccordionItem
             title={<p className="font-semibold">Filter</p>}
@@ -136,7 +135,7 @@ const ViewEventsFilter = () => {
                 <Controller
                   name="isOnline"
                   control={control}
-                  render={({ field: { onChange, ...field } }) => (
+                  render={({ field: { ...field } }) => (
                     <Select
                       {...field}
                       variant="bordered"

@@ -77,7 +77,7 @@ const ViewProfilePicture = (props: PropTypes) => {
               <Controller
                 control={controlUpdateProfilePicture}
                 name="profilePicture"
-                render={({ field: { onChange, value, ...field } }) => (
+                render={({ field: { onChange, ...field } }) => (
                   <>
                     <InputFile
                       {...field}
