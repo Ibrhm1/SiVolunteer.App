@@ -1,7 +1,7 @@
 import LayoutLandingPage from "@/components/layouts/LayoutLandingPage";
 import ViewEvents from "@/components/views/Events";
 
-const index = () => {
+const EventsPage = () => {
   return (
     <LayoutLandingPage title="Events">
       <ViewEvents />
@@ -9,4 +9,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default EventsPage;

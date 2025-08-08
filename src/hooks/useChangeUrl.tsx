@@ -13,7 +13,6 @@ const useChangeUrl = () => {
   const currentSearch = router.query.search;
   const currentCategory = router.query.category;
   const currentIsOnline = router.query.isOnline;
-  const currentIsFeatured = router.query.isFeatured;
 
   const setUrl = () => {
     router.replace({
@@ -32,7 +31,6 @@ const useChangeUrl = () => {
         page: currentPage || PAGE_DEFAULT,
         category: currentCategory || "",
         isOnline: currentIsOnline || "",
-        isFeatured: currentIsFeatured || "",
       },
     });
   };
@@ -77,15 +75,6 @@ const useChangeUrl = () => {
     });
   };
 
-  const handleChangeIsFeatured = (isFeatured: string) => {
-    router.push({
-      query: {
-        ...router.query,
-        isFeatured,
-        page: PAGE_DEFAULT,
-      },
-    });
-  };
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     debounce(() => {
       const search = e.target.value;
@@ -122,9 +111,7 @@ const useChangeUrl = () => {
     setUrlExplore,
     currentCategory,
     currentIsOnline,
-    currentIsFeatured,
     handleChangeCategory,
-    handleChangeIsFeatured,
     handleChangeIsOnline,
   };
 };

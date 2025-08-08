@@ -27,7 +27,7 @@ const ViewHomeListEvents = (props: PropTypes) => {
           Lihat Semua
         </Link>
       </div>
-      <div className="scroll-x-custom grid auto-cols-[20rem] grid-flow-col gap-2 overflow-x-auto py-3">
+      <div className="scroll-x-custom grid auto-cols-[20rem] grid-flow-col gap-4 overflow-x-auto py-3">
         {!isLoading
           ? dataEvents?.map((event) => (
               <EventCard
