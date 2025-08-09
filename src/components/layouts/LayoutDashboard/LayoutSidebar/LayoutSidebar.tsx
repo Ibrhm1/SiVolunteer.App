@@ -33,12 +33,14 @@ const LayoutSidebar = (props: PropTypes) => {
     >
       <div>
         <div className="bg-default-100 mb-4 flex justify-center rounded-2xl p-2">
-          <Link
-            href="https://si-volunteer-app.vercel.app/"
+          <h1
+            onClick={() => {
+              router.push("/");
+            }}
             className="text-center text-3xl font-bold"
           >
             Si Volunteer
-          </Link>
+          </h1>
         </div>
         <Listbox
           variant="faded"

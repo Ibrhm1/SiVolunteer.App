@@ -6,8 +6,7 @@ import { MdDateRange } from "react-icons/md";
 import { IRegency } from "@/types/region";
 
 const ViewSearchOrganizers = () => {
-  const { dataOrganizers, isPendingOrganizers, dataRegion } =
-    useViewSearchOrganizers();
+  const { dataOrganizers, dataRegion } = useViewSearchOrganizers();
 
   return (
     <main className="flex gap-2 px-6 py-3">
@@ -16,7 +15,7 @@ const ViewSearchOrganizers = () => {
       </Card>
       <div className="bg-danger flex w-full gap-4 px-4 py-3">
         {dataOrganizers?.map((organizer: IOrganizer) => (
-          <Card className="h-[17rem] w-[18rem]">
+          <Card key={organizer._id} className="h-[17rem] w-[18rem]">
             <CardHeader className="bg-default-100 items-center justify-center">
               <Avatar size="lg" src={organizer?.logo} />
             </CardHeader>

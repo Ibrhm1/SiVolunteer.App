@@ -3,17 +3,21 @@ import organizerServices from "@/services/authOrganizer.service";
 import categoryService from "@/services/category.service";
 import eventsService from "@/services/events.service";
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 
 const useViewHome = () => {
-  const getAllEvents = async (params: string) => {
-    const { data } = await eventsService.getEvents(params);
+  const { isReady } = useRouter();
+  const getAllEvents = async () => {
+    const { data } = await eventsService.getEvents(
+      `limit=4&page=1&isPublish=true`,
+    );
     return data.data;
   };
 
   const { data: dataEvents, isLoading: isLoadingEvents } = useQuery({
-    queryKey: ["Events"],
-    queryFn: () => getAllEvents(`limit=4&page=1&isPublish=true`),
-    enabled: true,
+    queryKey: ["Events", isReady],
+    queryFn: getAllEvents,
+    enabled: isReady,
   });
 
   const { data: dataCategory, isLoading: isLoadingCategory } = useQuery({
