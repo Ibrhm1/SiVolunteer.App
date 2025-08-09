@@ -7,7 +7,7 @@ const NAV_LINKS = [
   },
   {
     label: "About",
-    href: "/about",
+    href: "#",
   },
   {
     label: "Explore Events",
@@ -15,7 +15,7 @@ const NAV_LINKS = [
   },
   {
     label: "Explore Organizers",
-    href: "/organizers",
+    href: "#",
   },
 ];
 

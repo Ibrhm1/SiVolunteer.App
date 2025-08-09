@@ -12,7 +12,7 @@ const ViewHomeListEvents = (props: PropTypes) => {
   const { dataEvents, isLoading } = props;
 
   return (
-    <section className="bg-default-100 flex h-[80dvh] flex-col justify-center px-4 lg:px-8">
+    <section className="bg-default-100 flex h-[100dvh] flex-col justify-center px-4 md:py-8 lg:h-[80dvh] lg:px-8 lg:py-6">
       <div>
         <h1 className="text-medium text-center font-semibold md:text-xl lg:text-2xl">
           {dataEvents?.length} aksi kebaikan sedang menunggu bantuanmu!

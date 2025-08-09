@@ -22,13 +22,13 @@ const ViewEvents = () => {
         <ViewEventsFilter />
       </div>
       <div className="min-h-[70vh] w-full py-4 lg:mx-0">
-        <div className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-3 xl:grid-cols-4">
+        <div className="mb-4 grid grid-cols-1 gap-2 px-1 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-3 xl:grid-cols-4">
           {!isLoadingEvents && !isRefetchingEvents
             ? dataEvents?.data?.map((event: IEvent) => (
                 <EventCard
                   event={event}
                   key={`${event._id}`}
-                  className="mx-auto w-[14rem] md:w-[14rem] lg:w-[16rem] xl:w-[17rem]"
+                  className="mx-auto w-full md:w-[14rem] lg:w-[16rem] xl:w-[17rem]"
                 />
               ))
             : Array.from({ length: 4 }).map((_, index) => (
