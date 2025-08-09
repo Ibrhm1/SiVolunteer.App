@@ -33,9 +33,12 @@ const LayoutSidebar = (props: PropTypes) => {
     >
       <div>
         <div className="bg-default-100 mb-4 flex justify-center rounded-2xl p-2">
-          <a href="/" className="text-center text-3xl font-bold">
+          <Link
+            href="https://si-volunteer-app.vercel.app/"
+            className="text-center text-3xl font-bold"
+          >
             Si Volunteer
-          </a>
+          </Link>
         </div>
         <Listbox
           variant="faded"
