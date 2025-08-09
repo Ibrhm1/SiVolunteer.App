@@ -57,7 +57,7 @@ const LayoutNavbar = () => {
   }, [session.status, router.isReady]);
 
   return (
-    <Navbar maxWidth="full" isBordered isBlurred={false} shouldHideOnScroll>
+    <Navbar maxWidth="full" isBordered isBlurred={false}>
       <NavbarContent justify="start">
         <NavbarBrand>
           <h1 className="text-lg font-bold lg:text-3xl">SiVolunteer</h1>
@@ -135,12 +135,18 @@ const LayoutNavbar = () => {
                     isLoaded={!isPendingDataProfile}
                   >
                     {dataProfile?.role === "organizer" ? (
-                      <Avatar src={dataProfile?.logo} size="md" alt="avatar" />
+                      <Avatar
+                        src={dataProfile?.logo}
+                        size="md"
+                        alt="avatar"
+                        className="cursor-pointer"
+                      />
                     ) : (
                       <Avatar
                         src={dataProfile?.profilePicture}
                         size="md"
                         alt="avatar"
+                        className="cursor-pointer"
                       />
                     )}
                   </Skeleton>

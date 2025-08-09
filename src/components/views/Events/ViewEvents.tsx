@@ -28,13 +28,13 @@ const ViewEvents = () => {
                 <EventCard
                   event={event}
                   key={`${event._id}`}
-                  className="mx-auto w-full md:w-[14rem] lg:w-[16rem] xl:w-[17rem]"
+                  className="mx-auto w-full"
                 />
               ))
             : Array.from({ length: 4 }).map((_, index) => (
                 <EventCard
                   key={`card-skeleton-${index}`}
-                  className="mx-auto w-[14rem] md:w-[14rem] lg:w-[16rem]"
+                  className="mx-auto w-full"
                   isLoading={true}
                 />
               ))}

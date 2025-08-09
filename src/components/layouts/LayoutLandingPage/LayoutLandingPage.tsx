@@ -14,7 +14,7 @@ const LayoutLandingPage = (props: PropTypes) => {
     <>
       <TitlePage title={title} />
       <LayoutNavbar />
-      <main>{children}</main>
+      <div>{children}</div>
       <LayoutFooter />
     </>
   );

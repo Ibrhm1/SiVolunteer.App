@@ -1,7 +1,7 @@
 const ViewHomeInfo = () => {
   return (
-    <section className="shadow-default-400 relative flex h-[30dvh] flex-col items-center justify-center px-10 py-6 shadow-[0_0_10px]">
-      <div className="w-full md:w-[80%]">
+    <section className="shadow-default-400 relative flex flex-col items-center justify-center px-10 py-3 shadow-[0_0_10px] md:py-7">
+      <div className="w-full">
         <h1 className="mb-2 text-center text-xl font-bold md:mb-4 lg:mb-6 lg:text-2xl xl:text-3xl">
           Tujuan Kami
         </h1>

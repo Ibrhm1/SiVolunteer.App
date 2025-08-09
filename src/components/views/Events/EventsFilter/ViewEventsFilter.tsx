@@ -92,8 +92,8 @@ const ViewEventsFilter = () => {
               </div>
             ) : (
               <div className="mt-4 space-y-2">
-                <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
-                <Skeleton className="h-12 w-full rounded-xl lg:w-64" />
+                <Skeleton className="h-12 w-full rounded-xl" />
+                <Skeleton className="h-12 w-full rounded-xl" />
               </div>
             )}
           </AccordionItem>

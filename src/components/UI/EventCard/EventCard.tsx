@@ -33,7 +33,7 @@ const EventCard = (props: PropTypes) => {
   return (
     <Card
       as={Link}
-      className={cn(className, "cursor-pointer")}
+      className={cn(className, "h-fit cursor-pointer")}
       href={`/events/${event?.slug}`}
       isPressable={isLoading ? false : true}
       key={key}
@@ -52,12 +52,14 @@ const EventCard = (props: PropTypes) => {
             />
           </CardHeader>
           <CardBody className="h-28">
-            <h2 className="text-lg font-semibold">{event?.name}</h2>
-            <p className="text-medium text-foreground-700">
+            <h2 className="text-medium font-semibold md:text-lg">
+              {event?.name}
+            </h2>
+            <p className="md:text-medium text-foreground-700 text-sm">
               {dataOrganizer?.organizerName}
             </p>
           </CardBody>
-          <CardFooter className="h-24 items-center">
+          <CardFooter className="items-center lg:h-24">
             {event?.isOnline ? (
               <div className="flex flex-col">
                 <div className="flex items-center gap-1">

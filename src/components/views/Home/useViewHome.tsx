@@ -12,7 +12,8 @@ const useViewHome = () => {
 
   const { data: dataEvents, isLoading: isLoadingEvents } = useQuery({
     queryKey: ["Events"],
-    queryFn: () => getAllEvents(`isPublish=true`),
+    queryFn: () => getAllEvents(`limit=4&page=1&isPublish=true`),
+    enabled: true,
   });
 
   const { data: dataCategory, isLoading: isLoadingCategory } = useQuery({

@@ -25,15 +25,17 @@ const LayoutSidebar = (props: PropTypes) => {
   return (
     <div
       className={cn(
-        "border-default-200 fixed z-50 flex h-screen w-full max-w-[300px] -translate-x-full flex-col border-r-1 px-4 py-6 transition-all lg:relative lg:translate-x-0 bg-default-50",
+        "border-default-200 bg-default-50 fixed z-50 flex h-screen w-full max-w-[300px] -translate-x-full flex-col border-r-1 px-4 py-6 transition-all lg:relative lg:translate-x-0",
         {
           "translate-x-0": isOpen,
         },
       )}
     >
       <div>
-        <div className="bg-default-100 mb-4 rounded-2xl p-2">
-          <h1 className="text-center text-3xl font-bold">Si Volunteer</h1>
+        <div className="bg-default-100 mb-4 flex justify-center rounded-2xl p-2">
+          <a href="/" className="text-center text-3xl font-bold">
+            Si Volunteer
+          </a>
         </div>
         <Listbox
           variant="faded"
