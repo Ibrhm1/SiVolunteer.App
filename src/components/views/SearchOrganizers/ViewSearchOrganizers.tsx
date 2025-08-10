@@ -39,6 +39,7 @@ const ViewSearchOrganizers = () => {
       <div className="flex w-full flex-wrap justify-center gap-4 px-4 py-3 md:justify-start">
         {mergedData?.map((organizer) => (
           <Skeleton
+            key={`skelton-${organizer._id}`}
             className="h-fit w-[18rem] rounded-lg md:w-[20rem]"
             isLoaded={!isLoadingOrganizers && !isPendingRegion}
           >
