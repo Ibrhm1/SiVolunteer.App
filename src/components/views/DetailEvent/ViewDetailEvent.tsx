@@ -18,6 +18,7 @@ import ViewDetailEventRegistration from "./DetailEventRegistration";
 import { FaRegUser } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { GiAchievement } from "react-icons/gi";
+import Link from "next/link";
 
 const ViewDetailEvent = () => {
   const router = useRouter();
@@ -71,9 +72,12 @@ const ViewDetailEvent = () => {
                 }}
                 // description={}
                 name={
-                  <h2 className="text-medium font-semibold">
+                  <Link
+                    href={`/search-organizers/${dataOrganizerName?._id}`}
+                    className="text-medium font-semibold"
+                  >
                     {dataOrganizerName?.organizerName}
-                  </h2>
+                  </Link>
                 }
               />
             </Skeleton>

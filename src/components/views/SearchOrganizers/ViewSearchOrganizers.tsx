@@ -23,7 +23,6 @@ const ViewSearchOrganizers = () => {
     dataOrganizersPagination,
     mergedData,
     isLoadingOrganizers,
-    dataRegion,
     isPendingRegion,
   } = useViewSearchOrganizers();
 
@@ -41,7 +40,9 @@ const ViewSearchOrganizers = () => {
           <Skeleton
             key={`skelton-${organizer._id}`}
             className="h-fit w-[18rem] rounded-lg md:w-[20rem]"
-            isLoaded={!isLoadingOrganizers && !isPendingRegion}
+            isLoaded={
+              !isLoadingOrganizers && !isPendingRegion && router.isReady
+            }
           >
             <Card
               key={organizer._id}

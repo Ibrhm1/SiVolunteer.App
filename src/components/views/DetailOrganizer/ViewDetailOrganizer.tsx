@@ -19,7 +19,13 @@ import { IoIosContact } from "react-icons/io";
 import { IEvent } from "@/types/Event";
 
 const ViewDetailOrganizer = () => {
-  const { dataEvent, dataOrganizer, formatePhone } = useViewDetailOrganizer();
+  const {
+    dataEvent,
+    dataOrganizer,
+    formatePhone,
+    isLoadingEvent,
+    isLoadingOrganizer,
+  } = useViewDetailOrganizer();
 
   return (
     <main className="w-full md:px-0">
@@ -44,7 +50,10 @@ const ViewDetailOrganizer = () => {
 
       <section className="flex flex-col gap-2 px-2 py-3">
         <div className="flex w-full flex-col gap-2 xl:flex-row">
-          <Skeleton className="w-full rounded-sm" isLoaded={!!dataOrganizer}>
+          <Skeleton
+            className="w-full rounded-sm"
+            isLoaded={!!dataOrganizer && !isLoadingOrganizer}
+          >
             <Card radius="sm" className="w-full md:px-3 md:py-2 xl:h-[300px]">
               <CardHeader>
                 <h1 className="font-bold md:text-xl">Profile Organisasi</h1>
@@ -124,7 +133,10 @@ const ViewDetailOrganizer = () => {
           </Skeleton>
         </div>
 
-        <Skeleton className="w-full rounded-sm" isLoaded={!!dataEvent}>
+        <Skeleton
+          className="w-full rounded-sm"
+          isLoaded={!!dataEvent && !isLoadingEvent}
+        >
           <Card radius="sm" className="w-full md:px-3 md:py-2 xl:h-[320px]">
             <CardHeader className="border-default-300 border-b-1">
               <h1 className="font-bold md:text-xl">Daftar Event</h1>
