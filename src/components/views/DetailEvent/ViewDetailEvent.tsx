@@ -44,7 +44,7 @@ const ViewDetailEvent = () => {
           className="h-6 w-full rounded-lg md:w-1/2 lg:w-1/4"
           isLoaded={!!dataDetailEventSlug?.name}
         >
-          <Breadcrumbs>
+          <Breadcrumbs size="sm">
             <BreadcrumbItem href="/">Home</BreadcrumbItem>
             <BreadcrumbItem href="/events">Events</BreadcrumbItem>
             <BreadcrumbItem>{dataDetailEventSlug?.name}</BreadcrumbItem>

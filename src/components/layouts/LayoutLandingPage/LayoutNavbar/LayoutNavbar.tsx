@@ -60,7 +60,9 @@ const LayoutNavbar = () => {
     <Navbar maxWidth="full" isBordered isBlurred={false}>
       <NavbarContent justify="start">
         <NavbarBrand>
-          <h1 className="text-lg font-bold lg:text-3xl">SiVolunteer</h1>
+          <Link href={"/"} className="text-lg font-bold lg:text-3xl">
+            SiVolunteer
+          </Link>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent justify="center" className="hidden xl:flex">
@@ -72,7 +74,7 @@ const LayoutNavbar = () => {
             className={cn(
               "text-foreground-500 hover:text-foreground font-semibold",
               {
-                "text-primary border-primary border-b-2 font-bold":
+                "text-primary border-primary hover:text-primary-400 border-b-2 font-bold":
                   router.pathname === item.href,
               },
             )}
@@ -84,7 +86,6 @@ const LayoutNavbar = () => {
       <NavbarContent justify="end">
         <NavbarItem className="hidden items-center gap-4 lg:relative lg:flex">
           <Input
-            className="w-[220px]"
             isClearable
             onChange={handleSearch}
             onClear={() => setSearch("")}

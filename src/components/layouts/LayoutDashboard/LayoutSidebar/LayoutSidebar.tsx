@@ -37,7 +37,7 @@ const LayoutSidebar = (props: PropTypes) => {
             onClick={() => {
               router.push("/");
             }}
-            className="text-center text-3xl font-bold"
+            className="text-center text-3xl font-bold cursor-pointer`"
           >
             Si Volunteer
           </h1>

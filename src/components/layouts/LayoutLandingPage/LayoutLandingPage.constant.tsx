@@ -15,7 +15,7 @@ const NAV_LINKS = [
   },
   {
     label: "Explore Organizers",
-    href: "#",
+    href: "/search-organizers",
   },
 ];
 

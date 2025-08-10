@@ -83,6 +83,8 @@ const ViewDetailEventTab = (props: PropTypes) => {
     }
   }, [isSuccessUpdate]);
 
+  console.log(errorsUpdateInfo);
+
   return (
     <Card className="w-full p-4">
       <CardBody>
@@ -398,10 +400,10 @@ const ViewDetailEventTab = (props: PropTypes) => {
             color="primary"
             variant="ghost"
             className="disabled:bg-default-500 mt-2"
-            disabled={isPendingUpdate || !!dataMyEvent?._id}
+            disabled={isPendingUpdate || !dataMyEvent}
           >
             {isPendingUpdate ? (
-              <Spinner size="sm" color="white" />
+              <Spinner size="sm" color="primary" />
             ) : (
               <>
                 <FaRegSave />

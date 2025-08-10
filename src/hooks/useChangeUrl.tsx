@@ -14,6 +14,15 @@ const useChangeUrl = () => {
   const currentCategory = router.query.category;
   const currentIsOnline = router.query.isOnline;
 
+  const setUrlNoSearch = () => {
+    router.replace({
+      query: {
+        limit: currentLimit || LIMIT_DEFAULT,
+        page: currentPage || PAGE_DEFAULT,
+      },
+    });
+  };
+
   const setUrl = () => {
     router.replace({
       query: {
@@ -107,7 +116,7 @@ const useChangeUrl = () => {
     currentLimit,
     currentPage,
     currentSearch,
-
+    setUrlNoSearch,
     setUrlExplore,
     currentCategory,
     currentIsOnline,

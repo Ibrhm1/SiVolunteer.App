@@ -28,7 +28,7 @@ const ViewHomeListEvents = (props: PropTypes) => {
         </Link>
       </div>
       <div className="scroll-x-custom grid grid-flow-col gap-2 overflow-x-auto py-3 xl:mx-auto 2xl:gap-4">
-        {!isLoading
+        {!isLoading && !!dataEvents
           ? dataEvents?.map((event) => (
               <EventCard
                 key={`${event._id}`}

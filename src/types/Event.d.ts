@@ -21,6 +21,8 @@ interface IEvent {
   tags?: string[];
   createdBy?: string;
   slug?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 interface IEventForm extends IEvent {

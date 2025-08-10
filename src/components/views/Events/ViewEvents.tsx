@@ -6,6 +6,8 @@ import useChangeUrl from "@/hooks/useChangeUrl";
 import { useRouter } from "next/router";
 import EventsPagination from "./EventsPagination";
 import ViewEventsFilter from "./EventsFilter";
+import Image from "next/image";
+import { publicImage } from "@/components/images/render.image";
 
 const ViewEvents = () => {
   const router = useRouter();
@@ -45,20 +47,22 @@ const ViewEvents = () => {
             totalPages={dataEvents?.pagination?.totalPages}
           />
         )}
-        {/* {dataEvents?.length < 1 && !isLoadingEvents && !isRefetchingEvents && (
-          <div className="flex flex-col items-center justify-center gap-4 py-20">
-            <Image
-              alt="no data illustration"
-              loading="lazy"
-              width={300}
-              height={300}
-              src={"/images/illustration/no-data.svg"}
-            />
-            <h2 className="text-danger text-center text-2xl font-bold">
-              Event is empty
-            </h2>
-          </div>
-        )} */}
+        {dataEvents?.data.length < 1 &&
+          !isLoadingEvents &&
+          !isRefetchingEvents && (
+            <div className="flex flex-col items-center justify-center gap-4 py-20">
+              <Image
+                alt="no data illustration"
+                loading="lazy"
+                width={300}
+                height={300}
+                src={publicImage.NoData}
+              />
+              <h2 className="text-center text-2xl font-bold">
+                Yah, data tidak ditemukan
+              </h2>
+            </div>
+          )}
       </div>
     </div>
   );
