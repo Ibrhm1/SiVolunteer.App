@@ -1,5 +1,6 @@
 import organizerServices from "@/services/authOrganizer.service";
 import eventsService from "@/services/events.service";
+import regionService from "@/services/region.service";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
@@ -28,6 +29,19 @@ const useViewDetailOrganizer = () => {
     enabled: !!query.id,
   });
 
+  const getRegencyById = async () => {
+    const { data } = await regionService.getRegencyById(
+      `${dataOrganizer?.location?.domicile}`,
+    );
+    return data.data;
+  };
+
+  const { data: dataRegency, isLoading: isLoadingRegency } = useQuery({
+    queryKey: ["Regency"],
+    queryFn: getRegencyById,
+    enabled: !!dataOrganizer?.location?.domicile,
+  });
+
   const formatePhone = (phone: string) => {
     const result = phone?.replace(/^08/, "62");
     return result;
@@ -36,8 +50,13 @@ const useViewDetailOrganizer = () => {
   return {
     dataOrganizer,
     isLoadingOrganizer,
+
     dataEvent,
     isLoadingEvent,
+
+    dataRegency,
+    isLoadingRegency,
+    
     formatePhone,
   };
 };

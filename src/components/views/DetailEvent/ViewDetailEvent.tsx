@@ -34,9 +34,8 @@ const ViewDetailEvent = () => {
   useEffect(() => {
     if (router.isReady && dataDetailEventSlug) {
       refetchDetailEventSlug();
-      console.log("asdasdas");
     }
-  }, [router.isReady]);
+  }, [router.isReady, dataDetailEventSlug]);
 
   return (
     <main className="w-full md:px-0">
@@ -56,21 +55,24 @@ const ViewDetailEvent = () => {
       <section className="mt-2 flex w-full flex-col gap-0 lg:flex-row">
         <div className="mb-5 flex w-full flex-col justify-center px-3 lg:w-4/6 lg:px-6">
           <Skeleton
-            isLoaded={!!dataDetailEventSlug?.image}
-            className="aspect-video w-full rounded-xl"
+            isLoaded={!!dataDetailEventSlug?.image && !isLoadingOrganizerName}
+            className="w-full rounded-xl"
           >
-            <Image src={dataDetailEventSlug?.image} />
+            <Image
+              src={dataDetailEventSlug?.image}
+              alt="Cover"
+              width={"100%"}
+            />
           </Skeleton>
           <div className="mx-auto flex w-full items-center justify-between px-2 py-6">
             <Skeleton
-              isLoaded={!isLoadingOrganizerName && !!dataCategoryName?.name}
+              isLoaded={!isLoadingOrganizerName}
               className="w-full rounded-lg md:w-1/3"
             >
               <User
                 avatarProps={{
                   src: dataDetailEventSlug?.logo,
                 }}
-                // description={}
                 name={
                   <Link
                     href={`/search-organizers/${dataOrganizerName?._id}`}

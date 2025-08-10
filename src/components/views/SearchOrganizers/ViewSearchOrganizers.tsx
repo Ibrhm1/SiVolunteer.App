@@ -31,18 +31,16 @@ const ViewSearchOrganizers = () => {
   }, [router.isReady]);
 
   return (
-    <main className="h-fit py-3">
-      <h1 className="w-full text-center text-xl font-semibold lg:text-2xl">
+    <main className="py-3">
+      <h1 className="mb-3 w-full text-center text-xl font-semibold lg:mb-4 lg:text-2xl">
         Cari Organisasi dan gabung dengan mereka
       </h1>
       <div className="flex w-full flex-wrap justify-center gap-4 px-4 py-3 md:justify-start">
         {mergedData?.map((organizer) => (
           <Skeleton
             key={`skelton-${organizer._id}`}
-            className="h-fit w-[18rem] rounded-lg md:w-[20rem]"
-            isLoaded={
-              !isLoadingOrganizers && !isPendingRegion && router.isReady
-            }
+            className="rounded-lg md:w-[20rem]"
+            isLoaded={!isLoadingOrganizers && !isPendingRegion}
           >
             <Card
               key={organizer._id}
@@ -93,13 +91,12 @@ const ViewSearchOrganizers = () => {
           </Skeleton>
         ))}
       </div>
-      {!isLoadingOrganizers &&
-        dataOrganizersPagination?.data.data.length > 0 && (
-          <SearchOrganizersPagination
-            totalPages={dataOrganizersPagination?.data?.pagination?.totalPages}
-            className="mt-4 flex items-center justify-center"
-          />
-        )}
+      {dataOrganizersPagination?.data.data.length > 0 && (
+        <SearchOrganizersPagination
+          totalPages={dataOrganizersPagination?.data?.pagination?.totalPages}
+          className="mt-4 flex items-center justify-center"
+        />
+      )}
     </main>
   );
 };

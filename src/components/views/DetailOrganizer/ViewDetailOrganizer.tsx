@@ -20,11 +20,16 @@ import { IEvent } from "@/types/Event";
 
 const ViewDetailOrganizer = () => {
   const {
-    dataEvent,
     dataOrganizer,
-    formatePhone,
-    isLoadingEvent,
     isLoadingOrganizer,
+
+    dataEvent,
+    isLoadingEvent,
+
+    dataRegency,
+    isLoadingRegency,
+
+    formatePhone,
   } = useViewDetailOrganizer();
 
   return (
@@ -59,13 +64,15 @@ const ViewDetailOrganizer = () => {
                 <h1 className="font-bold md:text-xl">Profile Organisasi</h1>
               </CardHeader>
               <CardBody className="flex-row gap-3 md:gap-5">
-                <Image
-                  src={dataOrganizer?.logo}
-                  alt={dataOrganizer?.logo}
-                  width={100}
-                  height={100}
-                  className="object-cover"
-                />
+                <div className="h-fit">
+                  <Image
+                    src={dataOrganizer?.logo}
+                    alt={dataOrganizer?.logo}
+                    width={100}
+                    height={100}
+                    className="object-cover"
+                  />
+                </div>
                 <div className="flex flex-col">
                   <h1 className="text-lg font-bold md:text-xl">
                     {dataOrganizer?.organizerName}
@@ -97,21 +104,26 @@ const ViewDetailOrganizer = () => {
             </Card>
           </Skeleton>
 
-          <Skeleton className="w-full rounded-sm" isLoaded={!!dataOrganizer}>
+          <Skeleton
+            className="w-full rounded-sm"
+            isLoaded={
+              !!dataOrganizer && !isLoadingOrganizer && !isLoadingRegency
+            }
+          >
             <Card radius="sm" className="w-full md:px-3 md:py-2 xl:h-[300px]">
               <CardHeader className="border-default-300 border-b-1">
                 <h1 className="font-bold md:text-xl">Detail Organisasi</h1>
               </CardHeader>
-              <CardBody className="gap-3 md:gap-8">
+              <CardBody>
                 <section className="flex flex-col gap-2">
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col">
                     <h1 className="font-bold md:text-xl">Penanggung Jawab</h1>
                     <p className="text-foreground-600 md:text-medium flex items-center gap-1 text-sm">
                       <IoIosContact size={20} />
                       {dataOrganizer?.contactPerson}
                     </p>
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col">
                     <h1 className="font-bold md:text-xl">
                       Deskripsi Organisasi
                     </h1>
@@ -119,13 +131,20 @@ const ViewDetailOrganizer = () => {
                       {dataOrganizer?.descriptionOrganizer}
                     </p>
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col">
                     <h1 className="font-bold md:text-xl">Lokasi</h1>
-                    <p className="text-foreground-600 md:text-medium flex items-center gap-1 text-sm">
-                      <FaLocationDot />
-                      {dataOrganizer?.location?.domicile},{" "}
-                      {dataOrganizer?.location?.address}
-                    </p>
+                    <div className="text-foreground-600 md:text-medium flex items-start gap-1 text-sm">
+                      <FaLocationDot className="mt-1" />
+                      <div className="flex flex-col">
+                        <span>
+                          {dataRegency?.[0]?.name},{" "}
+                          {dataOrganizer?.location?.address}
+                        </span>
+                        <span className="">
+                          {dataRegency?.[0]?.province?.name}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </section>
               </CardBody>
@@ -135,7 +154,7 @@ const ViewDetailOrganizer = () => {
 
         <Skeleton
           className="w-full rounded-sm"
-          isLoaded={!!dataEvent && !isLoadingEvent}
+          isLoaded={!!dataEvent && !isLoadingEvent && !!dataOrganizer}
         >
           <Card radius="sm" className="w-full md:px-3 md:py-2 xl:h-[320px]">
             <CardHeader className="border-default-300 border-b-1">
