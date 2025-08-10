@@ -32,6 +32,7 @@ import { cn } from "@/utils/cn";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { IEvent } from "@/types/Event";
+import { publicImage } from "@/components/images/render.image";
 
 const LayoutNavbar = () => {
   const session = useSession();
@@ -60,8 +61,14 @@ const LayoutNavbar = () => {
     <Navbar maxWidth="full" isBordered isBlurred={false}>
       <NavbarContent justify="start">
         <NavbarBrand>
-          <Link href={"/"} className="text-lg font-bold lg:text-3xl">
-            SiVolunteer
+          <Link href={"/"}>
+            <Image
+              src={publicImage.Logo}
+              alt="logo"
+              width={100}
+              height={100}
+              className="object-cover"
+            />
           </Link>
         </NavbarBrand>
       </NavbarContent>

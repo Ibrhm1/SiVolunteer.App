@@ -1,5 +1,5 @@
 import authService from "@/services/auth.service";
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import regionService from "@/services/region.service";
 import { IOrganizerUpdate } from "@/types/Organizer";
 import { useMutation, useQuery } from "@tanstack/react-query";

@@ -1,4 +1,4 @@
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import eventsService from "@/services/events.service";
 import regionService from "@/services/region.service";
 import { useQuery } from "@tanstack/react-query";
@@ -56,7 +56,7 @@ const useViewDetailOrganizer = () => {
 
     dataRegency,
     isLoadingRegency,
-    
+
     formatePhone,
   };
 };

@@ -6,7 +6,7 @@ import { IRegisterOrganizer } from "@/types/Auth";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import { DateValue } from "@heroui/react";
 import regionService from "@/services/region.service";
 import useDebounce from "@/hooks/useDebounce";

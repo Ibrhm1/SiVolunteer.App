@@ -1,5 +1,5 @@
 const endpointService = {
-  FAQ: "/Faq",
+  FAQ: "/faqs",
   AUTH: "/auth",
   IMAGE: "/image",
   EVENTS: "/events",

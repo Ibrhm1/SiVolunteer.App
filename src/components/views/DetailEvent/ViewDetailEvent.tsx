@@ -66,7 +66,11 @@ const ViewDetailEvent = () => {
           </Skeleton>
           <div className="mx-auto flex w-full items-center justify-between px-2 py-6">
             <Skeleton
-              isLoaded={!isLoadingOrganizerName}
+              isLoaded={
+                !isLoadingOrganizerName &&
+                !!dataOrganizerName &&
+                !!dataDetailEventSlug
+              }
               className="w-full rounded-lg md:w-1/3"
             >
               <User

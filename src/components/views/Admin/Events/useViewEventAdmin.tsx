@@ -1,9 +1,8 @@
 import useChangeUrl from "@/hooks/useChangeUrl";
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import eventsService from "@/services/events.service";
 import { IEvent } from "@/types/Event";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 
 const useViewEventAdmin = () => {

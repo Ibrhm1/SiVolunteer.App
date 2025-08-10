@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useRouter } from "next/router";
-import { ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import * as Yup from "yup";

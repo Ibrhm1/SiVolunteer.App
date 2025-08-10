@@ -1,4 +1,4 @@
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import categoryService from "@/services/category.service";
 import eventsService from "@/services/events.service";
 import eventVolunteerService from "@/services/eventVolunteer.service";

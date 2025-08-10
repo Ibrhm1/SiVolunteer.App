@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { NAV_LINKS, SOCIAL_ITEMS } from "../LayoutLandingPage.constant";
 import { Divider } from "@heroui/react";
+import Image from "next/image";
+import { publicImage } from "@/components/images/render.image";
 
 const LayoutFooter = () => {
   return (
@@ -9,13 +11,13 @@ const LayoutFooter = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 flex flex-col gap-6 md:mb-0 md:flex-row md:items-center">
             <div className="flex flex-col items-center">
-              {/* <Image
-                src="https://flowbite.com/docs/images/logo.svg"
+              <Image
+                src={publicImage.Logo}
                 alt="FlowBite Logo"
-                width={80}
-                height={80}
-              /> */}
-              <h1 className="text-3xl font-bold">SiVolunteer</h1>
+                width={200}
+                height={200}
+                className="rounded-full object-center"
+              />
             </div>
             <div className="mt-6 flex flex-col gap-2 md:mt-0 md:w-1/2">
               <Link

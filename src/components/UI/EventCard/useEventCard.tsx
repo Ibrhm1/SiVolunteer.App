@@ -1,4 +1,4 @@
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import regionService from "@/services/region.service";
 import { useQuery } from "@tanstack/react-query";
 

@@ -1,5 +1,5 @@
 import useChangeUrl from "@/hooks/useChangeUrl";
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import regionService from "@/services/region.service";
 import { IOrganizer } from "@/types/Organizer";
 import { IRegency } from "@/types/region";

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import ViewHomeBanners from "./HomeBanners";
 import ViewHomeInfo from "./HomeInfo";
 import ViewHomeListEvents from "./HomeListEvents";

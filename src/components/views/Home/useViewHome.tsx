@@ -1,5 +1,5 @@
 import { LIMIT_CATEGORY, PAGE_DEFAULT } from "@/constants/list.constant";
-import organizerServices from "@/services/authOrganizer.service";
+import organizerServices from "@/services/organizers.service";
 import categoryService from "@/services/category.service";
 import eventsService from "@/services/events.service";
 import { useQuery } from "@tanstack/react-query";
