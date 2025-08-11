@@ -113,7 +113,7 @@ const ViewLogin = () => {
               isDisabled={isPendingLogin}
             >
               {isPendingLogin ? (
-                <Spinner color="primary" />
+                <Spinner color="white" />
               ) : (
                 <>
                   <IoLogInOutline className="text-xl" />
