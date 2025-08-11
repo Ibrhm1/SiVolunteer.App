@@ -85,7 +85,7 @@ Gunakan akun-akun berikut untuk mencoba aplikasi tanpa perlu registrasi:
 
 | Role      | Email                       | Username                  | Password    |
 | --------- | --------------------------- | ------------------------- | ----------- |
-| Admin     | admin@sivolunteer.com       | admin_demo                | password123 |
+| Admin     | admin@sivolunteer.com       | admin_demo                | Password123 |
 | Organizer | bacacerah.id@gmail.com      | Komunitas Baca Cerah      | Organizer1  |
 | Organizer | harapan.nusantara@gmail.com | Yayasan Harapan Nusantara | Organizer1  |
 | Member    | raka.dirgantara@example.com | rakadgt                   | Member12    |
