@@ -3,7 +3,7 @@ import ViewProfile from "@/components/views/Admin/Profile";
 
 const ProfilePageAdmin = () => {
   return (
-    <LayoutDashboard title="Profile" description="Manage Profile" type="admin">
+    <LayoutDashboard title="Profile" type="admin">
       <ViewProfile />
     </LayoutDashboard>
   );

@@ -58,7 +58,6 @@ const ViewAddCategoryModal = (props: PropTypes) => {
         placement="center"
         scrollBehavior="inside"
         isDismissable={false}
-        isKeyboardDismissDisabled
         onOpenChange={onOpenChange}
         isOpen={isOpen}
         onClose={() => handleOnClose(onClose)}
@@ -132,7 +131,7 @@ const ViewAddCategoryModal = (props: PropTypes) => {
                 disabled={disabledSubmitBtn}
               >
                 {isPendingMuteteAddCategory ? (
-                  <Spinner size="sm" color="white" />
+                  <Spinner size="sm" color="primary" />
                 ) : (
                   <>
                     <IoCreate size={18} />

@@ -4,11 +4,7 @@ import React from "react";
 
 const DashboardAdminPage = () => {
   return (
-    <LayoutDashboard
-      type="admin"
-      title="Dashboard Admin"
-      description="Management Admin"
-    >
+    <LayoutDashboard type="admin" title="Dashboard Admin">
       <ViewDashboardAdmin />
     </LayoutDashboard>
   );

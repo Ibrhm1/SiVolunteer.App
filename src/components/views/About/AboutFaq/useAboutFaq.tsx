@@ -6,7 +6,9 @@ const useAboutFaq = () => {
   const { currentLimit, currentPage } = useChangeUrl();
 
   const getFaq = async () => {
-    const { data } = await faqServices.getAllFaq(`limit=${10}&page=${1}`);
+    const { data } = await faqServices.getAllFaq(
+      `limit=${100}&page=${1}&isPublish=true`,
+    );
     return data;
   };
 

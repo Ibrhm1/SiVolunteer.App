@@ -2,6 +2,7 @@ import { CiGrid41 } from "react-icons/ci";
 import {
   FaHandHoldingHeart,
   FaHashtag,
+  FaQuestion,
   FaUserCog,
   FaUsers,
 } from "react-icons/fa";
@@ -40,6 +41,12 @@ const SIDEBAR_ADMIN = [
     label: "Event Volunteer",
     href: "/admin/eventVolunteer",
     icon: <MdOutlineVolunteerActivism />,
+  },
+  {
+    key: "faq",
+    label: "Frequently Asked Questions",
+    href: "/admin/faqs",
+    icon: <FaQuestion />,
   },
   {
     key: "profile",

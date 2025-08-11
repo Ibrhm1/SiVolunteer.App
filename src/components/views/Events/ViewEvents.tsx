@@ -52,11 +52,12 @@ const ViewEvents = () => {
           !isRefetchingEvents && (
             <div className="flex flex-col items-center justify-center gap-4 py-20">
               <Image
-                alt="no data illustration"
+                alt="no data illustration "
                 loading="lazy"
-                width={300}
-                height={300}
+                width={400}
+                height={400}
                 src={publicImage.NoData}
+                className="rounded-xl"
               />
               <h2 className="text-center text-2xl font-bold">
                 Yah, data tidak ditemukan

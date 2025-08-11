@@ -62,13 +62,7 @@ const LayoutNavbar = () => {
       <NavbarContent justify="start">
         <NavbarBrand>
           <Link href={"/"}>
-            <Image
-              src={publicImage.Logo}
-              alt="logo"
-              width={100}
-              height={100}
-              className="object-cover"
-            />
+            <Image src={publicImage.Logo} alt="logo" width={70} />
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -139,7 +133,7 @@ const LayoutNavbar = () => {
               <Dropdown>
                 <DropdownTrigger>
                   <Skeleton
-                    className="rounded-full"
+                    className="rounded-full w-16"
                     isLoaded={!isPendingDataProfile}
                   >
                     {dataProfile?.role === "organizer" ? (

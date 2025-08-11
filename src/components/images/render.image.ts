@@ -4,9 +4,11 @@ const publicImage = {
   Failed: "/Failed.png",
   Success: "/Success.png",
   Info: "/Info.png",
-  NoData: "/no-data-ilustration.png",
+  NoData: "/No-data.png",
   Logo: "/Logo-SiVolunteer.png",
   Faq: "/faq-ilustration.jpg",
+  Member: "/Member.jpg",
+  Organizer: "/Organizer.jpg",
 };
 
 const ListBanners = [

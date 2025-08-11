@@ -4,8 +4,8 @@ import ViewDashboardOrganizer from "@/components/views/Organizer/Dashboard/ViewD
 const DashboardOrganizerPage = () => {
   return (
     <LayoutDashboard
-      title="Dashboard Organizer"
-      description="Dashboard Organizer"
+      title="Dashboard"
+      description="Welcome to SiVolunteer"
       type="organizer"
     >
       <ViewDashboardOrganizer />

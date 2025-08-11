@@ -38,14 +38,10 @@ const ViewRegisterMember = () => {
 
   return (
     <Card className="p-5 md:w-1/2">
-      <CardHeader className="flex-col items-center justify-center rounded-2xl bg-default">
+      <CardHeader className="bg-default flex-col items-center justify-center rounded-xl">
         <h1 className="w-full text-center text-2xl font-bold">
-          Register Member
+          Regristasi Sebagai Member
         </h1>
-        <p className="text-center text-sm">
-          Join as a Member and discover various volunteer activities that you
-          can participate in to contribute directly!
-        </p>
       </CardHeader>
       <CardBody>
         <form

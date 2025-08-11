@@ -5,8 +5,8 @@ import React from "react";
 const OrganizerAdminPage = () => {
   return (
     <LayoutDashboard
+      description="List of all organizers"
       title="Organizer Admin"
-      description="Manage Organizer"
       type="admin"
     >
       <ViewOrganizer />

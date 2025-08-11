@@ -37,7 +37,7 @@ const ViewAboutInfo = () => {
               href="/events"
             >
               <span className="px-1.5 text-sm leading-6 font-medium text-white">
-                Get Started
+                Mulai Berkontribusi
               </span>
             </Button>
           </div>

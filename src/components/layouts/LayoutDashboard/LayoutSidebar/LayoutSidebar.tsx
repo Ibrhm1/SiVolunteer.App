@@ -1,6 +1,8 @@
+import { publicImage } from "@/components/images/render.image";
 import { cn } from "@/utils/cn";
 import { Button, Listbox, ListboxItem } from "@heroui/react";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { JSX } from "react";
@@ -32,16 +34,12 @@ const LayoutSidebar = (props: PropTypes) => {
       )}
     >
       <div>
-        <div className="bg-default-100 mb-4 flex justify-center rounded-2xl p-2">
-          <h1
-            onClick={() => {
-              router.push("/");
-            }}
-            className="text-center text-3xl font-bold cursor-pointer`"
-          >
-            Si Volunteer
-          </h1>
-        </div>
+        <Link
+          href="/"
+          className="bg-default-100 mb-3 shadow-default-400 flex justify-center rounded-2xl shadow"
+        >
+          <Image src={publicImage.Logo} alt="logo" width={100} height={100} />
+        </Link>
         <Listbox
           variant="faded"
           color="default"

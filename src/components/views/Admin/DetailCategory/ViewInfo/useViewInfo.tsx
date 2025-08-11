@@ -7,7 +7,7 @@ const schemaUpdateInfo = Yup.object().shape({
   description: Yup.string().required("Please input description information"),
 });
 
-const useViewImage = () => {
+const useViewInfo = () => {
   const {
     control: controlUpdateInfo,
     handleSubmit: handleSubmitUpdateInfo,
@@ -27,4 +27,4 @@ const useViewImage = () => {
   };
 };
 
-export default useViewImage;
+export default useViewInfo;

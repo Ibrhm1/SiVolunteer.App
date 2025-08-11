@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import useViewOrganizer from "./useViewOrganizer";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import dayjs from "dayjs";
+import Link from "next/link";
+import { IoMdMail } from "react-icons/io";
 
 const ViewOrganizer = () => {
   const { setUrl } = useChangeUrl();
@@ -25,8 +27,23 @@ const ViewOrganizer = () => {
           return (
             <Avatar isBordered radius="md" size="lg" src={`${cellValue}`} />
           );
+        case "email":
+          return (
+            <Link
+              href={`mailto:${cellValue}`}
+              className="text-primary-600 flex items-center gap-1"
+              target="_blank"
+            >
+              <IoMdMail />
+              {`${cellValue}`}
+            </Link>
+          );
         case "dateEstablished":
-          return <Chip>{dayjs(`${cellValue}`).format("DD MMMM YYYY")}</Chip>;
+          return (
+            <Chip color="primary" variant="flat">
+              {dayjs(`${cellValue}`).format("DD MMMM YYYY")}
+            </Chip>
+          );
         default:
           return cellValue as ReactNode;
       }

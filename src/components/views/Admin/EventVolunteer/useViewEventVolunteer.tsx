@@ -71,11 +71,17 @@ const useViewEventVolunteer = () => {
     enabled: !!dataEventVolunteer?.data?.data.length,
   });
 
+  const formatePhone = (phone: string) => {
+    const result = phone?.replace(/^08/, "62");
+    return result;
+  };
+
   return {
     dataCombined: combinedData,
     dataEventVolunteer,
     isLoading: isLoadingEventVolunteer || isLoadingCombined,
     isRefetching: isRefetchingEventVolunteer || isRefetchingCombined,
+    formatePhone,
   };
 };
 

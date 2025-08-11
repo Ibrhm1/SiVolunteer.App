@@ -6,7 +6,7 @@ const DetailCategoryAdminPage = () => {
     <LayoutDashboard
       type="admin"
       title="Detail Category"
-      description="Manage Category"
+      description="Manage Category Update, Delete, etc."
     >
       <ViewDetailCategory />
     </LayoutDashboard>

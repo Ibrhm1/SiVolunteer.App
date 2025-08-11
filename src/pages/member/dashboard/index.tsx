@@ -6,7 +6,7 @@ const DashboardMemberPage = () => {
   return (
     <LayoutDashboard
       type="member"
-      title="Dashboard Member"
+      title="Dashboard"
       description="Welcome to SiVolunteer"
     >
       <ViewDashboardMember />

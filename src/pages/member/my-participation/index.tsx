@@ -4,7 +4,7 @@ const MyParticipationPageMember = () => {
   return (
     <LayoutDashboard
       title="My Participation"
-      description="My Participation"
+      description="List of my participation events volunteer"
       type="member"
     >
       <ViewMyParticipation />

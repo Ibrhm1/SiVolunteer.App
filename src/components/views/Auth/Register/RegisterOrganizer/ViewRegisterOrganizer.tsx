@@ -54,7 +54,7 @@ const ViewRegisterOrganizer = () => {
     <Card className="p-5 md:w-2/3">
       <CardHeader className="bg-default flex-col items-center justify-center rounded-2xl">
         <h1 className="w-full text-center text-2xl font-bold">
-          Register Organizer
+          Registrasi Sebagai Organizer
         </h1>
       </CardHeader>
       <CardBody>
@@ -100,7 +100,7 @@ const ViewRegisterOrganizer = () => {
             />
           </div>
           <p className="text-medium m-0 p-0 font-semibold">
-            Information Organizer
+            Informasi Organizer
           </p>
           <Controller
             name="descriptionOrganizer"
@@ -168,7 +168,7 @@ const ViewRegisterOrganizer = () => {
               )}
             />
           </div>
-          <p className="text-medium m-0 p-0 font-semibold">Location</p>
+          <p className="text-medium m-0 p-0 font-semibold">Alamat</p>
           <div className="flex gap-2">
             <Controller
               name="domicile"

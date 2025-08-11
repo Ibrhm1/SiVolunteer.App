@@ -3,11 +3,7 @@ import ViewProfile from "@/components/views/Organizer/Profile";
 
 const ProfilePageOrganizer = () => {
   return (
-    <LayoutDashboard
-      title="Profile"
-      description="Manage Profile"
-      type="organizer"
-    >
+    <LayoutDashboard title="Profile" type="organizer">
       <ViewProfile />
     </LayoutDashboard>
   );

@@ -1,6 +1,6 @@
 import { ICategory } from "@/types/Category";
 import React, { useEffect } from "react";
-import useViewImage from "./useViewInfo";
+import useViewInfo from "./useViewInfo";
 import {
   Button,
   Card,
@@ -28,7 +28,7 @@ const ViewInfo = (props: PropTypes) => {
     controlUpdateInfo,
     setValueUpdateInfo,
     handleSubmitUpdateInfo,
-  } = useViewImage();
+  } = useViewInfo();
 
   useEffect(() => {
     setValueUpdateInfo("name", `${dataCategory?.name}`);
@@ -61,7 +61,6 @@ const ViewInfo = (props: PropTypes) => {
                   type="text"
                   isInvalid={!!errorsUpdateInfo.name}
                   errorMessage={errorsUpdateInfo.name?.message}
-                  className="mt-2"
                 />
               )}
             />

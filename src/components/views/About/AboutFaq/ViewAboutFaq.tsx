@@ -1,23 +1,12 @@
 import { publicImage } from "@/components/images/render.image";
-import {
-  Accordion,
-  AccordionItem,
-  Card,
-  CardBody,
-  CardHeader,
-  Tab,
-  Tabs,
-} from "@heroui/react";
+import { Skeleton, Tab, Tabs } from "@heroui/react";
 import Image from "next/image";
 import FaqMember from "./FaqMember";
 import FaqOrganizer from "./FaqOrganizer";
 import useAboutFaq from "./useAboutFaq";
-import { IFaq } from "@/types/Faq";
 
 const ViewAboutFaq = () => {
   const { dataFaq, isLoadingFaq } = useAboutFaq();
-
-  console.log(dataFaq);
 
   return (
     <section className="py-20">
@@ -29,7 +18,7 @@ const ViewAboutFaq = () => {
               alt="faq"
               width={600}
               height={600}
-              className="w-full rounded-xl object-cover"
+              className="shadow-default-400 w-full rounded-xl object-cover shadow-[0_0_8px]"
             />
           </div>
           <div className="w-full lg:w-1/2">
@@ -43,14 +32,19 @@ const ViewAboutFaq = () => {
                 </h2>
               </div>
               <div className="accordion">
-                <Tabs variant="underlined">
-                  <Tab key={"member"} title="Member">
-                    <FaqMember dataFaq={dataFaq?.data} />
-                  </Tab>
-                  <Tab key={"organizer"} title="Organizer">
-                    <FaqOrganizer dataFaq={dataFaq?.data} />
-                  </Tab>
-                </Tabs>
+                <Skeleton
+                  className="w-full rounded-lg"
+                  isLoaded={!isLoadingFaq}
+                >
+                  <Tabs variant="underlined">
+                    <Tab key={"member"} title="Member">
+                      <FaqMember dataFaq={dataFaq?.data} />
+                    </Tab>
+                    <Tab key={"organizer"} title="Organizer">
+                      <FaqOrganizer dataFaq={dataFaq?.data} />
+                    </Tab>
+                  </Tabs>
+                </Skeleton>
               </div>
             </div>
           </div>

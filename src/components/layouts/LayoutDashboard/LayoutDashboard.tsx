@@ -11,7 +11,7 @@ import ToggleDarkmode from "@/components/UI/ToggleDarkmode";
 
 interface PropTypes {
   children: ReactNode;
-  description: string;
+  description?: string;
   title: string;
   type: "admin" | "member" | "organizer";
 }

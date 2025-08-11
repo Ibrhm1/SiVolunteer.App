@@ -57,7 +57,7 @@ const ViewDetailOrganizer = () => {
         <div className="flex w-full flex-col gap-2 xl:flex-row">
           <Skeleton
             className="w-full rounded-sm"
-            isLoaded={!!dataOrganizer && !isLoadingOrganizer}
+            isLoaded={!!dataOrganizer && !isLoadingOrganizer && !isLoadingEvent}
           >
             <Card radius="sm" className="w-full md:px-3 md:py-2 xl:h-[300px]">
               <CardHeader>
@@ -107,7 +107,10 @@ const ViewDetailOrganizer = () => {
           <Skeleton
             className="w-full rounded-sm"
             isLoaded={
-              !!dataOrganizer && !isLoadingOrganizer && !isLoadingRegency
+              !!dataOrganizer &&
+              !!dataRegency &&
+              !isLoadingOrganizer &&
+              !isLoadingRegency
             }
           >
             <Card radius="sm" className="w-full md:px-3 md:py-2 xl:h-[300px]">

@@ -16,7 +16,7 @@ const LayoutFooter = () => {
                 alt="FlowBite Logo"
                 width={200}
                 height={200}
-                className="rounded-full object-center"
+                className="rounded-lg object-center"
               />
             </div>
             <div className="mt-6 flex flex-col gap-2 md:mt-0 md:w-1/2">

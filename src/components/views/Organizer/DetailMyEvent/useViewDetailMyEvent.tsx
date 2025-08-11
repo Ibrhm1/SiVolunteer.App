@@ -37,6 +37,7 @@ const useViewDetailMyEvent = () => {
         autoClose: 3000,
         theme: "dark",
       });
+      refetchMyEvent();
     },
   });
 

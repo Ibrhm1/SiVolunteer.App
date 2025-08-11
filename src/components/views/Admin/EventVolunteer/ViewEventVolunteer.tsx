@@ -4,13 +4,21 @@ import useViewEventVolunteer from "./useViewEventVolunteer";
 import DataTable from "@/components/UI/DataTable";
 import { COLUMN_LIST_EVENTVOLUNTEER } from "./ListTableEventVolunteer";
 import useChangeUrl from "@/hooks/useChangeUrl";
-import { Chip } from "@heroui/react";
+import { Button, Chip } from "@heroui/react";
+import Link from "next/link";
+import { IoMdMail } from "react-icons/io";
+import { FaWhatsapp } from "react-icons/fa";
 
 const ViewEventVolunteer = () => {
   const { setUrl } = useChangeUrl();
   const { push, query, isReady } = useRouter();
-  const { dataCombined, dataEventVolunteer, isLoading, isRefetching } =
-    useViewEventVolunteer();
+  const {
+    dataCombined,
+    dataEventVolunteer,
+    isLoading,
+    isRefetching,
+    formatePhone,
+  } = useViewEventVolunteer();
 
   useEffect(() => {
     if (isReady) {
@@ -37,6 +45,31 @@ const ViewEventVolunteer = () => {
               radius="md"
               className="font-bold"
             >{`${cellValue}`}</Chip>
+          );
+        case "email":
+          return (
+            <Link
+              href={`mailto:${cellValue}`}
+              className="text-primary-600 flex items-center gap-1"
+              target="_blank"
+            >
+              <IoMdMail />
+              {`${cellValue}`}
+            </Link>
+          );
+        case "phone":
+          return (
+            <Button
+              as={Link}
+              color="success"
+              href={`https://wa.me/${formatePhone(`${cellValue}`)}`}
+              className="font-semibold"
+              size="sm"
+              target="_blank"
+            >
+              <FaWhatsapp size={16} />
+              Hubungi Member
+            </Button>
           );
         default:
           return cellValue as ReactNode;

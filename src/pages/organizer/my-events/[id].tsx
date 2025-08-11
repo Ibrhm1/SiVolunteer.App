@@ -7,7 +7,7 @@ const MyEventOrganizerPage = () => {
     <LayoutDashboard
       type="organizer"
       title="Detail My Event"
-      description="Manage My Event"
+      description="Manage My Event Update, Delete, etc."
     >
       <ViewDetailMyEvent />
     </LayoutDashboard>

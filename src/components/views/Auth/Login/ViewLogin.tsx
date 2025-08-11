@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { Controller } from "react-hook-form";
 import useViewLogin from "./useViewLogin";
-import { FaEye, FaEyeSlash, FaLock, FaRegUser } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaHome, FaLock, FaRegUser } from "react-icons/fa";
 import { IoLogInOutline } from "react-icons/io5";
 import { publicImage } from "@/components/images/render.image";
 
@@ -51,6 +51,7 @@ const ViewLogin = () => {
                 label="Email / Username"
                 type="text"
                 variant="bordered"
+                placeholder="Email / Username"
                 startContent={<FaRegUser />}
                 isInvalid={!!errors.identifier}
                 errorMessage={errors.identifier?.message}
@@ -68,6 +69,7 @@ const ViewLogin = () => {
                 type={visiblePassword ? "text" : "password"}
                 variant="bordered"
                 startContent={<FaLock />}
+                placeholder="********"
                 isInvalid={!!errors.password}
                 errorMessage={errors.password?.message}
                 endContent={
@@ -86,26 +88,40 @@ const ViewLogin = () => {
               />
             )}
           />
-
-          <Button
-            size="lg"
-            type="submit"
-            color={
-              !!errors.identifier || !!errors.password ? "danger" : "primary"
-            }
-            variant="ghost"
-            className="w-2/3 font-bold"
-            isDisabled={isPendingLogin}
-          >
-            {isPendingLogin ? (
-              <Spinner color="primary" />
-            ) : (
-              <>
-                <IoLogInOutline className="text-xl" />
-                <span>Login</span>
-              </>
-            )}
-          </Button>
+          <div className="flex w-full items-center gap-2">
+            <Button
+              size="lg"
+              as={Link}
+              href="/"
+              className="w-1/6 font-bold"
+              isIconOnly
+              color={
+                !!errors.identifier || !!errors.password
+                  ? "danger"
+                  : "secondary"
+              }
+            >
+              <FaHome />
+            </Button>
+            <Button
+              size="lg"
+              type="submit"
+              color={
+                !!errors.identifier || !!errors.password ? "danger" : "primary"
+              }
+              className="w-5/6 font-bold"
+              isDisabled={isPendingLogin}
+            >
+              {isPendingLogin ? (
+                <Spinner color="primary" />
+              ) : (
+                <>
+                  <IoLogInOutline className="text-xl" />
+                  <span>Login</span>
+                </>
+              )}
+            </Button>
+          </div>
         </form>
       </CardBody>
     </Card>

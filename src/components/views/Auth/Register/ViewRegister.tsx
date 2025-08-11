@@ -1,4 +1,6 @@
+import { publicImage } from "@/components/images/render.image";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaRegUser } from "react-icons/fa";
@@ -8,7 +10,7 @@ const ViewRegister = () => {
   return (
     <main className="flex flex-col items-center gap-2 md:flex-row">
       <Link href={"/auth/register/member"}>
-        <Card className="max-w-[300px] px-5 py-2">
+        <Card className="mx-2 px-5 py-2 md:mx-0 md:max-w-[400px]">
           <CardHeader>
             <div className="flex w-full items-center justify-center gap-1 font-bold">
               <FaRegUser />
@@ -16,16 +18,24 @@ const ViewRegister = () => {
             </div>
           </CardHeader>
           <Divider />
-          <CardBody>
+          <CardBody className="flex flex-col items-center gap-2">
+            <Image
+              className="shadow-default-400 rounded-lg shadow"
+              src={publicImage.Member}
+              alt="Member"
+              width={250}
+              height={250}
+            />
             <span className="text-sm">
-              Join as a Member and discover various volunteer activities that
-              you can participate in to contribute directly!
+              Bergabunglah sebagai Anggota dan temukan berbagai kegiatan
+              sukarela yang dapat Anda ikuti untuk berkontribusi secara
+              langsung!
             </span>
           </CardBody>
         </Card>
       </Link>
       <Link href={"/auth/register/organizer"}>
-        <Card className="max-w-[300px] px-5 py-2">
+        <Card className="mx-2 px-5 py-2 md:mx-0 md:max-w-[400px]">
           <CardHeader>
             <div className="flex w-full items-center justify-center gap-1 font-bold">
               <VscOrganization className="text-xl" />
@@ -33,10 +43,18 @@ const ViewRegister = () => {
             </div>
           </CardHeader>
           <Divider />
-          <CardBody>
+          <CardBody className="flex flex-col items-center gap-2">
+            <Image
+              className="shadow-default-400 rounded-lg shadow"
+              src={publicImage.Organizer}
+              alt="Member"
+              width={250}
+              height={250}
+            />
             <span className="text-sm">
-              Want to organize a social event or volunteer activity? Register
-              yourself as an Organizer and start creating your own activities!
+              Ingin menyelenggarakan acara sosial atau kegiatan sukarela?
+              Daftarkan diri Anda sebagai Penyelenggara dan mulailah membuat
+              kegiatan Anda sendiri!
             </span>
           </CardBody>
         </Card>

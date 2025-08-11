@@ -1,9 +1,9 @@
 interface IFaq {
-  _id: string;
+  _id?: string;
   question: string;
   answer: string;
   type: "organizer" | "member";
-  isPublish: boolean;
+  isPublish: string;
 }
 
 export type { IFaq };

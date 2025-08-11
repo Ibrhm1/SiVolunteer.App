@@ -5,8 +5,8 @@ import React from "react";
 const DetailEventsAdminPage = () => {
   return (
     <LayoutDashboard
-      title="Detail Event Admin"
-      description="Manage Event Organizer"
+      title="Detail Event Organizer"
+      description="Detail event of organizer"
       type="admin"
     >
       <DetailEvent />
