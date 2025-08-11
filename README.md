@@ -1,40 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# SiVolunteer 🌟
 
-## Getting Started
+![SiVolunteer](public/Logo-SiVolunteer.png)
 
-First, run the development server:
+**SiVolunteer** adalah platform web untuk memfasilitasi interaksi antara penyelenggara kegiatan sosial (organizer) dan relawan (volunteer). Aplikasi ini memungkinkan pengguna untuk menemukan, mendaftar, dan mengelola kegiatan sukarela dengan mudah, serta membantu penyelenggara dalam mempublikasikan acara dan mengelola partisipan.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Fitur Utama ✨
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **Autentikasi & Otorisasi**
+  - Login & Register (role: Volunteer, Organizer, Admin)
+  - Aktivasi akun via email
+- **Manajemen Event**
+  - CRUD acara oleh organizer
+  - Pendaftaran volunteer ke acara
+  - List event publik
+- **Manajemen Organizer**
+  - Profil & kontak penyelenggara
+  - Verifikasi data
+- **Manajemen Volunteer**
+  - Profil volunteer
+  - Riwayat partisipasi
+- **Pencarian & Filter**
+  - Cari acara berdasarkan kategori, lokasi, dan tanggal
+- **Upload & Manajemen Gambar**
+  - Upload foto event dan profil
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Tech Stack 🛠️
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Bahasa**: TypeScript 🟦
+- **Framework**: Next.js ⚛️
+- **UI Library**: HeroUI 🎨
+- **Styling**: Tailwind CSS 💨
+- **Data Fetching**: Axios, React Query ⚡
+- **Validasi**: Yup ✅
+- **Carousel**: Swiper 🎠
+- **Icons**: React Icons 🔤
+- **Notifications**: React Toastify 🔔
+- **Database**: MongoDb 📝
+- **Deployment**: Vercel 🌐
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Instalasi & Menjalankan 🚀
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+1.  **Clone repositori:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    git clone https://github.com/Ibrhm1/SiVolunteer.App
+    cd SiVolunteer.App
+    ```
 
-## Deploy on Vercel
+2.  **Install dependensi:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+3.  **Konfigurasi Environment:**
+    Buat file .env di root direktori proyek. Isi dengan variabel lingkungan yang dibutuhkan, seperti:
+
+    ```
+    NEXT_PUBLIC_API_URL: "your_api_url"
+    NEXT_AUTH_SECRET: "your_secret"
+    ```
+
+4.  **Jalankan proyek:**
+
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## Link deploy 🌐
+
+Aplikasi yang sudah dideploy: **[SiVolunteer.App](https://si-volunteer-app.vercel.app/)**

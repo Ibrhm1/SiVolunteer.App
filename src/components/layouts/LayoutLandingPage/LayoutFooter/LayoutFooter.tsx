@@ -67,6 +67,7 @@ const LayoutFooter = () => {
                 href={item.href}
                 key={item.href}
                 className="text-3xl opacity-60 hover:opacity-100"
+                target="_blank"
               >
                 {item.icon}
               </Link>
