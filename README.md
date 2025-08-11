@@ -78,3 +78,55 @@
 ## Link deploy 🌐
 
 Aplikasi yang sudah dideploy: **[SiVolunteer.App](https://si-volunteer-app.vercel.app/)**
+
+## 🔑 Demo Akun
+
+Gunakan akun-akun berikut untuk mencoba aplikasi tanpa perlu registrasi:
+
+| Role      | Email                       | Username                  | Password    |
+| --------- | --------------------------- | ------------------------- | ----------- |
+| Admin     | admin@sivolunteer.com       | admin_demo                | password123 |
+| Organizer | bacacerah.id@gmail.com      | Komunitas Baca Cerah      | Organizer1  |
+| Organizer | harapan.nusantara@gmail.com | Yayasan Harapan Nusantara | Organizer1  |
+| Member    | raka.dirgantara@example.com | rakadgt                   | Member12    |
+| Member    | elvino.mahesa@gmail.com     | elvinom                   | Member12    |
+
+## 🔄 Flow System – SiVolunteer
+
+### 1️⃣ Role & Akses
+
+- **Admin**
+  - Mengelola semua data (user, event, kategori, region)
+- **Organizer**
+  - Membuat, mengedit, dan menghapus event
+  - Mengelola peserta (volunteer)
+  - Mengelola profil organisasi
+- **Member**
+  - Mencari dan mendaftar event
+  - Mengelola profil pribadi
+  - Melihat riwayat partisipasi
+
+---
+
+### 2️⃣ Alur Pengguna
+
+1. **Registrasi**
+   - Member & Organizer membuat akun
+   - Sistem mengirimkan email aktivasi
+2. **Login**
+   - Masuk sesuai role (Admin, Organizer, Member)
+3. **Akses Berdasarkan Role**
+   - **Member:** Cari & daftar event
+   - **Organizer:** Kelola event & peserta
+   - **Admin:** Kelola semua data & verifikasi
+4. **Manajemen Event**
+   - Organizer membuat event
+   - Member mendaftar
+   - Organizer mengonfirmasi pendaftaran
+5. **Riwayat & Laporan**
+   - Member melihat riwayat event
+   - Organizer & Admin melihat laporan partisipasi
+
+## Tampilan 📸
+
+![tampilan](public/about.png)
