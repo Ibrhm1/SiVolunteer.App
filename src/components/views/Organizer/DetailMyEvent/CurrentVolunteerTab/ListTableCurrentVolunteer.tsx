@@ -20,8 +20,12 @@ const COLUMN_LIST_CURRETVOLUNTEER = [
     uid: "status",
   },
   {
-    name: "ACTIONS",
+    name: "UPDATE STATUS",
     uid: "actions",
+  },
+  {
+    name: "ACTIONS",
+    uid: "delete",
   },
 ];
 

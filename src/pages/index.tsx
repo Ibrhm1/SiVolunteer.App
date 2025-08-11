@@ -3,7 +3,7 @@ import ViewHome from "@/components/views/Home/ViewHome";
 
 const HomePage = () => {
   return (
-    <LayoutLandingPage title="SiVolunteer">
+    <LayoutLandingPage title="Si Volunteer">
       <ViewHome />
     </LayoutLandingPage>
   );

@@ -17,6 +17,8 @@ const eventVolunteerService = {
     instance.put(`${endpointService.EVENT_VOLUNTEERS}/${id}/status`, {
       status,
     }),
+  deleteEventVolunteer: (id: string) =>
+    instance.delete(`${endpointService.EVENT_VOLUNTEERS}/${id}`),
 };
 
 export default eventVolunteerService;

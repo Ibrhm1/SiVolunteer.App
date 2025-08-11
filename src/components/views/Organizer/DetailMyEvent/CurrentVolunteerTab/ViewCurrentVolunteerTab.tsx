@@ -15,9 +15,11 @@ import { IEventVolunteer } from "@/types/EventVolunteer";
 import { IoMdDoneAll, IoMdTime } from "react-icons/io";
 import { GiCancel } from "react-icons/gi";
 import ViewUpdateStatusModal from "./UpdateStatusModal";
+import ViewDeleteEventVolunteerModal from "./DeleteEventVolunteerModal";
 
 const ViewCurrentVolunteerTab = () => {
   const viewUpdateStatusModal = useDisclosure();
+  const viewDeleteEventVolunteerModal = useDisclosure();
   const { refetchEventVolunteer, isPendingDataEventVolunteer, mergedData } =
     useViewCurrentVolunteerTab();
   const [selectedDataEventVolunteer, setSelectedDataEventVolunteer] =
@@ -104,6 +106,21 @@ const ViewCurrentVolunteerTab = () => {
               </Tooltip>
             </div>
           );
+        case "delete":
+          return (
+            <Button
+              size="sm"
+              color="danger"
+              onPress={() => {
+                setSelectedDataEventVolunteer(
+                  eventVolunteer as IEventVolunteer,
+                );
+                viewDeleteEventVolunteerModal.onOpen();
+              }}
+            >
+              Delete
+            </Button>
+          );
         default:
           return cellValue as ReactNode;
       }
@@ -134,6 +151,12 @@ const ViewCurrentVolunteerTab = () => {
         {...viewUpdateStatusModal}
         btnValueStatus={btnValueStatus as string}
         refetchEventVolunteer={refetchEventVolunteer}
+        selectedDataEventVolunteer={selectedDataEventVolunteer}
+        setSelectedDataEventVolunteer={setSelectedDataEventVolunteer}
+      />
+      <ViewDeleteEventVolunteerModal
+        {...viewDeleteEventVolunteerModal}
+        refecthEventVolunteer={refetchEventVolunteer}
         selectedDataEventVolunteer={selectedDataEventVolunteer}
         setSelectedDataEventVolunteer={setSelectedDataEventVolunteer}
       />

@@ -10,8 +10,9 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 
 interface PropTypes {
   textButtonDetail?: string;
-  onPressButtonDetail: () => void;
+  onPressButtonDetail?: () => void;
   showButtonDelete?: boolean;
+  showButtonDetail?: boolean;
   onPressButtonDelete?: () => void;
 }
 
@@ -20,6 +21,7 @@ const DropdownAction = (props: PropTypes) => {
     textButtonDetail = "Detail",
     onPressButtonDetail,
     onPressButtonDelete,
+    showButtonDetail = true,
     showButtonDelete = true,
   } = props;
 
