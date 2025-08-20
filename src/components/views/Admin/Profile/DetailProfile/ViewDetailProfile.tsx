@@ -66,6 +66,12 @@ const ViewDetailProfile = (props: PropTypes) => {
               )}
             />
           </Skeleton>
+          {/* <Input
+            value={dataProfile?.email}
+            disabled
+            label="Email"
+            labelPlacement="outside"
+          /> */}
           <Skeleton className="rounded-lg" isLoaded={!!dataProfile?.phone}>
             <Controller
               control={control}

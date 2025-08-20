@@ -51,17 +51,17 @@ const ViewProfilePicture = (props: PropTypes) => {
   }, [isSuccessUpdate]);
 
   return (
-    <Card className="mx-auto w-full xl:w-1/4">
+    <Card className="mx-auto w-full xl:w-1/2">
       <form onSubmit={handleSubmitUpdateProfilePicture(onUpdate)}>
         <CardBody className="gap-2">
-          <div className="flex flex-col items-center gap-2">
-            <Skeleton isLoaded={!!currentImage} className="h-48 rounded-full">
+          <div className="flex w-full flex-col items-center gap-2">
+            <Skeleton isLoaded={!!currentImage} className="h-48">
               <Image
                 src={currentImage}
                 alt="Image"
                 width={200}
                 height={200}
-                className="rounded-full object-cover"
+                className="aspect-square object-cover"
               />
             </Skeleton>
             <Button
@@ -78,23 +78,22 @@ const ViewProfilePicture = (props: PropTypes) => {
                 control={controlUpdateProfilePicture}
                 name="profilePicture"
                 render={({ field: { onChange, ...field } }) => (
-                  <>
-                    <InputFile
-                      {...field}
-                      onDelete={() => handleDeleteProfilePicture(onChange)}
-                      onUpload={(files) =>
-                        handleUploadProfilePicture(files, onChange)
-                      }
-                      isUploading={isPendingMuteteUploadFile}
-                      isDeleting={isPendingMuteteDeleteFile}
-                      isInvalid={!!errorsUpdateProfilePicture.profilePicture}
-                      errorMessage={
-                        errorsUpdateProfilePicture.profilePicture?.message
-                      }
-                      isDropable
-                      preview={typeof preview === "string" ? preview : ""}
-                    />
-                  </>
+                  <InputFile
+                    {...field}
+                    onDelete={() => handleDeleteProfilePicture(onChange)}
+                    onUpload={(files) =>
+                      handleUploadProfilePicture(files, onChange)
+                    }
+                    isUploading={isPendingMuteteUploadFile}
+                    isDeleting={isPendingMuteteDeleteFile}
+                    isInvalid={!!errorsUpdateProfilePicture.profilePicture}
+                    errorMessage={
+                      errorsUpdateProfilePicture.profilePicture?.message
+                    }
+                    isDropable
+                    preview={typeof preview === "string" ? preview : ""}
+                    className="w-full"
+                  />
                 )}
               />
             )}

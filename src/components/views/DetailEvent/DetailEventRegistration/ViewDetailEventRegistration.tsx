@@ -16,6 +16,7 @@ import Link from "next/link";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import RegistrationVolunteerModal from "./RegistrationVolunteerModal/RegistrationVolunteerModal";
+import { useRouter } from "next/router";
 
 interface PropTypes {
   dataEvent: IEvent;
@@ -23,6 +24,7 @@ interface PropTypes {
 }
 
 const ViewDetailEventRegistration = (props: PropTypes) => {
+  const { query } = useRouter();
   const registrationVolunteerModal = useDisclosure();
   const session = useSession();
   const { dataEvent } = props;
@@ -74,7 +76,7 @@ const ViewDetailEventRegistration = (props: PropTypes) => {
               fullWidth
               color="primary"
               as={Link}
-              href={"/auth/login"}
+              href={`/auth/login?callbackUrl=/events/${query.slug}`}
             >
               Daftar Sekarang
             </Button>
