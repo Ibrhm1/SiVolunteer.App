@@ -2,24 +2,24 @@
 
 ![SiVolunteer](public/Logo-SiVolunteer.png)
 
-**SiVolunteer** adalah platform web untuk memfasilitasi interaksi antara penyelenggara kegiatan sosial (organizer) dan relawan (volunteer). Aplikasi ini memungkinkan pengguna untuk menemukan, mendaftar, dan mengelola kegiatan sukarela dengan mudah, serta membantu penyelenggara dalam mempublikasikan acara dan mengelola partisipan.
+**SiVolunteer** adalah platform web untuk memfasilitasi interaksi antara penyelenggara kegiatan sosial (organizer) dan relawan (member). Aplikasi ini memungkinkan pengguna untuk menemukan, mendaftar, dan mengelola kegiatan sukarela dengan mudah, serta membantu penyelenggara dalam mempublikasikan acara dan mengelola partisipan.
 
 ---
 
 ## Fitur Utama ✨
 
 - **Autentikasi & Otorisasi**
-  - Login & Register (role: Volunteer, Organizer, Admin)
+  - Login & Register (role: Member, Organizer, Admin)
   - Aktivasi akun via email
 - **Manajemen Event**
   - CRUD acara oleh organizer
-  - Pendaftaran volunteer ke acara
+  - Pendaftaran member ke acara
   - List event publik
 - **Manajemen Organizer**
   - Profil & kontak penyelenggara
   - Verifikasi data
-- **Manajemen Volunteer**
-  - Profil volunteer
+- **Manajemen member**
+  - Profil member
   - Riwayat partisipasi
 - **Pencarian & Filter**
   - Cari acara berdasarkan kategori, lokasi, dan tanggal
@@ -99,7 +99,7 @@ Gunakan akun-akun berikut untuk mencoba aplikasi tanpa perlu registrasi:
   - Mengelola semua data (user, event, kategori, region)
 - **Organizer**
   - Membuat, mengedit, dan menghapus event
-  - Mengelola peserta (volunteer)
+  - Mengelola peserta (member)
   - Mengelola profil organisasi
 - **Member**
   - Mencari dan mendaftar event

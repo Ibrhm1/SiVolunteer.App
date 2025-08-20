@@ -83,8 +83,6 @@ const ViewDetailEventTab = (props: PropTypes) => {
     }
   }, [isSuccessUpdate]);
 
-  console.log(errorsUpdateInfo);
-
   return (
     <Card className="w-full p-4">
       <CardBody>

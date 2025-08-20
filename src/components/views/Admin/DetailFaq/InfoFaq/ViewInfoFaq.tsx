@@ -39,8 +39,6 @@ const ViewInfoFaq = (props: PropTypes) => {
     setValueUpdateFaq("isPublish", `${dataFaq?.isPublish}`);
   }, [dataFaq]);
 
-  console.log(dataFaq);
-
   useEffect(() => {
     if (isSuccessUpdate) {
       resetUpdateFaq();
