@@ -90,7 +90,17 @@ const ViewAddMyEventModal = (props: PropTypes) => {
       className="mx-2"
       onClose={() => handleOnClose(onClose)}
     >
-      <form onSubmit={handleSubmitForm(handleAddMyEvent)}>
+      <form
+        onSubmit={handleSubmitForm((data) => {
+          const selectedCategory = dataCategory?.data.data?.find(
+            (cat: ICategory) => cat._id === data.category
+          );
+          handleAddMyEvent({
+            ...data,
+            category: selectedCategory || { _id: data.category, name: "" },
+          });
+        })}
+      >
         <ModalContent>
           <ModalHeader>Add My Event</ModalHeader>
           <ModalBody className="flex gap-2">
