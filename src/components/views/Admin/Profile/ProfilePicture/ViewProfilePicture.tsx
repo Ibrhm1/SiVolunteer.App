@@ -2,7 +2,8 @@ import {
   Button,
   Card,
   CardBody,
-  Image,
+  CardFooter,
+  CardHeader,
   Skeleton,
   Spinner,
 } from "@heroui/react";
@@ -12,6 +13,7 @@ import InputFile from "@/components/UI/InputFile";
 import { useEffect, useState } from "react";
 import { FaPen, FaRegSave } from "react-icons/fa";
 import { IUserUpdate } from "@/types/User";
+import Image from "next/image";
 
 interface PropTypes {
   currentImage: string;
@@ -53,51 +55,55 @@ const ViewProfilePicture = (props: PropTypes) => {
   return (
     <Card className="mx-auto w-full xl:w-1/2">
       <form onSubmit={handleSubmitUpdateProfilePicture(onUpdate)}>
-        <CardBody className="gap-2">
+        <CardHeader className="gap-2">
           <div className="flex w-full flex-col items-center gap-2">
-            <Skeleton isLoaded={!!currentImage} className="h-48">
+            <Skeleton isLoaded={!!currentImage} className="h-48 rounded-lg">
               <Image
                 src={currentImage}
                 alt="Image"
                 width={200}
                 height={200}
-                className="aspect-square object-cover"
+                className="aspect-square rounded-lg object-cover"
               />
             </Skeleton>
-            <Button
-              color="primary"
-              size="sm"
-              isIconOnly
-              onPress={() => setOpen(!open)}
-              className="absolute top-2 right-2"
-            >
-              <FaPen />
-            </Button>
-            {open && (
-              <Controller
-                control={controlUpdateProfilePicture}
-                name="profilePicture"
-                render={({ field: { onChange, ...field } }) => (
-                  <InputFile
-                    {...field}
-                    onDelete={() => handleDeleteProfilePicture(onChange)}
-                    onUpload={(files) =>
-                      handleUploadProfilePicture(files, onChange)
-                    }
-                    isUploading={isPendingMuteteUploadFile}
-                    isDeleting={isPendingMuteteDeleteFile}
-                    isInvalid={!!errorsUpdateProfilePicture.profilePicture}
-                    errorMessage={
-                      errorsUpdateProfilePicture.profilePicture?.message
-                    }
-                    isDropable
-                    preview={typeof preview === "string" ? preview : ""}
-                    className="w-full"
-                  />
-                )}
-              />
-            )}
           </div>
+          <Button
+            color="primary"
+            size="sm"
+            isIconOnly
+            onPress={() => setOpen(!open)}
+            className="absolute top-2 right-2"
+          >
+            <FaPen />
+          </Button>
+        </CardHeader>
+        <CardBody>
+          {open && (
+            <Controller
+              control={controlUpdateProfilePicture}
+              name="profilePicture"
+              render={({ field: { onChange, ...field } }) => (
+                <InputFile
+                  {...field}
+                  onDelete={() => handleDeleteProfilePicture(onChange)}
+                  onUpload={(files) =>
+                    handleUploadProfilePicture(files, onChange)
+                  }
+                  isUploading={isPendingMuteteUploadFile}
+                  isDeleting={isPendingMuteteDeleteFile}
+                  isInvalid={!!errorsUpdateProfilePicture.profilePicture}
+                  errorMessage={
+                    errorsUpdateProfilePicture.profilePicture?.message
+                  }
+                  isDropable
+                  preview={typeof preview === "string" ? preview : ""}
+                  className="w-full"
+                />
+              )}
+            />
+          )}
+        </CardBody>
+        <CardFooter>
           <Button
             type="submit"
             color="primary"
@@ -112,7 +118,7 @@ const ViewProfilePicture = (props: PropTypes) => {
               <FaRegSave />
             )}
           </Button>
-        </CardBody>
+        </CardFooter>
       </form>
     </Card>
   );

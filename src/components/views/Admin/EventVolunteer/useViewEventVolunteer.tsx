@@ -25,7 +25,7 @@ const useViewEventVolunteer = () => {
     enabled: router.isReady,
   });
 
-  // Ambil data member dan event untuk semua event volunteer
+  // Ambil data member & event untuk semua event volunteer (tahan error)
   const {
     data: combinedData,
     isLoading: isLoadingCombined,
@@ -33,31 +33,40 @@ const useViewEventVolunteer = () => {
   } = useQuery({
     queryKey: ["CombinedEventVolunteer", dataEventVolunteer],
     queryFn: async () => {
-      const volunteers = dataEventVolunteer?.data.data || [];
+      const volunteers = dataEventVolunteer?.data?.data || [];
 
-      // Ambil semua data member dan event secara paralel
-      const membersPromise = Promise.all(
+      // Fetch members
+      const membersPromise = Promise.allSettled(
         volunteers.map((item: IEventVolunteer) =>
           userService
             .getMemberById(`${item.userId}`)
-            .then((res) => res.data.data.fullName),
+            .then((res) => res.data?.data?.fullName || null),
         ),
       );
 
-      const eventsPromise = Promise.all(
+      // Fetch events
+      const eventsPromise = Promise.allSettled(
         volunteers.map((item: IEventVolunteer) =>
           eventsService
             .getEventById(`${item.eventId}`)
-            .then((res) => res.data.data.name),
+            .then((res) => res.data?.data?.name || null),
         ),
       );
 
-      const [members, events] = await Promise.all([
+      const [membersResult, eventsResult] = await Promise.all([
         membersPromise,
         eventsPromise,
       ]);
 
-      // Gabungkan data
+      // Ambil value atau null jika gagal
+      const members = membersResult.map((r) =>
+        r.status === "fulfilled" ? r.value : null,
+      );
+      const events = eventsResult.map((r) =>
+        r.status === "fulfilled" ? r.value : null,
+      );
+
+      // Gabungkan
       const combined = volunteers.map(
         (item: IEventVolunteer, index: number) => ({
           ...item,
@@ -68,13 +77,10 @@ const useViewEventVolunteer = () => {
 
       return combined;
     },
-    enabled: !!dataEventVolunteer?.data?.data.length,
+    enabled: !!dataEventVolunteer?.data?.data?.length,
   });
 
-  const formatePhone = (phone: string) => {
-    const result = phone?.replace(/^08/, "62");
-    return result;
-  };
+  const formatePhone = (phone: string) => phone?.replace(/^08/, "62");
 
   return {
     dataCombined: combinedData,

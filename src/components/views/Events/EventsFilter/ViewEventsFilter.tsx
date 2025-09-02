@@ -52,10 +52,8 @@ const ViewEventsFilter = () => {
                   render={({ field: { onChange, ...field } }) => (
                     <Autocomplete
                       {...field}
-                      label="Category"
-                      variant="bordered"
+                      variant="flat"
                       placeholder="Category"
-                      labelPlacement="outside"
                       defaultSelectedKey={`${currentCategory}`}
                       defaultItems={dataCategory?.data.data || []}
                       onSelectionChange={(value) => {
@@ -77,9 +75,7 @@ const ViewEventsFilter = () => {
                   render={({ field: { ...field } }) => (
                     <Select
                       {...field}
-                      variant="bordered"
-                      labelPlacement="outside"
-                      label="Online or Offline"
+                      variant="flat"
                       placeholder="Online or Offline"
                       defaultSelectedKeys={[`${currentIsOnline}`]}
                       onChange={(e) => handleChangeIsOnline(e.target.value)}
@@ -113,8 +109,7 @@ const ViewEventsFilter = () => {
                   render={({ field: { onChange, ...field } }) => (
                     <Autocomplete
                       {...field}
-                      label="Category"
-                      variant="bordered"
+                      variant="flat"
                       placeholder="Category"
                       labelPlacement="outside"
                       defaultSelectedKey={`${currentCategory}`}
@@ -138,9 +133,8 @@ const ViewEventsFilter = () => {
                   render={({ field: { ...field } }) => (
                     <Select
                       {...field}
-                      variant="bordered"
+                      variant="flat"
                       labelPlacement="outside"
-                      label="Online or Offline"
                       placeholder="Online or Offline"
                       defaultSelectedKeys={[`${currentIsOnline}`]}
                       onChange={(e) => handleChangeIsOnline(e.target.value)}

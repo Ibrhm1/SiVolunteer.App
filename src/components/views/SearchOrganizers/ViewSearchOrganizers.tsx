@@ -47,7 +47,7 @@ const ViewSearchOrganizers = () => {
               className="w-[18rem] md:w-[20rem]"
               shadow="lg"
               as={Link}
-              href={`/search-organizers/${organizer._id}`}
+              href={`/search-organizers/${organizer?._id}`}
               isHoverable
               isPressable
             >
@@ -84,14 +84,14 @@ const ViewSearchOrganizers = () => {
                   startContent={<MdDateRange />}
                   variant="flat"
                 >
-                  {dayjs(`${organizer.dateEstablished}`).format("YYYY MMMM DD")}
+                  {dayjs(`${organizer!.dateEstablished}`).format("YYYY MMMM DD")}
                 </Chip>
               </CardFooter>
             </Card>
           </Skeleton>
         ))}
       </div>
-      {dataOrganizersPagination?.data.data.length > 0 && (
+      {dataOrganizersPagination?.pagination?.totalPages > 1 && (
         <SearchOrganizersPagination
           totalPages={dataOrganizersPagination?.data?.pagination?.totalPages}
           className="mt-4 flex items-center justify-center"

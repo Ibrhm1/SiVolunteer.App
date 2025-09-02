@@ -8,17 +8,10 @@ const useViewEvents = () => {
   const { currentLimit, currentPage, currentCategory, currentIsOnline } =
     useChangeUrl();
 
-  const getEvents = async () => {
-    const params = `limit=${currentLimit}&page=${currentPage}&isPublish=true&category=${currentCategory}&isOnline=${currentIsOnline}`;
-    const { data } = await eventsService.getEvents(params);
-    return data;
-  };
-
   const {
     data: dataEvents,
     isLoading: isLoadingEvents,
     isRefetching: isRefetchingEvents,
-    refetch: refetchEvents,
   } = useQuery({
     queryKey: [
       "Events",
@@ -27,11 +20,15 @@ const useViewEvents = () => {
       currentCategory,
       currentIsOnline,
     ],
-    queryFn: () => getEvents(),
+    queryFn: async () => {
+      const params = `limit=${currentLimit}&page=${currentPage}&isPublish=true&category=${currentCategory}&isOnline=${currentIsOnline}`;
+      const { data } = await eventsService.getEvents(params);
+      return data;
+    },
     enabled: router.isReady && !!currentPage && !!currentLimit,
   });
 
-  return { dataEvents, isLoadingEvents, isRefetchingEvents, refetchEvents };
+  return { dataEvents, isLoadingEvents, isRefetchingEvents };
 };
 
 export default useViewEvents;

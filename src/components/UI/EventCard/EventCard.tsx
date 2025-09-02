@@ -88,7 +88,7 @@ const EventCard = (props: PropTypes) => {
                 <div className="flex items-start gap-1">
                   <IoLocationSharp size={15} className="mt-1" />
                   <p className="text-foreground w-fit text-sm">
-                    {dataRegion?.map((region: IRegency) => region.name)},{" "}
+                    {dataRegion?.map((region: IRegency) => region?.name)},{" "}
                     {event?.location?.address}
                   </p>
                 </div>

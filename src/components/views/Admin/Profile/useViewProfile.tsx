@@ -16,17 +16,15 @@ const useViewProfile = () => {
     enabled: true,
   });
 
-  const updateProfile = async (payload: IUserUpdate) => {
-    const { data } = await userService.updateProfile(payload);
-    return data.data;
-  };
-
   const {
     mutate: mutateUpdateProfile,
     isPending: isPendingUpdateProfile,
     isSuccess: isSuccessUpdateProfile,
   } = useMutation({
-    mutationFn: (payload: IUserUpdate) => updateProfile(payload),
+    mutationFn: async (payload: IUserUpdate) => {
+      const { data } = await userService.updateProfile(payload);
+      return data;
+    },
     onError: (error) => {
       toast.error(error.message, {
         position: "top-right",

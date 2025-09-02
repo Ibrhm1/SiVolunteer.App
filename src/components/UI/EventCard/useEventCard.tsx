@@ -8,7 +8,7 @@ const useEventCard = (organizerId: string, regionId: string) => {
     return data.data;
   };
 
-  const { data: dataOrganizer, isLoading: isLoadingOrganizer } = useQuery({
+  const { data: dataOrganizer } = useQuery({
     queryKey: ["Organizer", organizerId],
     queryFn: getOrganizerName,
     enabled: !!organizerId,
@@ -19,7 +19,7 @@ const useEventCard = (organizerId: string, regionId: string) => {
     return data.data;
   };
 
-  const { data: dataRegion, isLoading: isLoadingRegion } = useQuery({
+  const { data: dataRegion } = useQuery({
     queryKey: ["Region", regionId],
     queryFn: getRegionName,
     enabled: !!regionId,
@@ -27,9 +27,7 @@ const useEventCard = (organizerId: string, regionId: string) => {
 
   return {
     dataOrganizer,
-    isLoadingOrganizer,
     dataRegion,
-    isLoadingRegion,
   };
 };
 

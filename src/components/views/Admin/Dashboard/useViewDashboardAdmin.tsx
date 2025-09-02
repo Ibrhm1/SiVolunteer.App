@@ -57,8 +57,8 @@ const useViewDashboardAdmin = () => {
     dataProfile,
     isPendingDataProfile,
     totalData,
-    isLoadingMember,
     isLoadingEvents,
+    isLoadingMember,
     isLoadingOrganizer,
   };
 };

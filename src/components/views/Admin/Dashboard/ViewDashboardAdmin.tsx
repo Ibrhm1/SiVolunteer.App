@@ -22,8 +22,8 @@ const ViewDashboardAdmin = () => {
           Hai, {dataProfile?.data?.data.fullName}
         </h1>
       </Skeleton>
-      <main className="flex max-h-screen flex-col items-center gap-3 md:flex-row md:items-start md:gap-3">
-        <div className="flex h-fit w-fit flex-wrap justify-center gap-2 md:w-1/2 md:justify-start lg:gap-x-3 lg:gap-y-3">
+      <main className="flex flex-col items-center justify-center gap-8 md:items-start">
+        <div className="flex flex-col gap-5 md:flex-row md:flex-wrap md:gap-3 md:gap-y-5 lg:flex-row">
           {totalData.map((item) => (
             <Skeleton
               className="h-28 rounded-xl"
@@ -32,7 +32,7 @@ const ViewDashboardAdmin = () => {
               }
               key={item.title}
             >
-              <Card className="h-fit w-[250px]">
+              <Card className="h-30 w-[250px]" isHoverable shadow="sm">
                 <CardHeader className="bg-default-100 flex items-center justify-between">
                   <h3 className="text-foreground-900 text-xl font-bold">
                     {item.title}

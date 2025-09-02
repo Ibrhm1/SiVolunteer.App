@@ -10,14 +10,7 @@ const schema = Yup.object().shape({
 });
 
 const useViewFilter = () => {
-  const {
-    control,
-    formState: { errors },
-    reset,
-    watch,
-    getValues,
-    setValue,
-  } = useForm({
+  const { control, setValue } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -28,10 +21,6 @@ const useViewFilter = () => {
 
   return {
     control,
-    errors,
-    reset,
-    watch,
-    getValues,
     setValue,
     dataCategory,
     isSuccessCategory,

@@ -10,45 +10,40 @@ const useViewSearchOrganizers = () => {
   const { currentLimit, currentPage } = useChangeUrl();
   const router = useRouter();
 
-  const getAllOrganizers = async () => {
-    const { data } = await organizerServices.getAllOrganizer(
-      `limit=${currentLimit}&page=${currentPage}`,
-    );
-    return data.data as IOrganizer[];
-  };
-
   const { data: dataOrganizers = [], isLoading: isLoadingOrganizers } =
     useQuery({
       queryKey: ["Organizers", currentLimit, currentPage],
-      queryFn: () => getAllOrganizers(),
+      queryFn: async () => {
+        const { data } = await organizerServices.getAllOrganizer(
+          `limit=${currentLimit}&page=${currentPage}`,
+        );
+        return data.data as IOrganizer[];
+      },
       enabled: router.isReady && !!currentLimit && !!currentPage,
     });
 
   const { data: dataOrganizersPagination } = useQuery({
     queryKey: ["OrganizersPagination", currentLimit, currentPage],
-    queryFn: () =>
-      organizerServices.getAllOrganizer(
+    queryFn: async () => {
+      const { data } = await organizerServices.getAllOrganizer(
         `limit=${currentLimit}&page=${currentPage}`,
-      ),
+      );
+      return data;
+    },
     enabled: router.isReady && !!currentLimit && !!currentPage,
   });
 
-  const getRegion = async () => {
-    const regionIds = dataOrganizers
-      .map((item) => item.location?.domicile)
-      .filter(Boolean) as string[];
-
-    const results = await Promise.all(
-      regionIds.map((id) => regionService.getRegencyById(id)),
-    );
-
-    // Karena tiap response berupa array (contoh: [ { name: 'KOTA ...' } ])
-    return results.map((res) => res.data.data[0] as IRegency);
-  };
-
   const { data: dataRegion = [], isPending: isPendingRegion } = useQuery({
     queryKey: ["Region", dataOrganizers],
-    queryFn: getRegion,
+    queryFn: async () => {
+      const regionIds = dataOrganizers
+        .map((item) => item.location?.domicile)
+        .filter(Boolean) as string[];
+      const results = await Promise.all(
+        regionIds.map((id) => regionService.getRegencyById(id)),
+      );
+      return results.map((res) => res.data.data[0] as IRegency);
+    },
     enabled: dataOrganizers.length > 0,
   });
 

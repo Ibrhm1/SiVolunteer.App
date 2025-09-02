@@ -17,7 +17,7 @@ const schema = Yup.object().shape({
 });
 
 const useRegistrationVolunteerModal = () => {
-  const { query } = useRouter();
+  const { query, push } = useRouter();
   const {
     control,
     handleSubmit,
@@ -28,33 +28,26 @@ const useRegistrationVolunteerModal = () => {
     resolver: yupResolver(schema),
   });
 
-  const getEventBySlug = async () => {
-    const { data } = await eventsService.getEventBySlug(`${query.slug}`);
-    return data.data;
-  };
-
   const { data: dataDetailEventSlug } = useQuery({
     queryKey: ["EventBySlug"],
-    queryFn: getEventBySlug,
+    queryFn: async () => {
+      const { data } = await eventsService.getEventBySlug(`${query.slug}`);
+      return data.data;
+    },
     enabled: !!query.slug,
   });
-
-  const registrationEventVolunteer = async (
-    payload: IEventVolunteerRegister,
-  ) => {
-    const { data } = await eventVolunteerService.createEventVolunteer(
-      payload,
-      dataDetailEventSlug._id,
-    );
-    return data.data;
-  };
 
   const {
     mutate: mutateRegistrationEventVolunteer,
     isPending: isPendingRegistrationEventVolunteer,
-    isSuccess: isSuccessRegistrationEventVolunteer,
   } = useMutation({
-    mutationFn: registrationEventVolunteer,
+    mutationFn: async (payload: IEventVolunteerRegister) => {
+      const { data } = await eventVolunteerService.createEventVolunteer(
+        payload,
+        dataDetailEventSlug._id,
+      );
+      return data.data;
+    },
     onError: (
       error: AxiosError<{ meta?: { status?: number; message?: string } }>,
     ) => {
@@ -72,6 +65,12 @@ const useRegistrationVolunteerModal = () => {
           });
         case 401:
           return toast.error(message, {
+            position: "top-right",
+            autoClose: 3000,
+            theme: "dark",
+          });
+        case 403:
+          return toast.error("Anda bukan volunteer", {
             position: "top-right",
             autoClose: 3000,
             theme: "dark",
@@ -102,6 +101,7 @@ const useRegistrationVolunteerModal = () => {
         autoClose: 3000,
         theme: "dark",
       });
+      push("/events");
     },
   });
 
@@ -111,7 +111,7 @@ const useRegistrationVolunteerModal = () => {
 
   const { data: dataProfile } = useQuery({
     queryKey: ["Profile"],
-    queryFn: () => authService.getProfile().then((res) => res.data.data),
+    queryFn: () => authService.getProfile().then((res) => res?.data?.data),
     staleTime: 1000 * 60 * 5,
     refetchOnWindowFocus: false,
   });
@@ -119,8 +119,8 @@ const useRegistrationVolunteerModal = () => {
   const handleOnClose = (onClose: () => void) => {
     reset({
       motivation: "",
-      email: dataProfile?.email,
-      phone: dataProfile?.phone,
+      email: dataProfile?.email || "",
+      phone: dataProfile?.phone || "",
     });
     onClose();
   };
@@ -133,7 +133,6 @@ const useRegistrationVolunteerModal = () => {
     handleOnClose,
     setValue,
     isPendingRegistrationEventVolunteer,
-    isSuccessRegistrationEventVolunteer,
     handleCreateEventVolunteer,
   };
 };

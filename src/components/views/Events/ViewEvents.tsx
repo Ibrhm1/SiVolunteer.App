@@ -41,7 +41,7 @@ const ViewEvents = () => {
                 />
               ))}
         </div>
-        {!isLoadingEvents && dataEvents?.data.length > 0 && (
+        {dataEvents?.pagination?.totalPages > 1 && (
           <EventsPagination
             className="mt-4 flex items-center justify-center"
             totalPages={dataEvents?.pagination?.totalPages}

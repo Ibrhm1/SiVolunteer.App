@@ -33,20 +33,13 @@ const RegistrationVolunteerModal = (props: PropTypes) => {
     handleOnClose,
     setValue,
     isPendingRegistrationEventVolunteer,
-    isSuccessRegistrationEventVolunteer,
     handleCreateEventVolunteer,
   } = useRegistrationVolunteerModal();
 
   useEffect(() => {
-    setValue("email", `${dataProfile?.email}`);
-    setValue("phone", `${dataProfile?.phone}`);
+    setValue("email", `${dataProfile?.email}` || "");
+    setValue("phone", `${dataProfile?.phone}` || "");
   }, [dataProfile]);
-
-  useEffect(() => {
-    if (isSuccessRegistrationEventVolunteer) {
-      router.push("/events");
-    }
-  }, [isSuccessRegistrationEventVolunteer]);
 
   return (
     <Modal
@@ -92,8 +85,8 @@ const RegistrationVolunteerModal = (props: PropTypes) => {
                     variant="bordered"
                     label="Masukan nomor telepon kamu"
                     className="font-semibold"
-                    isInvalid={!!errors.phone}
-                    errorMessage={errors.phone?.message}
+                    isInvalid={!!errors?.phone}
+                    errorMessage={errors?.phone?.message}
                   />
                 )}
               />
@@ -106,8 +99,8 @@ const RegistrationVolunteerModal = (props: PropTypes) => {
                     variant="bordered"
                     label="Masukan email kamu"
                     className="font-semibold"
-                    isInvalid={!!errors.email}
-                    errorMessage={errors.email?.message}
+                    isInvalid={!!errors?.email}
+                    errorMessage={errors?.email?.message}
                   />
                 )}
               />
