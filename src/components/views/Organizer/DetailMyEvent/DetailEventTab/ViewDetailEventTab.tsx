@@ -47,11 +47,8 @@ const ViewDetailEventTab = (props: PropTypes) => {
     errorsUpdateInfo,
     setValueUpdateInfo,
     resetUpdateInfo,
-
     handleTags,
-
     dataCategory,
-
     dataRegion,
     handleSearchRegion,
     searchRegency,
@@ -62,7 +59,7 @@ const ViewDetailEventTab = (props: PropTypes) => {
     setValueUpdateInfo("description", `${dataMyEvent?.description}`);
     setValueUpdateInfo("startDate", toInputDate(`${dataMyEvent?.startDate}`));
     setValueUpdateInfo("endDate", toInputDate(`${dataMyEvent?.endDate}`));
-    setValueUpdateInfo("category", `${dataMyEvent?.category}`);
+    setValueUpdateInfo("category", `${dataMyEvent?.category?._id}`);
     setValueUpdateInfo("isOnline", `${dataMyEvent?.isOnline}`);
     setValueUpdateInfo("isPublish", `${dataMyEvent?.isPublish}`);
     setValueUpdateInfo("region", `${dataMyEvent?.location?.region}`);
@@ -88,7 +85,24 @@ const ViewDetailEventTab = (props: PropTypes) => {
       <CardBody>
         <form
           className="flex flex-col gap-2"
-          onSubmit={handleSubmitUpdateInfo(onUpdate)}
+          onSubmit={handleSubmitUpdateInfo((formData) => {
+            // Transform category from string to object
+            const categoryObj = dataCategory?.data.data.find(
+              (cat: ICategory) => cat._id === formData.category,
+            ) || { _id: formData.category };
+
+            const updatedData: IEventForm = {
+              ...dataMyEvent,
+              ...formData,
+              category: categoryObj,
+              location: {
+                ...dataMyEvent.location,
+                region: formData.region,
+                address: formData.address,
+              },
+            };
+            onUpdate(updatedData);
+          })}
         >
           <Skeleton isLoaded={!!dataMyEvent?.name} className="rounded-lg">
             <Controller
@@ -188,7 +202,7 @@ const ViewDetailEventTab = (props: PropTypes) => {
                     defaultItems={dataCategory?.data.data || []}
                     label="Category"
                     variant="bordered"
-                    defaultSelectedKey={dataMyEvent?.category}
+                    defaultSelectedKey={dataMyEvent?.category?._id}
                     isInvalid={!!errorsUpdateInfo.category}
                     errorMessage={errorsUpdateInfo.category?.message}
                     onSelectionChange={(value) => onChange(value)}

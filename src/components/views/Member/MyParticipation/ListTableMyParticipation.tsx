@@ -1,11 +1,15 @@
 const COLUMN_LIST_EVENTVOLUNTEER_MEMBER = [
   {
     name: "EVENT NAME",
-    uid: "eventName",
+    uid: "eventId",
   },
   {
     name: "MOTIVATION",
     uid: "motivation",
+  },
+  {
+    name: "REGISTERED AT",
+    uid: "createdAt",
   },
   {
     name: "STATUS",

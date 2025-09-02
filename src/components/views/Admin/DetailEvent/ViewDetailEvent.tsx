@@ -17,11 +17,8 @@ import ViewRequirement from "./Requirement";
 const ViewDetailEvent = () => {
   const {
     dataEvent,
-    dataCategory,
-    dataOrganizer,
     dataDefaultRegion,
     isPendingDataEvent,
-    isPendingDataCategory,
     isPendingDefaultRegion,
   } = useViewDetailEvent();
 
@@ -36,20 +33,20 @@ const ViewDetailEvent = () => {
       >
         <h1 className="text-xl font-bold md:text-3xl">{dataEvent?.name}</h1>
       </Skeleton>
-      <div className="flex flex-col gap-4 lg:flex-row">
-        <div className="flex w-full justify-center overflow-hidden rounded-xl lg:w-1/2">
+      <div className="flex flex-col gap-4">
+        <div className="flex w-full justify-center overflow-hidden rounded-xl">
           <Skeleton isLoaded={!isPendingDataEvent} className="rounded-lg">
             <Image
               alt="Cover"
-              src={`${dataEvent?.image}`}
+              src={dataEvent?.image}
               height={400}
-              width={500}
+              width={"100%"}
               className="aspect-video object-cover"
             />
           </Skeleton>
         </div>
-        <Card className="px-2 py-2 lg:w-1/2">
-          <CardBody className="flex-col">
+        <Card className="px-2 py-2">
+          <CardBody className="min-h-96 flex-col">
             <Tabs aria-label="Dynamic tabs">
               <Tab key={"overview"} title="Overview">
                 <Skeleton
@@ -63,9 +60,9 @@ const ViewDetailEvent = () => {
                     region={dataDefaultRegion?.data.data[0].name}
                     address={dataEvent?.location?.address}
                     startDate={`${startDate}`}
-                    image={dataOrganizer?.image}
+                    image={dataEvent?.createdBy?.logo}
                     description={dataEvent?.description}
-                    organizerName={dataOrganizer?.organizerName}
+                    organizerName={dataEvent?.createdBy.organizerName}
                   />
                 </Skeleton>
               </Tab>
@@ -85,12 +82,9 @@ const ViewDetailEvent = () => {
             </Tabs>
           </CardBody>
           <CardFooter className="flex items-center gap-3">
-            <Skeleton
-              className="rounded-lg"
-              isLoaded={!isPendingDataCategory && !isPendingDefaultRegion}
-            >
+            <Skeleton className="rounded-lg" isLoaded={!isPendingDefaultRegion}>
               <h1 className="text-md font-semibold">
-                {dataCategory?.data.data.name}
+                {dataEvent?.category?.name}
               </h1>
             </Skeleton>
             <Skeleton className="rounded-lg" isLoaded={!isPendingDataEvent}>

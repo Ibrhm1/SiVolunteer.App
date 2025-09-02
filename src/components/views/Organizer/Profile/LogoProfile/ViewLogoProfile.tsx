@@ -2,6 +2,8 @@ import {
   Button,
   Card,
   CardBody,
+  CardFooter,
+  CardHeader,
   Image,
   Skeleton,
   Spinner,
@@ -22,7 +24,6 @@ interface PropTypes {
 }
 
 const ViewLogoProfile = (props: PropTypes) => {
-  const [open, setOpen] = useState(false);
   const {
     currentImage,
     isPendingUpdate,
@@ -51,50 +52,43 @@ const ViewLogoProfile = (props: PropTypes) => {
   }, [isSuccessUpdate]);
 
   return (
-    <Card className="mx-auto w-full xl:w-1/4">
+    <Card className="mx-auto w-full xl:w-1/2">
       <form onSubmit={handleSubmitUpdateLogo(onUpdate)}>
-        <CardBody className="gap-2">
-          <div className="flex flex-col items-center gap-2">
+        <CardHeader className="gap-2">
+          <div className="flex w-full flex-col items-center gap-2">
             <Skeleton isLoaded={!!currentImage} className="h-48 rounded-full">
               <Image
                 src={currentImage}
                 alt="Image"
                 width={200}
                 height={200}
-                className="rounded-full object-cover"
+                className="aspect-square rounded-lg object-cover"
               />
             </Skeleton>
-            <Button
-              color="primary"
-              size="sm"
-              isIconOnly
-              onPress={() => setOpen(!open)}
-              className="absolute top-2 right-2"
-            >
-              <FaPen />
-            </Button>
-            {open && (
-              <Controller
-                control={controlUpdateLogo}
-                name="logo"
-                render={({ field: { onChange, ...field } }) => (
-                  <>
-                    <InputFile
-                      {...field}
-                      onDelete={() => handleDeleteLogo(onChange)}
-                      onUpload={(files) => handleUploadLogo(files, onChange)}
-                      isUploading={isPendingMuteteUploadFile}
-                      isDeleting={isPendingMuteteDeleteFile}
-                      isInvalid={!!errorsUpdateLogo.logo}
-                      errorMessage={errorsUpdateLogo.logo?.message}
-                      isDropable
-                      preview={typeof preview === "string" ? preview : ""}
-                    />
-                  </>
-                )}
-              />
-            )}
           </div>
+        </CardHeader>
+        <CardBody>
+          <Controller
+            control={controlUpdateLogo}
+            name="logo"
+            render={({ field: { onChange, ...field } }) => (
+              <>
+                <InputFile
+                  {...field}
+                  onDelete={() => handleDeleteLogo(onChange)}
+                  onUpload={(files) => handleUploadLogo(files, onChange)}
+                  isUploading={isPendingMuteteUploadFile}
+                  isDeleting={isPendingMuteteDeleteFile}
+                  isInvalid={!!errorsUpdateLogo.logo}
+                  errorMessage={errorsUpdateLogo.logo?.message}
+                  isDropable
+                  preview={typeof preview === "string" ? preview : ""}
+                />
+              </>
+            )}
+          />
+        </CardBody>
+        <CardFooter>
           <Button
             type="submit"
             color="primary"
@@ -109,7 +103,7 @@ const ViewLogoProfile = (props: PropTypes) => {
               <FaRegSave />
             )}
           </Button>
-        </CardBody>
+        </CardFooter>
       </form>
     </Card>
   );

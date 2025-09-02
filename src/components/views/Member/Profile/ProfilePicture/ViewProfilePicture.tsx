@@ -2,6 +2,8 @@ import {
   Button,
   Card,
   CardBody,
+  CardFooter,
+  CardHeader,
   Image,
   Skeleton,
   Spinner,
@@ -51,54 +53,47 @@ const ViewProfilePicture = (props: PropTypes) => {
   }, [isSuccessUpdate]);
 
   return (
-    <Card className="mx-auto w-full xl:w-1/4">
+    <Card className="mx-auto w-full xl:w-1/2">
       <form onSubmit={handleSubmitUpdateProfilePicture(onUpdate)}>
-        <CardBody className="gap-2">
-          <div className="flex flex-col items-center gap-2">
+        <CardHeader>
+          <div className="flex w-full flex-col items-center gap-2">
             <Skeleton isLoaded={!!currentImage} className="h-48 rounded-full">
               <Image
                 src={currentImage}
                 alt="Image"
                 width={200}
                 height={200}
-                className="rounded-full object-cover"
+                className="aspect-square rounded-lg object-cover"
               />
             </Skeleton>
-            <Button
-              color="primary"
-              size="sm"
-              isIconOnly
-              onPress={() => setOpen(!open)}
-              className="absolute top-2 right-2"
-            >
-              <FaPen />
-            </Button>
-            {open && (
-              <Controller
-                control={controlUpdateProfilePicture}
-                name="profilePicture"
-                render={({ field: { onChange, value, ...field } }) => (
-                  <>
-                    <InputFile
-                      {...field}
-                      onDelete={() => handleDeleteProfilePicture(onChange)}
-                      onUpload={(files) =>
-                        handleUploadProfilePicture(files, onChange)
-                      }
-                      isUploading={isPendingMuteteUploadFile}
-                      isDeleting={isPendingMuteteDeleteFile}
-                      isInvalid={!!errorsUpdateProfilePicture.profilePicture}
-                      errorMessage={
-                        errorsUpdateProfilePicture.profilePicture?.message
-                      }
-                      isDropable
-                      preview={typeof preview === "string" ? preview : ""}
-                    />
-                  </>
-                )}
-              />
-            )}
           </div>
+        </CardHeader>
+        <CardBody className="gap-2">
+          <Controller
+            control={controlUpdateProfilePicture}
+            name="profilePicture"
+            render={({ field: { onChange, value, ...field } }) => (
+              <>
+                <InputFile
+                  {...field}
+                  onDelete={() => handleDeleteProfilePicture(onChange)}
+                  onUpload={(files) =>
+                    handleUploadProfilePicture(files, onChange)
+                  }
+                  isUploading={isPendingMuteteUploadFile}
+                  isDeleting={isPendingMuteteDeleteFile}
+                  isInvalid={!!errorsUpdateProfilePicture.profilePicture}
+                  errorMessage={
+                    errorsUpdateProfilePicture.profilePicture?.message
+                  }
+                  isDropable
+                  preview={typeof preview === "string" ? preview : ""}
+                />
+              </>
+            )}
+          />
+        </CardBody>
+        <CardFooter>
           <Button
             type="submit"
             color="primary"
@@ -113,7 +108,7 @@ const ViewProfilePicture = (props: PropTypes) => {
               <FaRegSave />
             )}
           </Button>
-        </CardBody>
+        </CardFooter>
       </form>
     </Card>
   );

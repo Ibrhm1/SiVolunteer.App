@@ -2,6 +2,7 @@ import categoryService from "@/services/category.service";
 import eventsService from "@/services/events.service";
 import regionService from "@/services/region.service";
 import userService from "@/services/user.service";
+import { ICategory } from "@/types/Category";
 import { IEvent, IEventForm } from "@/types/Event";
 import { toDateStandard } from "@/utils/date";
 import { DateValue } from "@heroui/react";
@@ -79,14 +80,14 @@ const useViewDetailMyEvent = () => {
 
   const handleUpdateEvent = (data: IEvent) => mutateUpdateEvent(data);
 
-  const handleUpdateDetail = (data: IEventForm) => {
+  const handleUpdateDetail = (formData: IEventForm) => {
     const payload = {
-      ...data,
-      startDate: toDateStandard(data.startDate as DateValue),
-      endDate: toDateStandard(data.endDate as DateValue),
+      ...formData,
+      startDate: toDateStandard(formData.startDate as DateValue),
+      endDate: toDateStandard(formData.endDate as DateValue),
       location: {
-        region: `${data.region}`,
-        address: `${data.address}`,
+        region: `${formData.region}`,
+        address: `${formData.address}`,
       },
     };
     mutateUpdateEvent(payload);

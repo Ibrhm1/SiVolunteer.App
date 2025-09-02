@@ -66,8 +66,8 @@ const ViewImageTab = (props: PropTypes) => {
               <Image
                 src={currentImage}
                 alt="Image"
-                width={400}
-                className="!relative rounded-lg object-cover"
+                width={"100%"}
+                className="w-full rounded-lg object-cover"
               />
             </Skeleton>
             <Controller

@@ -5,17 +5,13 @@ import { Key, ReactNode, useCallback, useEffect } from "react";
 import { COLUMN_LIST_EVENTVOLUNTEER_MEMBER } from "./ListTableMyParticipation";
 import useViewMyParticipation from "./useViewMyParticipation";
 import { Chip } from "@heroui/react";
+import dayjs from "dayjs";
 
 const ViewMyParticipation = () => {
   const { setUrl } = useChangeUrl();
   const { push, query, isReady } = useRouter();
-  const {
-    dataEventVolunteer,
-    isLoadingEventVolunteer,
-
-    dataCombined,
-    isLoadingCombined,
-  } = useViewMyParticipation();
+  const { dataEventVolunteer, isLoadingEventVolunteer } =
+    useViewMyParticipation();
 
   useEffect(() => {
     if (isReady) {
@@ -23,11 +19,17 @@ const ViewMyParticipation = () => {
     }
   }, [isReady]);
 
+  console.log(dataEventVolunteer);
+
   const renderCell = useCallback(
     (eventVolunteerMember: Record<string, unknown>, columnKey: Key) => {
       const cellValue =
         eventVolunteerMember[columnKey as keyof typeof eventVolunteerMember];
       switch (columnKey) {
+        case "eventId":
+          return <p>{(cellValue as any)?.name}</p>;
+        case "createdAt":
+          return <p>{dayjs(`${cellValue}`).format("DD/MM/YYYY")}</p>;
         case "status":
           return (
             <Chip
@@ -55,11 +57,11 @@ const ViewMyParticipation = () => {
         <DataTable
           showSearch={false}
           renderCell={renderCell}
-          data={dataCombined || []}
+          data={dataEventVolunteer?.data || []}
           emptyContent="You don't have any participation yet"
           columns={COLUMN_LIST_EVENTVOLUNTEER_MEMBER}
           totalPage={dataEventVolunteer?.data.totalPage || 0}
-          isLoading={isLoadingEventVolunteer || isLoadingCombined}
+          isLoading={isLoadingEventVolunteer}
         />
       )}
     </section>

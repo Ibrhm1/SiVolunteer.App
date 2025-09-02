@@ -8,14 +8,12 @@ import { useRouter } from "next/router";
 const useViewDetailEvent = () => {
   const { query, isReady } = useRouter();
 
-  const getEventById = async () => {
-    const { data } = await eventsService.getEventById(`${query.id}`);
-    return data.data;
-  };
-
   const { data: dataEvent, isPending: isPendingDataEvent } = useQuery({
-    queryKey: ["Event"],
-    queryFn: getEventById,
+    queryKey: ["Event", query.id],
+    queryFn: async () => {
+      const { data } = await eventsService.getEventById(`${query.id}`);
+      return data.data;
+    },
     enabled: isReady && !!query.id,
   });
 
@@ -26,32 +24,10 @@ const useViewDetailEvent = () => {
       enabled: !!dataEvent?.location?.region,
     });
 
-  const { data: dataCategory, isPending: isPendingDataCategory } = useQuery({
-    queryKey: ["Category"],
-    queryFn: () => categoryService.getCategoryById(`${dataEvent?.category}`),
-    enabled: !!dataEvent?.category,
-  });
-
-  const getOrganizerById = async () => {
-    const { data } = await organizerServices.getOrganizerById(
-      `${dataEvent?.createdBy}`,
-    );
-    return data.data;
-  };
-
-  const { data: dataOrganizer } = useQuery({
-    queryKey: ["Organizer"],
-    queryFn: getOrganizerById,
-    enabled: !!dataEvent?.createdBy,
-  });
-
   return {
     dataEvent,
-    dataCategory,
-    dataOrganizer,
     dataDefaultRegion,
     isPendingDataEvent,
-    isPendingDataCategory,
     isPendingDefaultRegion,
   };
 };

@@ -7,7 +7,10 @@ interface IEvent {
   startDate?: string | DateValue;
   endDate?: string | DateValue;
   image?: string | FileList;
-  category?: string;
+  category?: {
+    _id?: string;
+    name?: string;
+  };
   isPublish?: string;
   isOnline?: string;
   location?: {
@@ -15,11 +18,21 @@ interface IEvent {
     address?: string;
   };
   requiredVolunteers?: number;
-  currentVolunteers?: string[];
+  currentVolunteers?: {
+    _id?: string;
+    fullName?: string;
+    email?: string;
+    phone?: string;
+    profilePicture?: string;
+  }[];
   requirements?: string;
   benefits?: string;
   tags?: string[];
-  createdBy?: string;
+  createdBy?: {
+    _id?: string;
+    organizerName?: string;
+    email?: string;
+  };
   slug?: string;
   createdAt?: string;
   updatedAt?: string;

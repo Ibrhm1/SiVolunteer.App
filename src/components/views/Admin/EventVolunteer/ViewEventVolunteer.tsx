@@ -13,12 +13,13 @@ const ViewEventVolunteer = () => {
   const { setUrl } = useChangeUrl();
   const { push, query, isReady } = useRouter();
   const {
-    dataCombined,
     dataEventVolunteer,
-    isLoading,
-    isRefetching,
+    isLoadingEventVolunteer,
+    isRefetchingEventVolunteer,
     formatePhone,
   } = useViewEventVolunteer();
+
+  console.log({ dataEventVolunteer });
 
   useEffect(() => {
     if (isReady) {
@@ -31,21 +32,10 @@ const ViewEventVolunteer = () => {
       const cellValue =
         eventVolunteer[columnKey as keyof typeof eventVolunteer];
       switch (columnKey) {
-        case "status":
-          return (
-            <Chip
-              color={
-                cellValue === "accepted"
-                  ? "success"
-                  : cellValue === "pending"
-                    ? "warning"
-                    : "danger"
-              }
-              variant="flat"
-              radius="md"
-              className="font-bold"
-            >{`${cellValue}`}</Chip>
-          );
+        case "userId":
+          return <p className="capitalize">{(cellValue as any)?.fullName}</p>;
+        case "eventId":
+          return <p>{(cellValue as any)?.name}</p>;
         case "email":
           return (
             <Link
@@ -71,6 +61,23 @@ const ViewEventVolunteer = () => {
               Hubungi Member
             </Button>
           );
+        case "status":
+          return (
+            <Chip
+              color={
+                cellValue === "accepted"
+                  ? "success"
+                  : cellValue === "pending"
+                    ? "warning"
+                    : "danger"
+              }
+              variant="flat"
+              radius="sm"
+              className="font-bold"
+            >
+              {`${cellValue}`}
+            </Chip>
+          );
         default:
           return cellValue as ReactNode;
       }
@@ -85,9 +92,9 @@ const ViewEventVolunteer = () => {
           renderCell={renderCell}
           columns={COLUMN_LIST_EVENTVOLUNTEER}
           emptyContent="Event Volunteer not found"
-          data={dataCombined || []}
-          totalPage={dataEventVolunteer?.data.pagination.totalPages || 0}
-          isLoading={isLoading || isRefetching}
+          data={dataEventVolunteer?.data || []}
+          totalPage={dataEventVolunteer?.pagination?.totalPages || 0}
+          isLoading={isLoadingEventVolunteer || isRefetchingEventVolunteer}
         />
       )}
     </section>

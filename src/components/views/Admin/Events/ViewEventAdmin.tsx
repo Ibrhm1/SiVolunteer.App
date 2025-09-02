@@ -11,12 +11,8 @@ import dayjs from "dayjs";
 const ViewEventAdmin = () => {
   const { push, isReady, query } = useRouter();
   const { setUrl } = useChangeUrl();
-  const {
-    dataEvents,
-    isLoadingEvents,
-    isRefetchingEvents,
-    dataEventsWithOrganizer,
-  } = useViewEventAdmin();
+  const { dataEvents, isLoadingEvents, isRefetchingEvents, refetchEvents } =
+    useViewEventAdmin();
 
   useEffect(() => {
     if (isReady) {
@@ -38,22 +34,32 @@ const ViewEventAdmin = () => {
               className="w-full rounded-lg object-cover"
             />
           );
+        case "createdBy":
+          return (
+            <p className="text-sm font-semibold">
+              {(cellValue as any).organizerName}
+            </p>
+          );
+        case "createdAt":
+          return (
+            <Chip radius="md">
+              {dayjs(`${cellValue}`).format("DD-MMM-YYYY HH:mm:ss")}
+            </Chip>
+          );
         case "isPublish":
           return (
             <Chip
+              radius="md"
               color={cellValue === true ? "success" : "warning"}
               variant="flat"
             >
               {cellValue === true ? "Publish" : "Private"}
             </Chip>
           );
-        case "createdAt":
-          return (
-            <Chip>{dayjs(`${cellValue}`).format("DD-MMM-YYYY HH:mm:ss")}</Chip>
-          );
         case "isOnline":
           return (
             <Chip
+              radius="md"
               color={cellValue === true ? "primary" : "secondary"}
               variant="flat"
             >
@@ -81,7 +87,7 @@ const ViewEventAdmin = () => {
           renderCell={renderCell}
           columns={COLUMN_LIST_EVENTS}
           emptyContent="Event is empty"
-          data={dataEventsWithOrganizer || []}
+          data={dataEvents?.data || []}
           totalPage={dataEvents?.pagination.totalPages}
           isLoading={isLoadingEvents || isRefetchingEvents}
         />

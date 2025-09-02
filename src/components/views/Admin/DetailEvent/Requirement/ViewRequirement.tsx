@@ -13,7 +13,7 @@ const ViewRequirement = (props: PropTypes) => {
     props;
 
   return (
-    <section className="flex flex-col gap-1">
+    <section className="flex flex-col gap-2">
       <div className="bg-default-100 rounded-xl p-2">
         <h1 className="text-xl font-semibold">Requirement</h1>
         <p className="text-sm">{requirements}</p>
@@ -24,7 +24,7 @@ const ViewRequirement = (props: PropTypes) => {
       </div>
       <div className="bg-default-100 flex items-center gap-2 rounded-xl p-2">
         <h1>Requirements</h1>
-        <Chip color="secondary" variant="flat" size="md">
+        <Chip color="secondary" variant="flat" size="sm">
           {requiredVolunteers}
         </Chip>
       </div>
@@ -33,6 +33,8 @@ const ViewRequirement = (props: PropTypes) => {
         <Chip
           color={currentVolunteers === 0 ? "danger" : "success"}
           variant="flat"
+          size="sm"
+          radius="sm"
           className="text-sm"
         >
           {currentVolunteers}

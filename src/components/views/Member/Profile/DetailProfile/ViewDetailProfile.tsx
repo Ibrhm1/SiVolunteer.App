@@ -11,10 +11,10 @@ import { useEffect } from "react";
 import { Controller } from "react-hook-form";
 import useViewDetailProfile from "./useViewDetailProfile";
 import { FaRegSave } from "react-icons/fa";
-import { IUserUpdate } from "@/types/User";
+import { IUser, IUserUpdate } from "@/types/User";
 
 interface PropTypes {
-  dataProfile: IUserUpdate;
+  dataProfile: IUser;
   onUpdate: (data: IUserUpdate) => void;
   isPendingUpdate: boolean;
   isSuccessUpdate: boolean;
@@ -64,6 +64,24 @@ const ViewDetailProfile = (props: PropTypes) => {
                   errorMessage={errors.fullName?.message}
                 />
               )}
+            />
+          </Skeleton>
+          <Skeleton className="rounded-lg" isLoaded={!!dataProfile?.username}>
+            <Input
+              label="Usename"
+              className="font-semibold"
+              value={dataProfile?.username}
+              labelPlacement="outside"
+              readOnly
+            />
+          </Skeleton>
+          <Skeleton className="rounded-lg" isLoaded={!!dataProfile?.email}>
+            <Input
+              label="Email"
+              value={dataProfile?.email}
+              className="font-semibold"
+              labelPlacement="outside"
+              readOnly
             />
           </Skeleton>
           <Skeleton className="rounded-lg" isLoaded={!!dataProfile?.phone}>

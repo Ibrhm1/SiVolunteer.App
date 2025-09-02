@@ -11,13 +11,12 @@ import {
 import React, { useEffect } from "react";
 import { Controller } from "react-hook-form";
 import useViewDetailProfile from "./useViewDetailProfile";
-import { IOrganizerUpdate } from "@/types/Organizer";
+import { IOrganizer, IOrganizerUpdate } from "@/types/Organizer";
 import { FaRegSave } from "react-icons/fa";
 
 interface PropTypes {
-  dataProfile: IOrganizerUpdate;
+  dataProfile: IOrganizer;
   onUpdate: (data: IOrganizerUpdate) => void;
-  dataDomicile: string;
   isPendingUpdate: boolean;
   isSuccessUpdate: boolean;
   refetchProfile: () => void;
@@ -70,6 +69,16 @@ const ViewDetailProfile = (props: PropTypes) => {
                   errorMessage={errors.organizerName?.message}
                 />
               )}
+            />
+          </Skeleton>
+          <Skeleton className="rounded-lg" isLoaded={!!dataProfile?.email}>
+            <Input
+              variant="bordered"
+              label="Email"
+              labelPlacement="outside"
+              className="font-semibold"
+              value={dataProfile?.email}
+              readOnly
             />
           </Skeleton>
           <Skeleton className="rounded-lg" isLoaded={!!dataProfile?.phone}>

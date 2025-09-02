@@ -17,7 +17,7 @@ const ViewProfile = () => {
     <main>
       <Tabs variant="underlined" color="primary">
         <Tab key="profile" title="Profile">
-          <section className="flex flex-col gap-2 md:flex-row" id="profile">
+          <section className="flex flex-col gap-2 md:flex-row">
             <ViewProfilePicture
               currentImage={dataProfile?.profilePicture}
               isPendingUpdate={isPendingUpdateProfile}

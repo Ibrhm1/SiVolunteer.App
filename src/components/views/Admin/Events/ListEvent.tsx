@@ -9,7 +9,7 @@ const COLUMN_LIST_EVENTS = [
   },
   {
     name: "ORANIZER NAME",
-    uid: "organizerName",
+    uid: "createdBy",
   },
   {
     name: "CREATED AT",
