@@ -25,10 +25,7 @@ interface PropTypes {
 
 const EventCard = (props: PropTypes) => {
   const { className, event, isLoading, key } = props;
-  const { dataOrganizer, dataRegion } = useEventCard(
-    `${event?.createdBy}`,
-    `${event?.location?.region}`,
-  );
+  const { data: dataRegion } = useEventCard(`${event?.location?.region}`);
 
   return (
     <Card
@@ -52,11 +49,9 @@ const EventCard = (props: PropTypes) => {
             />
           </CardHeader>
           <CardBody className="h-28">
-            <h2 className="text-medium font-semibold md:text-lg">
-              {event?.name}
-            </h2>
+            <h2 className="text-medium font-bold md:text-lg">{event?.name}</h2>
             <p className="md:text-medium text-foreground-700 text-sm">
-              {dataOrganizer?.organizerName}
+              {event?.createdBy?.organizerName}
             </p>
           </CardBody>
           <CardFooter className="items-center lg:h-24">

@@ -15,14 +15,14 @@ const ViewDashboardAdmin = () => {
   return (
     <>
       <Skeleton
-        className="my-4 h-8 rounded-xl lg:w-1/2"
+        className="my-4 h-8 rounded-lg xl:w-1/2"
         isLoaded={!isPendingDataProfile}
       >
         <h1 className="text-xl font-bold lg:text-2xl">
           Hai, {dataProfile?.data?.data.fullName}
         </h1>
       </Skeleton>
-      <main className="flex flex-col items-center justify-center gap-8 md:items-start">
+      <main className="mt-8 flex max-h-screen flex-col items-center gap-3 md:mt-0 md:items-start md:gap-3">
         <div className="flex flex-col gap-5 md:flex-row md:flex-wrap md:gap-3 md:gap-y-5 lg:flex-row">
           {totalData.map((item) => (
             <Skeleton

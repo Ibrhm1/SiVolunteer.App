@@ -1,4 +1,3 @@
-import { ICategory } from "@/types/Category";
 import { IEvent } from "@/types/Event";
 import {
   Button,
@@ -6,6 +5,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Chip,
   Divider,
   Skeleton,
   useDisclosure,
@@ -20,21 +20,26 @@ import { useRouter } from "next/router";
 
 interface PropTypes {
   dataEvent: IEvent;
-  dataCategory: ICategory;
 }
 
 const ViewDetailEventRegistration = (props: PropTypes) => {
+  const { dataEvent } = props;
   const { query } = useRouter();
   const registrationVolunteerModal = useDisclosure();
   const session = useSession();
-  const { dataEvent } = props;
+
   return (
     <Skeleton className="rounded-lg" isLoaded={!!dataEvent}>
-      <Card radius="lg" className="py-4 lg:sticky lg:top-[80px]">
-        <CardHeader>
+      <Card radius="lg" className="lg:sticky lg:top-[80px]">
+        <CardHeader className="justify-between gap-2">
           <h1 className="text-foreground-700 font-semibold md:text-sm lg:text-xl">
             {dataEvent?.name}
           </h1>
+          {dataEvent?.category?.name && (
+            <Chip size="md" color="default" radius="md" variant="flat">
+              <p className="font-semibold">{dataEvent?.category?.name}</p>
+            </Chip>
+          )}
         </CardHeader>
         <CardBody className="gap-4">
           <div className="bg-default-100 shadow-small flex items-start gap-2 rounded-lg p-3">

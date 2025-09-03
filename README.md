@@ -79,7 +79,7 @@
 
 Aplikasi yang sudah dideploy: **[SiVolunteer.App](https://si-volunteer-app.vercel.app/)**
 
-## 🔑 Demo Akun
+<!-- ## 🔑 Demo Akun
 
 Gunakan akun-akun berikut untuk mencoba aplikasi tanpa perlu registrasi:
 
@@ -89,7 +89,7 @@ Gunakan akun-akun berikut untuk mencoba aplikasi tanpa perlu registrasi:
 | Organizer | bacacerah.id@gmail.com      | Komunitas Baca Cerah      | Organizer1  |
 | Organizer | harapan.nusantara@gmail.com | Yayasan Harapan Nusantara | Organizer1  |
 | Member    | raka.dirgantara@example.com | rakadgt                   | Member12    |
-| Member    | elvino.mahesa@gmail.com     | elvinom                   | Member12    |
+| Member    | elvino.mahesa@gmail.com     | elvinom                   | Member12    | -->
 
 ## 🔄 Flow System – SiVolunteer
 

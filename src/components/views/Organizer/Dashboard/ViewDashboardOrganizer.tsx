@@ -10,14 +10,14 @@ const ViewDashboardOrganizer = () => {
   return (
     <>
       <Skeleton
-        className="my-4 h-8 rounded-lg lg:w-1/2"
+        className="my-4 h-8 rounded-lg xl:w-1/2"
         isLoaded={!isPendingDataProfile}
       >
         <h1 className="text-xl font-bold lg:text-2xl">
           Welcome, {dataProfile?.organizerName}
         </h1>
       </Skeleton>
-      <main className="flex max-h-screen flex-col items-center gap-3 md:items-start md:gap-3">
+      <main className="mt-8 flex max-h-screen flex-col items-center gap-3 md:mt-0 md:items-start md:gap-3">
         <div className="flex h-fit flex-wrap justify-center gap-2 md:w-1/2 md:justify-start lg:gap-x-3 lg:gap-y-2">
           {totalData.map((item) => (
             <Skeleton

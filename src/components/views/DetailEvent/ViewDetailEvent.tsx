@@ -22,14 +22,8 @@ import Link from "next/link";
 
 const ViewDetailEvent = () => {
   const router = useRouter();
-  const {
-    dataDetailEventSlug,
-    refetchDetailEventSlug,
-    dataCategoryName,
-    dataRegion,
-    dataOrganizerName,
-    isLoadingOrganizerName,
-  } = useDetailEvent();
+  const { dataDetailEventSlug, refetchDetailEventSlug, dataRegion } =
+    useDetailEvent();
 
   useEffect(() => {
     if (router.isReady && dataDetailEventSlug) {
@@ -55,7 +49,7 @@ const ViewDetailEvent = () => {
       <section className="mt-2 flex w-full flex-col gap-0 lg:flex-row">
         <div className="mb-5 flex w-full flex-col justify-center px-3 lg:w-4/6 lg:px-6">
           <Skeleton
-            isLoaded={!!dataDetailEventSlug?.image && !isLoadingOrganizerName}
+            isLoaded={!!dataDetailEventSlug?.image}
             className="w-full rounded-xl"
           >
             <Image
@@ -66,23 +60,19 @@ const ViewDetailEvent = () => {
           </Skeleton>
           <div className="mx-auto flex w-full items-center justify-between px-2 py-6">
             <Skeleton
-              isLoaded={
-                !isLoadingOrganizerName &&
-                !!dataOrganizerName &&
-                !!dataDetailEventSlug
-              }
+              isLoaded={!!dataDetailEventSlug}
               className="w-full rounded-lg md:w-1/3"
             >
               <User
                 avatarProps={{
-                  src: dataDetailEventSlug?.logo,
+                  src: dataDetailEventSlug?.createdBy?.logo,
                 }}
                 name={
                   <Link
-                    href={`/search-organizers/${dataOrganizerName?._id}`}
+                    href={`/search-organizers/${dataDetailEventSlug?.createdBy?._id}`}
                     className="text-medium font-semibold"
                   >
-                    {dataOrganizerName?.organizerName}
+                    {dataDetailEventSlug?.createdBy?.organizerName}
                   </Link>
                 }
               />
@@ -112,7 +102,7 @@ const ViewDetailEvent = () => {
                 <CardHeader>
                   <h1 className="text-xl font-semibold">Detail Event</h1>
                 </CardHeader>
-                <CardBody className="gap-2">
+                <CardBody className="gap-2 space-y-3">
                   <div className="rounded-lg bg-[#E6E6E9] p-3 text-black">
                     <h1 className="font-semibold">Requirements</h1>
                     <h2 className="text-medium">
@@ -162,7 +152,7 @@ const ViewDetailEvent = () => {
                       <Chip
                         key={tag}
                         radius="sm"
-                        className="bg-[#D0CCD0] text-black"
+                        className="bg-[#D0CCD0] text-black capitalize"
                         variant="flat"
                         startContent={<HiOutlineHashtag className="-mr-1" />}
                       >
@@ -176,10 +166,7 @@ const ViewDetailEvent = () => {
           </div>
         </div>
         <div className="mb-5 px-3 lg:w-2/6 lg:px-6">
-          <ViewDetailEventRegistration
-            dataCategory={dataCategoryName}
-            dataEvent={dataDetailEventSlug}
-          />
+          <ViewDetailEventRegistration dataEvent={dataDetailEventSlug} />
         </div>
       </section>
     </main>

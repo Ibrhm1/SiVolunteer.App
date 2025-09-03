@@ -93,7 +93,7 @@ const ViewAddMyEventModal = (props: PropTypes) => {
       <form
         onSubmit={handleSubmitForm((data) => {
           const selectedCategory = dataCategory?.data.data?.find(
-            (cat: ICategory) => cat._id === data.category
+            (cat: ICategory) => cat._id === data.category,
           );
           handleAddMyEvent({
             ...data,
