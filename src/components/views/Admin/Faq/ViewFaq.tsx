@@ -1,7 +1,6 @@
-import { Chip, Image, useDisclosure } from "@heroui/react";
+import { Chip, useDisclosure } from "@heroui/react";
 import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
-import AddCategoryModal from "./AddFaqModal";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import DropdownAction from "@/components/common/DropdownAction";
 import DataTable from "@/components/UI/DataTable";

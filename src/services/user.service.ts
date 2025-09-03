@@ -6,7 +6,8 @@ import { IUserUpdate } from "@/types/User";
 const userService = {
   register: (payload: IRegisterUser) =>
     instance.post(`${endpointService.AUTH}/register`, payload),
-  getAllMember: () => instance.get(`${endpointService.MEMBER}`),
+  getAllMember: (params?: string) =>
+    instance.get(`${endpointService.MEMBER}?${params}`),
   getMemberById: (id: string) =>
     instance.get(`${endpointService.MEMBER}/${id}`),
   updateProfile: (payload: IUserUpdate) =>

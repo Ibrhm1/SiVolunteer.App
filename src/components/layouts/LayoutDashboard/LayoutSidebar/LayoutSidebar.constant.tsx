@@ -43,6 +43,12 @@ const SIDEBAR_ADMIN = [
     icon: <MdOutlineVolunteerActivism />,
   },
   {
+    key: "members",
+    label: "Members",
+    href: "/admin/members",
+    icon: <FaUsers />,
+  },
+  {
     key: "faq",
     label: "Frequently Asked Questions",
     href: "/admin/faqs",
