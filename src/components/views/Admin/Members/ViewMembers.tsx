@@ -4,7 +4,7 @@ import DataTable from "@/components/UI/DataTable";
 import { useRouter } from "next/router";
 import { COLUMN_LIST_MEMBERS } from "./ViewMemberConstatns";
 import useChangeUrl from "@/hooks/useChangeUrl";
-import { Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import { FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { IoMdMail } from "react-icons/io";
@@ -19,7 +19,23 @@ const ViewMembers = () => {
       const cellValue = member[columnKey as keyof typeof member];
       switch (columnKey) {
         case "fullName":
-          return <span className="capitalize">{`${cellValue}`}</span>;
+          return (
+            <div className="flex items-center justify-start gap-3">
+              <Avatar
+                size="lg"
+                showFallback
+                name="member"
+                isBordered
+                src={member.profilePicture as string}
+                radius="sm"
+                className="object-cover"
+                alt="profile picture"
+              />
+              <span className="font-semibold capitalize">{`${cellValue}`}</span>
+            </div>
+          );
+        case "username":
+          return <span className="font-semibold">{`${cellValue}`}</span>;
         case "email":
           return (
             <Link

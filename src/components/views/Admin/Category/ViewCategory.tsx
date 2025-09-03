@@ -1,4 +1,4 @@
-import { Image, useDisclosure } from "@heroui/react";
+import { useDisclosure } from "@heroui/react";
 import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import useViewCategory from "./useViewCategory";
@@ -8,6 +8,7 @@ import useChangeUrl from "@/hooks/useChangeUrl";
 import DropdownAction from "@/components/common/DropdownAction";
 import DataTable from "@/components/UI/DataTable";
 import { COLUMN_LIST_CATEGORY } from "./ViewCategory.constants";
+import Image from "next/image";
 
 const ViewCategory = () => {
   const addCategoryModal = useDisclosure();
@@ -39,11 +40,15 @@ const ViewCategory = () => {
             <Image
               alt="image"
               src={`${category.image}`}
-              width={100}
-              height={100}
-              className="object-cover"
+              width={80}
+              height={80}
+              className="h-full w-full rounded-lg object-cover shadow-sm"
             />
           );
+        case "name":
+          return <p className="text-sm font-semibold">{cellValue as string}</p>;
+        case "description":
+          return <p className="text-sm font-semibold">{cellValue as string}</p>;
         case "actions":
           return (
             <DropdownAction

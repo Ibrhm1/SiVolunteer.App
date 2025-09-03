@@ -27,6 +27,10 @@ const ViewOrganizer = () => {
           return (
             <Avatar isBordered radius="md" size="lg" src={`${cellValue}`} />
           );
+        case "organizerName":
+          return <p className="text-sm font-semibold">{cellValue as string}</p>;
+        case "contactPerson":
+          return <p className="text-sm font-semibold">{cellValue as string}</p>;
         case "email":
           return (
             <Link
@@ -40,7 +44,7 @@ const ViewOrganizer = () => {
           );
         case "dateEstablished":
           return (
-            <Chip color="primary" variant="flat">
+            <Chip color="default" radius="sm" variant="flat">
               {dayjs(`${cellValue}`).format("DD MMMM YYYY")}
             </Chip>
           );

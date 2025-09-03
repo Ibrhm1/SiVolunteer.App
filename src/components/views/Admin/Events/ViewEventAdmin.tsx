@@ -1,17 +1,17 @@
-import { Chip, Image } from "@heroui/react";
+import { Button, Chip, Code, Image } from "@heroui/react";
 import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import DataTable from "@/components/UI/DataTable";
 import useViewEventAdmin from "./useViewEventAdmin";
 import { COLUMN_LIST_EVENTS } from "./ListEvent";
-import DropdownAction from "@/components/common/DropdownAction";
 import dayjs from "dayjs";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const ViewEventAdmin = () => {
   const { push, isReady, query } = useRouter();
   const { setUrl } = useChangeUrl();
-  const { dataEvents, isLoadingEvents, isRefetchingEvents, refetchEvents } =
+  const { dataEvents, isLoadingEvents, isRefetchingEvents } =
     useViewEventAdmin();
 
   useEffect(() => {
@@ -34,6 +34,8 @@ const ViewEventAdmin = () => {
               className="w-full rounded-lg object-cover"
             />
           );
+        case "name":
+          return <p className="text-sm font-semibold">{cellValue as string}</p>;
         case "createdBy":
           return (
             <p className="text-sm font-semibold">
@@ -42,9 +44,9 @@ const ViewEventAdmin = () => {
           );
         case "createdAt":
           return (
-            <Chip radius="md">
+            <Code radius="sm" className="flex items-center gap-1">
               {dayjs(`${cellValue}`).format("DD-MMM-YYYY HH:mm:ss")}
-            </Chip>
+            </Code>
           );
         case "isPublish":
           return (
@@ -68,10 +70,17 @@ const ViewEventAdmin = () => {
           );
         case "actions":
           return (
-            <DropdownAction
-              showButtonDelete={false}
-              onPressButtonDetail={() => push(`/admin/events/${event._id}`)}
-            />
+            <Button
+              size="sm"
+              radius="md"
+              variant="flat"
+              color="default"
+              className="font-semibold"
+              onPress={() => push(`/admin/events/${event._id}`)}
+              endContent={<FaArrowRightLong />}
+            >
+              Detail
+            </Button>
           );
         default:
           return cellValue as ReactNode;

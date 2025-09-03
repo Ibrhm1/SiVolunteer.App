@@ -19,8 +19,6 @@ const ViewEventVolunteer = () => {
     formatePhone,
   } = useViewEventVolunteer();
 
-  console.log({ dataEventVolunteer });
-
   useEffect(() => {
     if (isReady) {
       setUrl();
@@ -33,7 +31,11 @@ const ViewEventVolunteer = () => {
         eventVolunteer[columnKey as keyof typeof eventVolunteer];
       switch (columnKey) {
         case "userId":
-          return <p className="capitalize">{(cellValue as any)?.fullName}</p>;
+          return (
+            <p className="font-semibold capitalize">
+              {(cellValue as any)?.fullName}
+            </p>
+          );
         case "eventId":
           return <p>{(cellValue as any)?.name}</p>;
         case "email":
@@ -73,7 +75,7 @@ const ViewEventVolunteer = () => {
               }
               variant="flat"
               radius="sm"
-              className="font-bold"
+              className="font-bold capitalize"
             >
               {`${cellValue}`}
             </Chip>
